@@ -5,7 +5,9 @@ import Hero from '../components/Hero'
 import FavouriteProjects from '../components/FavouriteProjects'
 import LatestCode from '../components/LatestCode'
 
-const Home: NextPage = () => {
+import getLatestRepos from '../lib/getLatestRepos'
+import userData from '../constants/data'
+const Home: NextPage = (props) => {
   return (
     <ContainerBlock
       title="Martin Mwangi - Software Developer - REACT,NEXT,NODE..."
@@ -13,9 +15,20 @@ const Home: NextPage = () => {
     >
       <Hero />
       <FavouriteProjects />
-      <LatestCode />
+      <LatestCode repositories={props.repositories} />
     </ContainerBlock>
   )
+}
+
+export const getServerSideProps = async () => {
+  let token = process.env.GITHUB_AUTH_TOKEN
+  const repositories = await getLatestRepos(userData, token) || null
+
+  return {
+    props: {
+      repositories,
+    },
+  }
 }
 
 export default Home

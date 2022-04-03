@@ -23,11 +23,11 @@ const ContainerBlock = ({ children, ...customMeta }) => {
         <meta content={meta.description} name="description" />
         <meta
           property="og:url"
-          content={`https://yourwebsite.com${router.asPath}`}
+          content={`https://martinmwangi.netlify.com${router.asPath}`}
         />
         <link
           rel="canonical"
-          href={`https://yourwebsite.com${router.asPath}`}
+          href={`https://martinmwangi.netlify.com${router.asPath}`}
         />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Martin Mwangi" />
