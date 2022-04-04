@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
+import HeaderMenu from '../components/HeaderMenu'
+
 import {
   HiMenuAlt1,
   HiMoon,
@@ -11,7 +13,8 @@ import {
 import useDarkMode from '../hooks/useDarkMode'
 
 const Navbar = () => {
-  const [sticky, setSticky] = useState()
+  const [sticky, setSticky] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(true)
 
   const [darkTheme, setDarkTheme] = useDarkMode()
   const handleMode = () => setDarkTheme(!darkTheme)
@@ -41,7 +44,7 @@ const Navbar = () => {
         sticky ? '_shadow fixed top-0 left-0 right-0 h-[80px]' : 'h-[150px]'
       } flex  items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3`}
     >
-      <div className="container flex items-center justify-between space-x-8">
+      <div className="container relative flex items-center justify-between space-x-8">
         <Link href="/">
           <a className="block text-2xl font-bold text-dark dark:text-white">
             <span className="dark:text-secondary">Martin</span> Mwangi
@@ -74,7 +77,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="relative flex items-center space-x-4">
           <a
             href="https://www.fiverr.com/martin_devs/create-node-js-reactjs-application"
             target="_blank"
@@ -97,9 +100,13 @@ const Navbar = () => {
             )}
           </div>
 
-          <div className="cursor-pointer rounded-full p-2 text-dim-dark duration-75 dark:bg-dim-dark dark:text-slate-200 lg:hidden">
+          <div
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="cursor-pointer rounded-full p-2 text-dim-dark duration-75 dark:bg-dim-dark dark:text-slate-200 lg:hidden"
+          >
             <HiMenuAlt1 className="text-2xl" />
           </div>
+          <HeaderMenu isOpen={menuOpen} closeModal={() => setMenuOpen(false)} />
         </div>
       </div>
     </div>
