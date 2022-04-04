@@ -20,27 +20,45 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className='flex flex-col min-w-[150px] items-start bg-white dark:bg-dim-dark p-4 rounded-2xl divide-y-[0.2px] divide-slate-700'>
+            <div className="flex min-w-[150px] flex-col items-start divide-y-[0.2px] divide-slate-700 rounded-2xl bg-white p-4 dark:bg-dim-dark">
               <Link href="/about-me">
-                <a className="py-2 text-dark hover:bg-dim-dark hover:text-white dark:text-white w-full  text-left">
+                <a
+                  onClick={closeModal}
+                  className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white  dark:text-white"
+                >
                   About Me
                 </a>
               </Link>
               <Link href="/portfolio">
-                <a className="py-2 text-dark hover:bg-dim-dark hover:text-white dark:text-white w-full text-left">
+                <a className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white">
                   Portfolio
                 </a>
               </Link>
               <Link href="/blogs">
-                <a className="py-2 text-dark hover:bg-dim-dark hover:text-white dark:text-white w-full text-left">
+                <a
+                  onClick={closeModal}
+                  className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
+                >
                   Blogs
                 </a>
               </Link>
               <Link href="/contact">
-                <a className="py-2 text-dark hover:bg-dim-dark hover:text-white dark:text-white w-full text-left">
+                <a
+                  onClick={closeModal}
+                  className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
+                >
                   Contact
                 </a>
               </Link>
+
+              <a
+                href="https://www.fiverr.com/martin_devs/create-node-js-reactjs-application"
+                target="_blank"
+                onClick={closeModal}
+                className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
+              >
+                Hire Me
+              </a>
             </div>
           </Transition.Child>
         </div>
