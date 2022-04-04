@@ -10,7 +10,7 @@ const Home: NextPage = (props) => {
     >
       <h3>Portfolio</h3>
       <h3>Portfolio</h3>
-      {[1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 90, 0, 0, 0, -0, 0, 0, 0, 0, 0].map(
+      {[1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 90, 0, 0, 0, -0, 0, 0, 0, 0, 0,5,6,7,8,8,8,8].map(
         (_, i) => (
           <div key={i} className="my-5">
             <h3>Portfolio</h3>

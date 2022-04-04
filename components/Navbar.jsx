@@ -18,7 +18,7 @@ const Navbar = () => {
 
       if (winScroll > 60) {
         setSticky(true)
-      } else {
+      }else {
         setSticky(false)
       }
     }
@@ -34,7 +34,7 @@ const Navbar = () => {
     <div
       className={`${
         sticky ? 'h-[80px _shadow fixed top-0 left-0 right-0' : 'h-[120px]'
-      } flex  items-center bg-white dark:bg-dark px-6 py-3 lg:px-3`}
+      } flex  items-center bg-white px-6 py-3 dark:bg-dark lg:px-3`}
     >
       <div className="container flex items-center justify-start space-x-8">
         <Link href="/">
@@ -46,16 +46,24 @@ const Navbar = () => {
         <div className="flex flex-1 items-center justify-between space-x-5">
           <div className="flex items-center space-x-5">
             <Link href="/about-me">
-              <a className="hover:text-primary text-dark dark:text-white">About Me</a>
+              <a className="text-dark hover:text-primary dark:text-white">
+                About Me
+              </a>
             </Link>
             <Link href="/portfolio">
-              <a className="hover:text-primary text-dark dark:text-white">Portfolio</a>
+              <a className="text-dark hover:text-primary dark:text-white">
+                Portfolio
+              </a>
             </Link>
             <Link href="/blogs">
-              <a className="hover:text-primary text-dark dark:text-white">Blogs</a>
+              <a className="text-dark hover:text-primary dark:text-white">
+                Blogs
+              </a>
             </Link>
             <Link href="/contact">
-              <a className="hover:text-primary text-dark dark:text-white">Contact</a>
+              <a className="text-dark hover:text-primary dark:text-white">
+                Contact
+              </a>
             </Link>
           </div>
 
@@ -69,11 +77,14 @@ const Navbar = () => {
             >
               Hire Me
             </a>
-            <div onClick={handleMode} className="flex cursor-pointer items-center justify-center rounded-md border p-2 text-dark dark:text-white">
+            <div
+              onClick={handleMode}
+              className="flex cursor-pointer items-center justify-center rounded-md p-2"
+            >
               {darkTheme ? (
                 <HiSun className="text-2xl font-medium text-white" />
               ) : (
-                <HiMoon className="text-2xl font-medium" />
+                <HiMoon className="text-2xl font-medium text-dark" />
               )}
             </div>
           </div>

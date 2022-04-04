@@ -42,7 +42,7 @@ const ContainerBlock = ({ children, ...customMeta }) => {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <main className="">
+      <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
         <div>{children}</div>
       </main>
