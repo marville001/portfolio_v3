@@ -24,7 +24,7 @@ const Navbar = () => {
       const winScroll =
         document.body.scrollTop || document.documentElement.scrollTop
 
-      if (winScroll > 60) {
+      if (winScroll > 200) {
         setSticky(true)
       } else {
         setSticky(false)
