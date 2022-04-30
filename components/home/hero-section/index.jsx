@@ -6,7 +6,7 @@ import Image from '../../../assets/undraw_Programming_re_kg9v.svg'
 
 const HeroSection = () => {
   return (
-    <div className="section grid grid-cols-1 bg-[#01014a] md:max-h-[600px] md:grid-cols-2">
+    <div className="section grid grid-cols-1 py-10 bg-[#01014a] md:max-h-[600px] md:grid-cols-2">
       <div
         style={{
           backgroundImage: `url(${Image.src})`,

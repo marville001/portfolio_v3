@@ -11,6 +11,7 @@ module.exports = {
         secondary: '#64ffda',
         dark: '#1f1f47',
         'dim-dark': '#171647',
+        grayish: '#edf1fd',
       },
     },
   },
