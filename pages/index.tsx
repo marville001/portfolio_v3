@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import ContainerBlock from '../components/ContainerBlock'
 import HeroSection from '../components/home/hero-section'
 import ExperienceSection from '../components/home/experience-section'
+import CompaniesSection from '../components/home/companies-section'
 
 const Home: NextPage = (props) => {
   return (
@@ -12,6 +13,7 @@ const Home: NextPage = (props) => {
     >
       <HeroSection />
       <ExperienceSection />
+      <CompaniesSection />
     </ContainerBlock>
   )
 }
