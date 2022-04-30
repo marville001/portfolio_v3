@@ -94,9 +94,9 @@ const Navbar = () => {
             className="flex cursor-pointer items-center justify-center rounded-md p-2"
           >
             {darkTheme ? (
-              <HiSun className="text-2xl font-medium text-white" />
+              <HiSun className="text-2xl font-medium text-dark dark:text-white" />
             ) : (
-              <HiMoon className="text-2xl font-medium text-dark" />
+              <HiMoon className="text-2xl font-medium text-dark dark:text-white" />
             )}
           </div>
 
