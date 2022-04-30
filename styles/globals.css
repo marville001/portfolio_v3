@@ -34,7 +34,7 @@ body {
   }
 
   .section {
-    @apply min-h-[50vh];
+    @apply min-h-[50vh] max-h-[700px];
   }
 
   body::-webkit-scrollbar {
