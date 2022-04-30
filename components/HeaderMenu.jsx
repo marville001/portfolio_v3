@@ -24,20 +24,20 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
               <Link href="/about-me">
                 <a
                   onClick={closeModal}
-                  className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white  dark:text-white"
+                  className="w-full border-0 outline-none ring-0 py-2 text-left text-dark hover:bg-dim-dark hover:text-white  dark:text-white"
                 >
                   About Me
                 </a>
               </Link>
               <Link href="/portfolio">
-                <a className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white">
+                <a className="w-full border-0 outline-none ring-0 py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white">
                   Portfolio
                 </a>
               </Link>
               <Link href="/blogs">
                 <a
                   onClick={closeModal}
-                  className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
+                  className="w-full border-0 outline-none ring-0 py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
                 >
                   Blogs
                 </a>
@@ -45,7 +45,7 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
               <Link href="/contact">
                 <a
                   onClick={closeModal}
-                  className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
+                  className="w-full border-0 outline-none ring-0 py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
                 >
                   Contact
                 </a>
@@ -55,7 +55,7 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
                 href="https://www.fiverr.com/martin_devs/create-node-js-reactjs-application"
                 target="_blank"
                 onClick={closeModal}
-                className="w-full py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
+                className="w-full border-0 outline-none ring-0 py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
               >
                 Hire Me
               </a>

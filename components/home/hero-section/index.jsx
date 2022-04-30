@@ -5,7 +5,6 @@ import { FaGithubAlt, FaLinkedinIn, FaMapMarkerAlt } from 'react-icons/fa'
 import Image from '../../../assets/undraw_Programming_re_kg9v.svg'
 
 const HeroSection = () => {
-  console.log(Image)
   return (
     <div className="section grid grid-cols-1 bg-[#01014a] md:max-h-[600px] md:grid-cols-2">
       <div
