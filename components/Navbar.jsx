@@ -14,7 +14,7 @@ import useDarkMode from '../hooks/useDarkMode'
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const [darkTheme, setDarkTheme] = useDarkMode()
   const handleMode = () => setDarkTheme(!darkTheme)
