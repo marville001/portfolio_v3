@@ -65,7 +65,7 @@ const ExperienceSection = () => {
               communications about any task you have.
             </p>
 
-            <div className="_shadow mt-16 w-full rounded-lg p-6">
+            <div className="_shadow mt-16 w-full rounded-lg p-6 dark:bg-dark">
               <h2 className="mb-2 text-lg font-bold">Schedule a meeting</h2>
               <p className="text-sm font-medium opacity-70">
                 Choose the ideal moment and meet with the team to put your ideas
