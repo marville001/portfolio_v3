@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Navbar from './Navbar'
+import { Footer } from './Footer'
 
 const ContainerBlock = ({ children, ...customMeta }) => {
   const router = useRouter()
@@ -45,6 +46,7 @@ const ContainerBlock = ({ children, ...customMeta }) => {
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
         <div>{children}</div>
+        <Footer />
       </main>
     </div>
   )
