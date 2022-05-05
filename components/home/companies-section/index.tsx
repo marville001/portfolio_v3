@@ -1,8 +1,5 @@
 import React from 'react'
 
-import ImageLight from '../../../assets/company-light.png'
-import ImageDark from '../../../assets/company-dark.png'
-
 const CompaniesSection = () => {
   return (
     <div className="section bg-grayish dark:bg-dark dark:text-white">
@@ -12,11 +9,11 @@ const CompaniesSection = () => {
         </h3>
 
         {[1, 2, 3].map((c) => (
-          <div className="mt-10 my-10 flex justify-between">
+          <div key={c} className="mt-10 my-10 flex justify-between">
             {[1, 2, 3].map((c) => (
               <div key={c}>
                 <img
-                  src={ImageDark.src}
+                  src="/assets/company-dark.png"
                   alt=""
                   className="h-20 w-40"
                 />
