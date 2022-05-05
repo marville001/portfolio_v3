@@ -8,7 +8,7 @@ const HeroSection = () => {
     <div className="section grid grid-cols-1 py-10 bg-[#01014a] md:max-h-[600px] md:grid-cols-2">
       <div
         style={{
-          backgroundImage: `url(/assets/undraw_Programming_re_kg9v.svg)`,
+          backgroundImage: `url('/assets/undraw_Programming_re_kg9v.svg')`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
         }}
