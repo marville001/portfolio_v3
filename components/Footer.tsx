@@ -60,7 +60,7 @@ export const Footer = () => {
               cost being a barrier.
             </p>
 
-            <button className="w-full mt-5 rounded-full font-semibold bg-white py-2 text-center text-dark">
+            <button className="w-full mt-5 rounded-full hover:bg-opacity-80 font-semibold bg-white py-2 text-center text-dark">
               Schedule a meeting
             </button>
           </div>
@@ -80,7 +80,7 @@ export const Footer = () => {
           <Link href="mailto:mwangimartin1904@gmail.com">
             <a
               target="_blank"
-              className="inline-block rounded-full bg-primary py-2  px-8 text-center text-white"
+              className="inline-block rounded-full hover:bg-opacity-80 bg-primary py-2  px-8 text-center text-white"
             >
               Contact Me
             </a>
