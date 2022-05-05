@@ -28,7 +28,7 @@ const AboutMe = () => {
             </Link>
           </div>
 
-          <div className="text-xs leading-4">
+          <div className="text-[14px] leading-5">
             <p>
               At the age of 12, I convinced little friends to accompany me to
               the local landfill to collect electronic components, with which I
