@@ -18,7 +18,7 @@ const PortfolioCard = (props: any) => {
   const nextRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div className="group relative h-[225px] cursor-pointer  rounded-md bg-slate-400 lg:h-[260px]">
+    <div className="group relative h-[225px] cursor-pointer  rounded-md bg-slate-400 dark:bg-dim-dark lg:h-[260px]">
       <div className="h-full w-full p-3">
         <Swiper
           pagination={{

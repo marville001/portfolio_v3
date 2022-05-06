@@ -14,12 +14,12 @@ const Portfolios = (props: any) => {
         {/* Header */}
         <div className="flex flex-col">
           <div className="flex gap-5">
-            <h2 className="text-3xl font-bold text-slate-900">Briefcase</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Briefcase</h2>
             <div className="flex items-center rounded-md bg-grayish px-4 py-1">
               {projects?.length ?? 0} Projects
             </div>
           </div>
-          <p className="mt-3">Compilation of some of our previous works</p>
+          <p className="mt-3 dark:text-white">Compilation of some of our previous works</p>
         </div>
 
         {/* Portfolios */}
