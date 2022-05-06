@@ -1,6 +1,7 @@
 import React from 'react'
-import { FaArrowsAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+
 import { Project } from '../../../types/project'
+import PortfolioCard from './PortfolioCard'
 
 const Portfolios = (props: any) => {
   const projects: Project[] = props.projects
@@ -20,27 +21,9 @@ const Portfolios = (props: any) => {
         </div>
 
         {/* Portfolios */}
-        <div className="my-8 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="my-8 grid grid-cols-1 select-none gap-10 md:grid-cols-2 lg:grid-cols-3">
           {projects?.map((project: Project) => (
-            <div
-              key={project?._id}
-              className="group relative min-h-[225px] cursor-pointer rounded-md bg-slate-400 p-5"
-            >
-              {/* Maximize Icon */}
-              <div className="absolute right-5 top-5 hidden cursor-pointer  rounded-md bg-slate-200 bg-opacity-25  p-2 transition-all duration-150 ease-linear group-hover:block">
-                <FaArrowsAlt className="origin-center rotate-45 text-2xl opacity-50" />
-              </div>
-
-              {/* Arrow - left */}
-              <div className="absolute left-0 top-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gray-800 p-1 text-white">
-                <FaChevronLeft className="text-sm" />
-              </div>
-
-              {/* Arrow - right */}
-              <div className="absolute right-0 top-1/2 flex translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gray-800 p-1 text-white">
-                <FaChevronRight className="text-sm" />
-              </div>
-            </div>
+            <PortfolioCard project={project} key={project?._id} />
           ))}
         </div>
 
