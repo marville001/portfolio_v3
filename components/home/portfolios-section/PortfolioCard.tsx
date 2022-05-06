@@ -59,7 +59,7 @@ const PortfolioCard = (props: any) => {
       <Link href={project?.url}>
         <a
           target="_blank"
-          className="blurry hidden_ absolute inset-0 z-[1] flex flex-col justify-end p-5 group-hover:flex"
+          className="blurry hidden absolute inset-0 z-[1]  flex-col justify-end p-5 group-hover:flex"
         >
           <h4 className="font-bold text-white">{project?.name}</h4>
           <div className="my-3 flex gap-2 flex-wrap">

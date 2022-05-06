@@ -46,7 +46,7 @@ const ContainerBlock = ({ children, ...customMeta }) => {
       </Head>
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
-        <div>{children}</div>
+        <div className='mt-[80px]'>{children}</div>
         <AboutMe />
         <Footer />
       </main>
