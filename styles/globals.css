@@ -28,6 +28,17 @@ body {
   overflow-x: hidden;
 }
 
+.blurry {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(51, 134, 177, 0) 0%,
+    rgba(51, 134, 177, .25) 25%,
+    rgba(51, 134, 177, .75) 50%,
+    rgba(51, 134, 177, 1) 100%
+  );
+}
+
 @layer components {
   .container {
     @apply mx-auto w-[95%] max-w-[1234px];
