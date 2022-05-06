@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper'
+import {Autoplay, Navigation } from 'swiper'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -21,6 +21,11 @@ const PortfolioCard = (props: any) => {
         pagination={{
           type: 'progressbar',
         }}
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -32,7 +37,7 @@ const PortfolioCard = (props: any) => {
           swiper.params.navigation.nextEl = nextRef.current
           swiper.navigation.update()
         }}
-        modules={[Navigation]}
+        modules={[Autoplay,Navigation]}
         className="h-full w-full"
       >
         {project?.image?.map((image, idx) => (
