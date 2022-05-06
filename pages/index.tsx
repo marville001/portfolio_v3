@@ -6,7 +6,9 @@ import ExperienceSection from '../components/home/experience-section'
 import CompaniesSection from '../components/home/companies-section'
 import Portfolios from '../components/home/portfolios-section'
 
-const Home: NextPage = (props) => {
+import { client } from '../lib/sanity'
+
+const Home: NextPage = (props: any) => {
   return (
     <ContainerBlock
       title="Martin Mwangi - Software Developer - REACT,NEXT,NODE..."
@@ -15,9 +17,20 @@ const Home: NextPage = (props) => {
       <HeroSection />
       <ExperienceSection />
       <CompaniesSection />
-      <Portfolios />
+      <Portfolios projects={props?.projects} />
     </ContainerBlock>
   )
+}
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "project"]'
+  const projects = await client.fetch(query)
+
+  console.log(projects)
+
+  return {
+    props: { projects },
+  }
 }
 
 export default Home

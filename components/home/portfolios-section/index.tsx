@@ -1,7 +1,10 @@
 import React from 'react'
 import { FaArrowsAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { Project } from '../../../types/project'
 
-const Portfolios = () => {
+const Portfolios = (props: any) => {
+  const projects: Project[] = props.projects
+
   return (
     <div className="">
       <div className="container py-8">
@@ -10,7 +13,7 @@ const Portfolios = () => {
           <div className="flex gap-5">
             <h2 className="text-3xl font-bold text-slate-900">Briefcase</h2>
             <div className="flex items-center rounded-md bg-grayish px-4 py-1">
-              44 Projects
+              {projects?.length ?? 0} Projects
             </div>
           </div>
           <p className="mt-3">Compilation of some of our previous works</p>
@@ -18,14 +21,14 @@ const Portfolios = () => {
 
         {/* Portfolios */}
         <div className="my-8 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((project) => (
+          {projects?.map((project: Project) => (
             <div
-              key={project}
+              key={project?._id}
               className="group relative min-h-[225px] cursor-pointer rounded-md bg-slate-400 p-5"
             >
               {/* Maximize Icon */}
-              <div className="absolute right-5 top-5 cursor-pointer p-2  bg-slate-200 bg-opacity-25 rounded-md  hidden group-hover:block transition-all duration-150 ease-linear">
-                <FaArrowsAlt className="text-2xl rotate-45 origin-center opacity-50" />
+              <div className="absolute right-5 top-5 hidden cursor-pointer  rounded-md bg-slate-200 bg-opacity-25  p-2 transition-all duration-150 ease-linear group-hover:block">
+                <FaArrowsAlt className="origin-center rotate-45 text-2xl opacity-50" />
               </div>
 
               {/* Arrow - left */}
