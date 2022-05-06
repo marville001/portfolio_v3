@@ -42,7 +42,7 @@ const Navbar = () => {
     <div
       className={`${
         sticky ? '_shadow fixed top-0 left-0 right-0 h-[80px]' : 'h-[150px]'
-      } flex  items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3 z-[100]`}
+      } flex  items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3 z-[999]`}
     >
       <div className="container relative flex items-center justify-between space-x-8">
         <Link href="/">

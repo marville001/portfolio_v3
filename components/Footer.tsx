@@ -37,9 +37,9 @@ export const Footer = () => {
               <h2>Annual</h2>
               <p className="my-2 flex items-center gap-2">
                 <span className="text-sm text-white opacity-40">From</span>
-                <span>93,000 $USD</span>
+                <span>40,000 $USD</span>
                 <span className="text-sm text-white opacity-40">To</span>
-                <span>+250,000 $USD</span>
+                <span>+150,000 $USD</span>
               </p>
               <h2>Per hour:</h2>
               <p className="my-2 flex items-center gap-2">
