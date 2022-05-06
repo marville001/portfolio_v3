@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Project } from '../../../types/project'
 import PortfolioCard from './PortfolioCard'
 
 const Portfolios = (props: any) => {
   const projects: Project[] = props.projects
+
+  const [pageSize, setPageSize] = useState(6)
 
   return (
     <div className="">
@@ -21,15 +23,19 @@ const Portfolios = (props: any) => {
         </div>
 
         {/* Portfolios */}
-        <div className="my-8 grid grid-cols-1 select-none gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {projects?.map((project: Project) => (
+        <div className="my-8 grid select-none grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+          {[...projects].splice(0, pageSize)?.map((project: Project) => (
             <PortfolioCard project={project} key={project?._id} />
           ))}
         </div>
 
         {/* Show More */}
         <div className="my-10 flex justify-center">
-          <button className="rounded-full bg-primary px-16 py-3 text-white">
+          <button
+            onClick={() => setPageSize(pageSize + 6)}
+            className="rounded-full bg-primary px-16 py-3 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+            disabled={pageSize > projects?.length}
+          >
             Show more
           </button>
         </div>

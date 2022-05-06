@@ -16,10 +16,8 @@ const PortfolioCard = (props: any) => {
   const prevRef = useRef<HTMLDivElement>(null)
   const nextRef = useRef<HTMLDivElement>(null)
 
-  console.log(project)
-
   return (
-    <div className="group relative min-h-[225px] cursor-pointer rounded-md bg-slate-400">
+    <div className="group relative h-[225px] cursor-pointer  rounded-md bg-slate-400 lg:h-[260px]">
       <div className="h-full w-full p-3">
         <Swiper
           pagination={{
@@ -57,11 +55,11 @@ const PortfolioCard = (props: any) => {
         </Swiper>
       </div>
 
-      <div className="blurry absolute inset-0 z-[1] hidden flex-col justify-end group-hover:flex p-5">
-			  <h4 className='text-white font-bold'>{project?.name}</h4>
-			  <div className="my-3 flex">
-				  <div className="py-1 px-4 bg-primary rounded-md text-sm">Tag One</div>
-			  </div>
+      <div className="blurry absolute inset-0 z-[1] hidden flex-col justify-end p-5 group-hover:flex">
+        <h4 className="font-bold text-white">{project?.name}</h4>
+        <div className="my-3 flex">
+          <div className="rounded-md bg-primary py-1 px-4 text-sm">Tag One</div>
+        </div>
       </div>
       {/* Maximize Icon */}
       <div className="absolute right-5 top-5 z-[445] hidden cursor-pointer  rounded-md bg-slate-200 bg-opacity-25  p-2 transition-all duration-150 ease-linear group-hover:block">
