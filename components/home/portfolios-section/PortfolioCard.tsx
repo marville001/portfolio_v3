@@ -59,13 +59,18 @@ const PortfolioCard = (props: any) => {
       <Link href={project?.url}>
         <a
           target="_blank"
-          className="blurry absolute inset-0 z-[1] hidden flex-col justify-end p-5 group-hover:flex"
+          className="blurry hidden_ absolute inset-0 z-[1] flex flex-col justify-end p-5 group-hover:flex"
         >
           <h4 className="font-bold text-white">{project?.name}</h4>
-          <div className="my-3 flex">
-            <div className="rounded-md bg-primary py-1 px-4 text-sm">
-              Tag One
-            </div>
+          <div className="my-3 flex gap-2 flex-wrap">
+            {project?.tags?.map((tag, idx) => (
+              <div
+                key={idx}
+                className="rounded-md bg-primary py-1 px-4 text-xs text-white"
+              >
+               {tag}
+              </div>
+            ))}
           </div>
         </a>
       </Link>
