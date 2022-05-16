@@ -5,7 +5,12 @@ import Navbar from './Navbar'
 import { Footer } from './Footer'
 import AboutMe from './home/about-section'
 
-const ContainerBlock = ({ children, ...customMeta }) => {
+const ContainerBlock = ({
+  children,
+  showAbout = true,
+  showInterest = true,
+  ...customMeta
+}) => {
   const router = useRouter()
 
   const meta = {
@@ -46,9 +51,9 @@ const ContainerBlock = ({ children, ...customMeta }) => {
       </Head>
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
-        <div className='mt-[80px]'>{children}</div>
-        <AboutMe />
-        <Footer />
+        <div className="mt-[80px]">{children}</div>
+        {showAbout && <AboutMe />}
+        <Footer showInterest={showInterest} />
       </main>
     </div>
   )
