@@ -7,6 +7,7 @@ import CompaniesSection from '../components/home/companies-section'
 import Portfolios from '../components/home/portfolios-section'
 
 import { client } from '../lib/sanity'
+import LangToolsSection from '../components/home/lang-tools-section'
 
 const Home: NextPage = (props: any) => {
   return (
@@ -16,6 +17,7 @@ const Home: NextPage = (props: any) => {
     >
       <HeroSection />
       <ExperienceSection />
+      <LangToolsSection />
       <CompaniesSection />
       <Portfolios projects={props?.projects} />
     </ContainerBlock>
