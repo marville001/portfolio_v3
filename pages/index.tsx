@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import ContainerBlock from '../components/ContainerBlock'
 import HeroSection from '../components/home/hero-section'
 import ExperienceSection from '../components/home/experience-section'
-import CompaniesSection from '../components/home/companies-section'
+import ServicesSection from '../components/home/services-section'
 import Portfolios from '../components/home/portfolios-section'
 
 import { client } from '../lib/sanity'
@@ -18,7 +18,7 @@ const Home: NextPage = (props: any) => {
       <HeroSection />
       <ExperienceSection />
       <LangToolsSection />
-      <CompaniesSection />
+      <ServicesSection />
       <Portfolios projects={props?.projects} />
     </ContainerBlock>
   )

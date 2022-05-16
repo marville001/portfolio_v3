@@ -33,6 +33,7 @@ const LangToolsSection = () => {
     >
       <div className="section  bg-slate-50 py-10 dark:bg-dark dark:text-white bg-opacity-60">
         <div className="container">
+          <h1 className='text-center font-bold text-xl select-none mb-2 opacity-50'>TOOLS</h1>
           <h2 className="text-center text-3xl font-bold text-dim-dark dark:text-white">
             Programming Languages and Tools
           </h2>
