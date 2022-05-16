@@ -32,7 +32,7 @@ const ExperienceSection = () => {
               <strong className="mr-2 text-lg font-bold text-dim-dark dark:text-white">
                 +3 years
               </strong>
-              <span className="text-lg opacity-60">using Adobe XD</span>
+              <span className="text-lg opacity-60">Using MERN Stack</span>
             </p>
             <p className="my-2">
               <strong className="mr-2 text-lg font-bold text-dim-dark dark:text-white">
@@ -61,7 +61,7 @@ const ExperienceSection = () => {
 
             <p className="my-4 text-sm tracking-wide opacity-70">
               Contact me by WhatsApp, you will establish communication with me
-              dirctly. You will be able to ask or make arrangement for further
+              directly. You will be able to ask or make arrangement for further
               communications about any task you have.
             </p>
 
