@@ -45,7 +45,7 @@ const Navbar = () => {
       <div className="container relative flex items-center justify-between space-x-8">
         <Link href="/">
           <a className="block text-2xl font-bold text-dark dark:text-white">
-            <span className="dark:text-secondary">Martin</span> Mwangi
+            <span className="">martin.</span>
           </a>
         </Link>
 
