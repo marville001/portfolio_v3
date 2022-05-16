@@ -51,7 +51,7 @@ const AboutMe = () => {
               </span>
             </p>
 
-            <div className="my-10 flex gap-5">
+            <div className="my-10 flex flex-col sm:flex-row gap-5">
               <Link href="mailto:mwangimartin1904@gmail.com">
                 <a
                   target="_blank"
