@@ -6,8 +6,8 @@ import { FaLinkedinIn } from 'react-icons/fa'
 const AboutMe = () => {
   return (
     <div className="py-8 dark:bg-dim-dark dark:bg-opacity-50 dark:text-white">
-      <div className="container flex md:gap-10">
-        <div className="flex-[1]">
+      <div className="container flex md:gap-10 flex-col items-center md:flex-row">
+        <div className="flex-[1] mb-12">
           <Image
             src="/Me.jfif"
             className="rounded-full"
@@ -15,8 +15,8 @@ const AboutMe = () => {
             height={250}
           />
         </div>
-        <div className="flex-[3]">
-          <div className="mb-5 flex items-center gap-3">
+        <div className="flex-[3] flex flex-col items-center gap-2 md:items-start">
+          <div className="mb-5 flex items-center gap-3 ">
             <h2 className="text-4xl font-bold">About Me</h2>
             <Link href="https://www.linkedin.com/in/marville001/">
               <a
@@ -28,7 +28,7 @@ const AboutMe = () => {
             </Link>
           </div>
 
-          <div className="text-[14px] leading-5">
+          <div className="text-[16px] leading-5 tracking-wide font-serif">
             <p>
               At the age of 12, I convinced little friends to accompany me to
               the local landfill to collect electronic components, with which I

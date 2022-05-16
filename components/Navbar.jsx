@@ -89,7 +89,7 @@ const Navbar = () => {
           </a>
           <div
             onClick={handleMode}
-            className="flex cursor-pointer items-center justify-center rounded-md p-2"
+            className="flex cursor-pointer hidden items-center justify-center rounded-md p-2"
           >
             {darkTheme ? (
               <HiSun className="text-2xl font-medium text-dark dark:text-white" />
