@@ -1,8 +1,13 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import Recaptcha from 'react-recaptcha'
+
+const recaptureSitekey = process.env.NEXT_PUBLIC_RECAPTURE_SITE_KEY
 
 const ContactSection = () => {
+  const [isVerified, setisVerified] = useState(false)
+
   const {
     register,
     handleSubmit,
@@ -10,8 +15,25 @@ const ContactSection = () => {
     reset,
   } = useForm()
 
+  let recaptchaInstance: Recaptcha | null
+
   const handleSendMessage = () => {
+    const res = recaptchaInstance?.execute()
+    console.log({recaptchaInstance});
     
+    if (isVerified) {
+      console.log('You have successfully subscribed!')
+    } else {
+      console.log('Please verify that you are a human!')
+    }
+  }
+
+  const verifyCallback = (response: any) => {
+    if (response) {
+      setisVerified(true)
+    } else {
+      setisVerified(false)
+    }
   }
 
   return (
@@ -52,7 +74,9 @@ const ContactSection = () => {
                     },
                   })}
                   placeholder="Enter your name here."
-                  className={`w-full rounded-md border-0 py-2 px-3 outline-none ring-1 ${errors.name ?"ring-red-400":"ring-primary"} focus:border-0 focus:outline-none`}
+                  className={`w-full rounded-md border-0 py-2 px-3 outline-none ring-1 ${
+                    errors.name ? 'ring-red-400' : 'ring-primary'
+                  } focus:border-0 focus:outline-none`}
                 />
               </div>
 
@@ -70,7 +94,9 @@ const ContactSection = () => {
                     },
                   })}
                   placeholder="Enter your email here."
-                  className={`w-full rounded-md border-0 py-2 px-3 outline-none ring-1 ${errors.email ?"ring-red-400":"ring-primary"} focus:border-0 focus:outline-none`}
+                  className={`w-full rounded-md border-0 py-2 px-3 outline-none ring-1 ${
+                    errors.email ? 'ring-red-400' : 'ring-primary'
+                  } focus:border-0 focus:outline-none`}
                 />
               </div>
 
@@ -88,7 +114,9 @@ const ContactSection = () => {
                     },
                   })}
                   placeholder="Enter the subject here."
-                  className={`w-full rounded-md border-0 py-2 px-3 outline-none ring-1 ${errors.subject ?"ring-red-400":"ring-primary"} focus:border-0 focus:outline-none`}
+                  className={`w-full rounded-md border-0 py-2 px-3 outline-none ring-1 ${
+                    errors.subject ? 'ring-red-400' : 'ring-primary'
+                  } focus:border-0 focus:outline-none`}
                 />
               </div>
 
@@ -106,8 +134,20 @@ const ContactSection = () => {
                   })}
                   placeholder="Enter the message."
                   rows={5}
-                  className={`w-full rounded-md border-0 py-2 px-3 outline-none ring-1 ${errors.message ?"ring-red-400":"ring-primary"} focus:border-0 focus:outline-none`}
+                  className={`w-full rounded-md border-0 py-2 px-3 outline-none ring-1 ${
+                    errors.message ? 'ring-red-400' : 'ring-primary'
+                  } focus:border-0 focus:outline-none`}
                 ></textarea>
+              </div>
+
+              <div className="my-5 flex justify-end">
+                <Recaptcha
+                  render="explicit"
+                  size="normal"
+                  sitekey={recaptureSitekey}
+                  verifyCallback={verifyCallback}
+                  ref={(e) => recaptchaInstance = e}
+                />
               </div>
 
               <div className="my-5 flex justify-end">

@@ -128,7 +128,14 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.4.tgz"
   "version" "15.7.4"
 
-"@types/react@17.0.38":
+"@types/react-recaptcha@^2.3.4":
+  "integrity" "sha512-RLnUgfFeQwg22+Mp+IvFlXz25+JrcwyxeYe9oAjbvCsIxK5tGrXWb44bK3VusdWCWIiufbMtEG8i4PFXSCBUNA=="
+  "resolved" "https://registry.npmjs.org/@types/react-recaptcha/-/react-recaptcha-2.3.4.tgz"
+  "version" "2.3.4"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@17.0.38":
   "integrity" "sha512-SI92X1IA+FMnP3qM5m4QReluXzhcmovhZnLNm3pyeQlooi02qI7sLiepEYqT678uNiyc25XfCqxREFpy3W7YhQ=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-17.0.38.tgz"
   "version" "17.0.38"
@@ -910,6 +917,11 @@
   "integrity" "sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ=="
   "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz"
   "version" "4.3.1"
+
+"react-recaptcha@^2.3.10":
+  "integrity" "sha512-IyanbozsYCuHvTYDuskZTIEcRAMG/sdvAu5b29iQWoC8Kd3Zk9WGCv2oNxh6RfGHvSvgHAyaLjmC6ei/yMsJ7g=="
+  "resolved" "https://registry.npmjs.org/react-recaptcha/-/react-recaptcha-2.3.10.tgz"
+  "version" "2.3.10"
 
 "react-rough-notation@^1.0.2":
   "integrity" "sha512-nS3u90cZMQrOSzUbut28nrVgc1ixMaclDloqGi1Sw5BiY3DQNQPL8cVbIVoKUxwSiWugVM5GPf9ubL/h/avoKw=="

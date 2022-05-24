@@ -46,6 +46,12 @@ const ContainerBlock = ({
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
+
+        <script
+          src="https://www.google.com/recaptcha/api.js?&render=explicit"
+          async
+          defer
+        ></script>
       </Head>
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
