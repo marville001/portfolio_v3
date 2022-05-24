@@ -3,11 +3,9 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Navbar from './Navbar'
 import { Footer } from './Footer'
-import AboutMe from './home/about-section'
 
 const ContainerBlock = ({
   children,
-  showAbout = true,
   showInterest = true,
   ...customMeta
 }) => {
@@ -52,7 +50,6 @@ const ContainerBlock = ({
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
         <div className="mt-[80px]">{children}</div>
-        {showAbout && <AboutMe />}
         <Footer showInterest={showInterest} />
       </main>
     </div>

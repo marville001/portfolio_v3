@@ -7,7 +7,6 @@ const NotFound = () => {
     <ContainerBlock
       title="Martin Mwangi - Software Developer - REACT,NEXT,NODE..."
       description="I've been developing websites for more than 2 years straight. Get in touch with me to know more."
-      showAbout={false}
       showInterest={false}
     >
       <div
@@ -17,18 +16,13 @@ const NotFound = () => {
     w-full
     items-center
     justify-center
-    p-5
     bg-white
+    p-5
   "
-        // style={{
-        //   backgroundImage: 'url(/assets/istockphoto-1163099302-612x612.jpg)',
-        //   backgroundSize: 'cover',
-        //   backgroundRepeat: 'no-repeat',
-        // }}
       >
         <div className="mx-5 rounded-md bg-slate-100 px-10 py-20 shadow-xl md:px-20">
           <div className="flex flex-col items-center">
-            <h1 className="text-9xl font-bold text-dim-dark0">404</h1>
+            <h1 className="text-dim-dark0 text-9xl font-bold">404</h1>
 
             <h6 className="mb-2 text-center text-2xl font-bold text-gray-800 md:text-3xl">
               <span className="text-red-500">Oops!</span> Page not found
@@ -39,7 +33,7 @@ const NotFound = () => {
             </p>
 
             <Link href="/">
-              <a className="bg-dark rounded-md px-6 py-2 text-sm font-semibold text-white">
+              <a className="rounded-md bg-dark px-6 py-2 text-sm font-semibold text-white">
                 Go home
               </a>
             </Link>

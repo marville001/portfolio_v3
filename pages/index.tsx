@@ -8,6 +8,8 @@ import Portfolios from '../components/home/portfolios-section'
 
 import { client } from '../lib/sanity'
 import LangToolsSection from '../components/home/lang-tools-section'
+import ContactSection from '../components/home/contact-session'
+import AboutMe from '../components/home/about-section'
 
 const Home: NextPage = (props: any) => {
   return (
@@ -20,6 +22,8 @@ const Home: NextPage = (props: any) => {
       <LangToolsSection />
       <ServicesSection />
       <Portfolios projects={props?.projects} />
+      <AboutMe />
+      <ContactSection />
     </ContainerBlock>
   )
 }

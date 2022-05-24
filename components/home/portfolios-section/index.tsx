@@ -17,7 +17,7 @@ const Portfolios = (props: any) => {
               Briefcase
             </h2>
             <div className="flex items-center rounded-md bg-grayish px-4 py-1">
-              {projects?.length ?? 0} Projects
+              15+ Projects
             </div>
           </div>
           <p className="mt-3 dark:text-white">
@@ -36,7 +36,7 @@ const Portfolios = (props: any) => {
         <div className="my-10 flex justify-center">
           <Link href="/portfolios">
             <a className="rounded-full bg-primary px-16 py-3 text-white disabled:cursor-not-allowed disabled:opacity-60">
-              Show more
+              View more
             </a>
           </Link>
         </div>
