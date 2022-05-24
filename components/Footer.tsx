@@ -36,19 +36,21 @@ export const Footer = ({ showInterest = true }) => {
 
               <div className="mt-6">
                 <h2>Annual</h2>
-                <p className="my-2 flex items-center gap-2">
+                <p className='opacity-75 my-2'>Accepting cutom offers</p>
+                {/* <p className="my-2 flex items-center gap-2">
                   <span className="text-sm text-white opacity-40">From</span>
                   <span>40,000 $USD</span>
                   <span className="text-sm text-white opacity-40">To</span>
                   <span>+150,000 $USD</span>
-                </p>
+                </p> */}
                 <h2>Per hour:</h2>
-                <p className="my-2 flex items-center gap-2">
+                <p className='opacity-75 my-2'>Accepting cutom offers</p>
+                {/* <p className="my-2 flex items-center gap-2">
                   <span className="text-sm text-white opacity-40">From</span>
                   <span>20.00 $USD</span>
                   <span className="text-sm text-white opacity-40">To</span>
                   <span>+100.22 $USD</span>
-                </p>
+                </p> */}
               </div>
             </div>
 
@@ -84,7 +86,7 @@ export const Footer = ({ showInterest = true }) => {
               target="_blank"
               className="inline-block rounded-full bg-primary py-2 px-8  text-center text-white hover:bg-opacity-80"
             >
-              Contact Me
+              Contact Me Via Email
             </a>
           </Link>
         </div>

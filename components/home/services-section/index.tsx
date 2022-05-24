@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const CompaniesSection = () => {
+const ServicesSection = () => {
   const services = [
     {
       id: 0,
@@ -10,10 +10,17 @@ const CompaniesSection = () => {
       icon: '/icons/web-dev.png',
     },
     {
-      id: 0,
+      id: 1,
       name: 'Responsive Website Design',
       description:
         'Having a responsive layout means that your website fluidly resizes for optimal viewing regardless of the screen size or device (e.g.Desktop, iPhone, iPad).',
+      icon: '/icons/responsive-design1.png',
+    },
+    {
+      id: 2,
+      name: 'Dashboard Design',
+      description:
+        'Implement Dashboards and admin panels for ecommerce products management, clinic management among other types of management systems',
       icon: '/icons/responsive-design1.png',
     },
   ]
@@ -54,4 +61,4 @@ const CompaniesSection = () => {
   )
 }
 
-export default CompaniesSection
+export default ServicesSection

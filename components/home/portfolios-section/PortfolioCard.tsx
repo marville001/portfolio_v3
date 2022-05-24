@@ -75,7 +75,7 @@ const PortfolioCard = (props: any) => {
         </a>
       </Link>
       {/* Maximize Icon */}
-      <div className="absolute right-5 top-5 z-[445] hidden cursor-pointer  rounded-md bg-slate-200 bg-opacity-25  p-2 transition-all duration-150 ease-linear group-hover:block">
+      <div className="absolute right-5 top-5 z-[445] hidden cursor-pointer  rounded-md bg-slate-200 bg-opacity-65  p-2 transition-all duration-150 ease-linear group-hover:block">
         <FaArrowsAlt className="origin-center rotate-45 text-2xl opacity-50" />
       </div>
 
