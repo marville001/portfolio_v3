@@ -26,10 +26,10 @@ const ContactSection = () => {
   }
 
   const verifyCallback = (response: any) => {
+    setVerifyError(false)
     console.log({ response })
 
     if (response) {
-      setVerifyError(false)
       setisVerified(true)
     }
   }
