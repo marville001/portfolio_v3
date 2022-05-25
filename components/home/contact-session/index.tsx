@@ -7,6 +7,7 @@ const recaptureSitekey = process.env.NEXT_PUBLIC_RECAPTURE_SITE_KEY
 
 const ContactSection = () => {
   const [isVerified, setisVerified] = useState(false)
+  const [verifyError, setVerifyError] = useState(false)
 
   const {
     register,
@@ -15,25 +16,26 @@ const ContactSection = () => {
     reset,
   } = useForm()
 
-  let recaptchaInstance: Recaptcha | null
-
   const handleSendMessage = () => {
-    const res = recaptchaInstance?.execute()
-    console.log({recaptchaInstance});
-    
-    if (isVerified) {
-      console.log('You have successfully subscribed!')
-    } else {
-      console.log('Please verify that you are a human!')
+    if (!isVerified) {
+      setVerifyError(true)
+      return
     }
+
+    setVerifyError(false)
   }
 
   const verifyCallback = (response: any) => {
+    console.log({ response })
+
     if (response) {
+      setVerifyError(false)
       setisVerified(true)
-    } else {
-      setisVerified(false)
     }
+  }
+
+  const expiredCallback = () => {
+    setisVerified(false)
   }
 
   return (
@@ -140,14 +142,17 @@ const ContactSection = () => {
                 ></textarea>
               </div>
 
-              <div className="my-5 flex justify-end">
+              <div className="my-5 flex flex-col items-end">
                 <Recaptcha
                   render="explicit"
                   size="normal"
-                  sitekey={recaptureSitekey}
+                  sitekey={'6Ldk7RcgAAAAAHWlxwTNeSA4SMIlRDWkXiFZwcaZ'}
                   verifyCallback={verifyCallback}
-                  ref={(e) => recaptchaInstance = e}
+                  expiredCallback={expiredCallback}
                 />
+                {verifyError && (
+                  <p className="mt-1 text-red-400">Please verify recapture</p>
+                )}
               </div>
 
               <div className="my-5 flex justify-end">
