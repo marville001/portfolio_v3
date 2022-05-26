@@ -1,16 +1,32 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
-  name: string
-}
+import { client } from '../../lib/sanity';
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
 
-  console.log(req.body);
+  if (req.method === 'POST') {
+    const { name, email, subject, message } = JSON.parse(req.body);
 
-  res.status(200).json({ name: 'John Doe' })
+    const date = new Date().toISOString();
+
+    try {
+      await client.create({
+        _type: "message",
+        name, email, subject, message, date
+
+      })
+      res.status(200).json({ message: "Message sent successfully", success: true });
+
+    } catch (error: any) {
+      res.status(500).json({ message: "Couldn't send message, please try agai later", error: error.message, success: false });
+    }
+
+  } else {
+    res.status(404).send({ message: "Route Not Found" })
+  }
+
 }

@@ -1,13 +1,18 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { FaSpinner } from 'react-icons/fa'
 import Recaptcha from 'react-recaptcha'
+import { Message } from '../../../types/message'
 
 const recaptureSitekey = process.env.NEXT_PUBLIC_RECAPTURE_SITE_KEY
 
 const ContactSection = () => {
   const [isVerified, setisVerified] = useState(false)
   const [verifyError, setVerifyError] = useState(false)
+  const [error, setError] = useState('')
+  const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const {
     register,
@@ -16,13 +21,32 @@ const ContactSection = () => {
     reset,
   } = useForm()
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async (data: any) => {
     if (!isVerified) {
       setVerifyError(true)
       return
     }
 
     setVerifyError(false)
+
+    setLoading(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      })
+
+      const { message, success } = await res.json()
+      setMessage(message)
+      setLoading(false)
+      reset()
+    } catch (error) {
+      setLoading(false)
+      setError('Failed to send message. Please try again later!')
+      setTimeout(() => {
+        setError('')
+      }, 4000)
+    }
   }
 
   const verifyCallback = (response: any) => {
@@ -58,10 +82,15 @@ const ContactSection = () => {
           </div>
           <div>
             <form
-              onSubmit={handleSubmit(handleSendMessage)}
+              onSubmit={handleSubmit((data) => handleSendMessage(data))}
               autoComplete="off"
               className="md:px-4"
             >
+              {error && (
+                <div className="my-4 rounded-md bg-red-300 py-2 text-center text-red-700">
+                  <p>{error}</p>
+                </div>
+              )}
               <div className="my-5">
                 <label htmlFor="name" className="text-md my-2 block">
                   Your Name
@@ -142,27 +171,49 @@ const ContactSection = () => {
                 ></textarea>
               </div>
 
-              <div className="my-5 flex flex-col items-end">
-                <Recaptcha
-                  render="explicit"
-                  size="normal"
-                  sitekey={'6Ldk7RcgAAAAAHWlxwTNeSA4SMIlRDWkXiFZwcaZ'}
-                  verifyCallback={verifyCallback}
-                  expiredCallback={expiredCallback}
-                />
-                {verifyError && (
-                  <p className="mt-1 text-red-400">Please verify recapture</p>
-                )}
-              </div>
+              {message ? (
+                <div className="my-4 rounded-md bg-green-200 py-6 text-center text-green-700">
+                  <p>{message}</p>
 
-              <div className="my-5 flex justify-end">
-                <input
-                  type="submit"
-                  placeholder="Enter the subject here."
-                  value={'Send Message'}
-                  className="cursor-pointer rounded-md border-0 bg-primary px-10 py-2 text-white outline-none ring-1 ring-primary focus:border-0 focus:outline-none"
-                />
-              </div>
+                  <button
+                    onClick={() => setMessage('')}
+                    className="mt-3 rounded-lg bg-primary px-4 py-2 text-sm text-white"
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <div className="my-5 flex flex-col items-end">
+                    <Recaptcha
+                      render="explicit"
+                      size="normal"
+                      sitekey={'6Ldk7RcgAAAAAHWlxwTNeSA4SMIlRDWkXiFZwcaZ'}
+                      verifyCallback={verifyCallback}
+                      expiredCallback={expiredCallback}
+                    />
+                    {verifyError && (
+                      <p className="mt-1 text-red-400">
+                        Please verify recapture
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="my-5 flex justify-end">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="cursor-pointer rounded-md border-0 bg-primary px-10 py-2 text-white outline-none ring-1 ring-primary focus:border-0 focus:outline-none disabled:cursor-not-allowed disabled:bg-opacity-75"
+                    >
+                      {loading ? (
+                        <FaSpinner className="animate-spin" />
+                      ) : (
+                        'Send Message'
+                      )}
+                    </button>
+                  </div>
+                </>
+              )}
             </form>
           </div>
         </div>
