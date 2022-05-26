@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaSpinner } from 'react-icons/fa'
 import Recaptcha from 'react-recaptcha'
-import { Message } from '../../../types/message'
 
 const recaptureSitekey = process.env.NEXT_PUBLIC_RECAPTURE_SITE_KEY
 
