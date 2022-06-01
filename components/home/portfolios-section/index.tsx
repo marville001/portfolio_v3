@@ -21,7 +21,7 @@ const Portfolios = (props: any) => {
             </div>
           </div>
           <p className="mt-3 dark:text-white">
-            Compilation of some of our previous works
+            Compilation of some of my previous works
           </p>
         </div>
 
