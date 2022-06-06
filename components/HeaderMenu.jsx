@@ -7,7 +7,7 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="absolute top-28 right-10 z-10"
+        className="absolute top-[80px] right-0 z-[66666] w-full sm:w-[400px]"
         onClose={closeModal}
       >
         <div className="lg:hidden">
@@ -20,32 +20,40 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="flex min-w-[200px] flex-col items-start divide-y-[0.2px] divide-slate-700 rounded-lg bg-white dark:bg-dim-dark">
+            <div className="flex min-w-[200px] flex-col items-start divide-y-[0.2px] divide-slate-700 bg-white shadow dark:bg-dim-dark">
               <Link href="/about-me">
                 <a
                   onClick={closeModal}
-                  className="w-full border-0  p-4 outline-none ring-0 py-2 rounded-t-lg text-left text-dark hover:bg-dim-dark hover:text-white  dark:text-white"
+                  className="w-full border-0  p-4 py-2 text-left text-dark outline-none ring-0 hover:bg-dim-dark hover:text-white  dark:text-white"
                 >
                   About Me
                 </a>
               </Link>
               <Link href="/portfolio">
-                <a className="w-full border-0 outline-none ring-0  p-4 py-2 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white">
+                <a className="w-full border-0 p-4 py-2  text-left text-dark outline-none ring-0 hover:bg-dim-dark hover:text-white dark:text-white">
                   Portfolio
                 </a>
               </Link>
               <Link href="/blogs">
                 <a
                   onClick={closeModal}
-                  className="w-full border-0 outline-none ring-0 py-2  p-4 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
+                  className="w-full border-0 p-4 py-2 text-left  text-dark outline-none ring-0 hover:bg-dim-dark hover:text-white dark:text-white"
                 >
                   Blogs
+                </a>
+              </Link>
+              <Link href="/book-notes">
+                <a
+                  onClick={closeModal}
+                  className="w-full border-0 p-4 py-2 text-left  text-dark outline-none ring-0 hover:bg-dim-dark hover:text-white dark:text-white"
+                >
+                   Book Notes
                 </a>
               </Link>
               <Link href="/contact">
                 <a
                   onClick={closeModal}
-                  className="w-full border-0 outline-none ring-0 py-2  p-4 text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
+                  className="w-full border-0 p-4 py-2 text-left  text-dark outline-none ring-0 hover:bg-dim-dark hover:text-white dark:text-white"
                 >
                   Contact
                 </a>
@@ -55,7 +63,7 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
                 href="https://www.fiverr.com/martin_devs/create-node-js-reactjs-application"
                 target="_blank"
                 onClick={closeModal}
-                className="w-full border-0 outline-none ring-0 py-2  p-4 rounded-b-lg text-left text-dark hover:bg-dim-dark hover:text-white dark:text-white"
+                className="w-full border-0 p-4 py-2 text-left  text-dark outline-none ring-0 hover:bg-dim-dark hover:text-white dark:text-white"
               >
                 Hire Me
               </a>

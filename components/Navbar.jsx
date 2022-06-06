@@ -7,40 +7,24 @@ import {
   HiMenuAlt1,
   HiMoon,
   HiOutlineDotsHorizontal,
+  HiOutlineXCircle,
   HiSun,
 } from 'react-icons/hi'
 
 import useDarkMode from '../hooks/useDarkMode'
 
 const Navbar = () => {
-  const [sticky, setSticky] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   const [darkTheme, setDarkTheme] = useDarkMode()
   const handleMode = () => setDarkTheme(!darkTheme)
 
-  useEffect(() => {
-    const handleScroll = (e) => {
-      const winScroll =
-        document.body.scrollTop || document.documentElement.scrollTop
 
-      if (winScroll > 200) {
-        setSticky(true)
-      } else {
-        setSticky(false)
-      }
-    }
-
-    document.addEventListener('scroll', handleScroll)
-
-    return () => {
-      document.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+  console.log(menuOpen);
 
   return (
     <div
-      className={`_shadow fixed top-0 left-0 right-0 h-[80px] flex  items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3 z-[999]`}
+      className={`_shadow fixed top-0 left-0 right-0 z-[999] flex  h-[80px] items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3`}
     >
       <div className="container relative flex items-center justify-between space-x-8">
         <Link href="/">
@@ -60,9 +44,15 @@ const Navbar = () => {
               Portfolio
             </a>
           </Link>
+
           <Link href="/blogs">
             <a className="rounded-lg py-2 px-5 text-dark hover:bg-dim-dark hover:text-white dark:text-white">
               Blogs
+            </a>
+          </Link>
+          <Link href="/book-notes">
+            <a className="rounded-lg py-2 px-5 text-dark hover:bg-dim-dark hover:text-white dark:text-white">
+              Book Notes
             </a>
           </Link>
           <Link href="/contact">
@@ -89,7 +79,7 @@ const Navbar = () => {
           </a>
           <div
             onClick={handleMode}
-            className="flex cursor-pointer hidden items-center justify-center rounded-md p-2"
+            className="hidden cursor-pointer items-center justify-center rounded-md p-2"
           >
             {darkTheme ? (
               <HiSun className="text-2xl font-medium text-dark dark:text-white" />
@@ -98,11 +88,18 @@ const Navbar = () => {
             )}
           </div>
 
-          <div
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="cursor-pointer rounded-full p-2 text-dim-dark duration-75 dark:bg-dim-dark dark:text-slate-200 lg:hidden"
-          >
-            <HiMenuAlt1 className="text-2xl" />
+          <div className="cursor-pointer rounded-full p-2 text-dim-dark duration-75 dark:bg-dim-dark dark:text-slate-200 lg:hidden">
+            {menuOpen ? (
+              <HiOutlineXCircle
+                onClick={() => setMenuOpen(false)}
+                className="text-2xl"
+              />
+            ) : (
+              <HiMenuAlt1
+                onClick={() => setMenuOpen(true)}
+                className="text-2xl"
+              />
+            )}
           </div>
           <HeaderMenu isOpen={menuOpen} closeModal={() => setMenuOpen(false)} />
         </div>
