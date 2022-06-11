@@ -82,7 +82,7 @@ const PortfolioCard = (props: any) => {
       {/* Arrow - left */}
       <div
         ref={prevRef}
-        className="absolute left-0 top-1/2 z-[345] flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gray-800 p-1 text-white"
+        className="absolute left-0 top-1/2 z-[345] flex_ hidden -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gray-800 p-1 text-white"
       >
         <FaChevronLeft className="text-sm" />
       </div>
@@ -90,7 +90,7 @@ const PortfolioCard = (props: any) => {
       {/* Arrow - right */}
       <div
         ref={nextRef}
-        className="absolute right-0 top-1/2 z-[345] flex translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gray-800 p-1 text-white"
+        className="absolute right-0 top-1/2 z-[345] flex_ hidden translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-gray-800 p-1 text-white"
       >
         <FaChevronRight className="text-sm" />
       </div>
