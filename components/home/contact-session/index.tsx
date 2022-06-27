@@ -1,10 +1,7 @@
-import Link from 'next/link'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaSpinner } from 'react-icons/fa'
 import Recaptcha from 'react-recaptcha'
-
-const recaptureSitekey = process.env.NEXT_PUBLIC_RECAPTURE_SITE_KEY
 
 const ContactSection = () => {
   const [isVerified, setisVerified] = useState(false)
@@ -50,8 +47,6 @@ const ContactSection = () => {
 
   const verifyCallback = (response: any) => {
     setVerifyError(false)
-    console.log({ response })
-
     if (response) {
       setisVerified(true)
     }
