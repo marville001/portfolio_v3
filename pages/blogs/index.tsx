@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Link from 'next/link'
 import React from 'react'
-import { FaSearch } from 'react-icons/fa'
+import { FaChevronLeft, FaChevronRight, FaSearch } from 'react-icons/fa'
 import ContainerBlock from '../../components/ContainerBlock'
 
 const Blogs: NextPage = () => {
@@ -25,45 +25,57 @@ const Blogs: NextPage = () => {
       </div>
 
       <div className="bg-white">
-        <div className="container grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((blog) => (
-            <div key={blog} className="">
-              <article className="overflow-hidden rounded border">
-                <Link href="/blogs">
-                  <img
-                    src="https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png"
-                    alt="My Blog"
-                    className="cursor-pointer"
-                  />
-                </Link>
-
-                <div className="p-5">
+        <div className="container">
+          <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((blog) => (
+              <div key={blog} className="">
+                <article className="overflow-hidden rounded border">
                   <Link href="/blogs">
-                    <a className="text-lg text-primary hover:underline">
-                      <h3>
-                        3 Ways to Help Agile Teams Plan Despite Uncertainty
-                      </h3>
-                    </a>
+                    <img
+                      src="https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png"
+                      alt="My Blog"
+                      className="cursor-pointer"
+                    />
                   </Link>
 
-                  <p className="mt-3 text-sm">
-                    We might not like ambiguity, but it’s a fact of life. Find
-                    out how to plan with uncertainty in mind.
-                  </p>
-
-                  <div className="mt-5 flex items-center justify-between">
-                    <p>Jun 21, 2022</p>
-
+                  <div className="p-5">
                     <Link href="/blogs">
-                      <a className="rounded border border-primary px-3 py-1 text-primary">
-                        Read
+                      <a className="text-lg text-primary hover:underline">
+                        <h3>
+                          3 Ways to Help Agile Teams Plan Despite Uncertainty
+                        </h3>
                       </a>
                     </Link>
+
+                    <p className="mt-3 text-sm">
+                      We might not like ambiguity, but it’s a fact of life. Find
+                      out how to plan with uncertainty in mind.
+                    </p>
+
+                    <div className="mt-5 flex items-center justify-between">
+                      <p>Jun 21, 2022</p>
+
+                      <Link href="/blogs">
+                        <a className="rounded border border-primary px-3 py-1 text-primary">
+                          Read
+                        </a>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </div>
+            ))}
+          </div>
+
+          <div className="mb-8 flex justify-end">
+            <div className="flex items-center gap-2">
+              <FaChevronLeft className="cursor-not-allowed text-xl text-slate-300" />
+              <div className="rounded-md bg-primary px-3 py-1 text-sm text-white">
+                1
+              </div>
+              <FaChevronRight className="cursor-pointer text-xl text-slate-900" />
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </ContainerBlock>
