@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import Link from 'next/link'
 import React from 'react'
 import { FaSearch } from 'react-icons/fa'
 import ContainerBlock from '../../components/ContainerBlock'
@@ -9,18 +10,60 @@ const Blogs: NextPage = () => {
       title="Martin Mwangi - My Blogs"
       description="Get in touch with me to know more"
     >
-      <div className="bg-grayish">
-        <div className="md-px-6 mx-auto min-h-[60vh] max-w-[900px] py-10 px-2 sm:px-4">
-          <form>
-            <div className="relative">
-              <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 peer-focus:text-red-400" />
-              <input
-                type="search"
-                className="w-full rounded border peer bg-primary bg-opacity-10 px-4 pl-12 py-2 text-lg focus:bg-white focus:outline-none focus:ring-1"
-                placeholder="Search my blogs here..."
-              />
+      <div className="bg-primary">
+        <div className="md-px-6 mx-auto max-w-[900px] bg-primary py-10 px-2 sm:px-4">
+          <h1 className="text-center text-4xl font-light text-white">
+            Welcome to Martin Mwangi's Blog
+          </h1>
+          <div className="flex justify-center">
+            <p className="my-5 max-w-[400px] text-center text-sm text-gray-200">
+              Blogs about web development, docker, aws, kubernetes, React.Js,
+              TailwindCss, Graphql, Node.js etc.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white">
+        <div className="container grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((blog) => (
+            <div key={blog} className="">
+              <article className="overflow-hidden rounded border">
+                <Link href="/blogs">
+                  <img
+                    src="https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png"
+                    alt="My Blog"
+                    className="cursor-pointer"
+                  />
+                </Link>
+
+                <div className="p-5">
+                  <Link href="/blogs">
+                    <a className="text-lg text-primary hover:underline">
+                      <h3>
+                        3 Ways to Help Agile Teams Plan Despite Uncertainty
+                      </h3>
+                    </a>
+                  </Link>
+
+                  <p className="mt-3 text-sm">
+                    We might not like ambiguity, but it’s a fact of life. Find
+                    out how to plan with uncertainty in mind.
+                  </p>
+
+                  <div className="mt-5 flex items-center justify-between">
+                    <p>Jun 21, 2022</p>
+
+                    <Link href="/blogs">
+                      <a className="rounded border border-primary px-3 py-1 text-primary">
+                        Read
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </article>
             </div>
-          </form>
+          ))}
         </div>
       </div>
     </ContainerBlock>
