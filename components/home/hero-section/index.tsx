@@ -2,10 +2,9 @@ import Link from 'next/link'
 import React from 'react'
 import { FaGithubAlt, FaLinkedinIn, FaMapMarkerAlt } from 'react-icons/fa'
 
-
 const HeroSection = () => {
   return (
-    <div className="section grid grid-cols-1 py-10 bg-[#01014a] md:max-h-[600px] md:grid-cols-2">
+    <div className="section grid grid-cols-1 bg-[#01014a] py-10 md:max-h-[600px] md:grid-cols-2">
       <div
         style={{
           backgroundImage: `url('/assets/undraw_programming_re_kg9v.svg')`,
@@ -20,14 +19,20 @@ const HeroSection = () => {
           </div>
           <div className="my-8 flex gap-5">
             <Link href="https://www.linkedin.com/in/marville001/">
-              <a target="_blank" className="flex cursor-pointer items-center rounded-md bg-primary px-2 py-1 text-white">
+              <a
+                target="_blank"
+                className="flex cursor-pointer items-center rounded-md bg-primary px-2 py-1 text-white"
+              >
                 <FaLinkedinIn className="pr-2 text-2xl" />
                 <div className="h-4 w-[1px] bg-gray-300"></div>
                 <span className="pl-2 text-lg">LinkedIn</span>
               </a>
             </Link>
             <Link href="https://github.com/marville001">
-              <a target="_blank" className="flex cursor-pointer items-center rounded-md bg-primary px-2 py-1 text-white">
+              <a
+                target="_blank"
+                className="flex cursor-pointer items-center rounded-md bg-primary px-2 py-1 text-white"
+              >
                 <FaGithubAlt className="pr-2 text-2xl" />
                 <div className="h-4 w-[1px] bg-gray-300"></div>
                 <span className="pl-2 text-lg">Github</span>
@@ -51,11 +56,10 @@ const HeroSection = () => {
           Full Stack
         </div>
         <div className="mt-2 h-2 w-24 rounded-sm bg-primary"></div>
-        <p className="mt-8 max-w-[700px]">
-          With more than {new Date().getFullYear() - 2019} years of experience,
-          I am dedicated to designing and developing User Interfaces and
-          experiences focused on their emotions ( UI / UX ), used in web
-          platforms and apps.
+        <p className="mt-8 max-w-[700px] text-sm">
+          With some years of experience in software development, I am dedicated
+          to designing and developing User Interfaces and experiences focused on
+          their emotions ( UI / UX ), used in web platforms and apps.
         </p>
       </div>
     </div>

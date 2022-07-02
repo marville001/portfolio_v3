@@ -34,28 +34,19 @@ const ExperienceSection = () => {
               </strong>
               <span className="text-lg opacity-60">Using MERN Stack</span>
             </p>
-            <p className="my-2">
-              <strong className="mr-2 text-lg font-bold text-dim-dark dark:text-white">
-                +10,000
-              </strong>
-              <span className="text-lg opacity-60">
-                total visits reached on the websites and blogs in which I have
-                collaborated, supported by my own tools and marketing strategies
-              </span>
-            </p>
           </div>
         </div>
 
         <div className="py-2 sm:px-6 md:px-6">
-          <div className="z-[200] -translate-y-10  rounded-t-md bg-[#ffffff] dark:bg-dim-dark py-4 px-2 sm:px-6">
+          <div className="z-[200] -translate-y-10  rounded-t-md bg-[#ffffff] py-4 px-2 dark:bg-dim-dark sm:px-6">
             <Link href="https://api.whatsapp.com/send?phone=254700207054&text=Hey Martin">
               <a
                 target="_blank"
-                className="flex items-center justify-between rounded-md bg-[#358a76] px-5 py-3 text-lg lg:text-xl text-white"
+                className="flex items-center justify-between rounded-md bg-[#358a76] px-5 py-3 text-lg text-white lg:text-xl"
               >
                 <FaWhatsapp className="text-lg lg:text-2xl" />
                 <span>+254700207054</span>
-                <HiOutlineExternalLink className="text-lg lg:text-2xl opacity-50" />
+                <HiOutlineExternalLink className="text-lg opacity-50 lg:text-2xl" />
               </a>
             </Link>
 
@@ -72,7 +63,9 @@ const ExperienceSection = () => {
                 into action.
               </p>
 
-              <button className='w-full bg-primary py-2 text-center text-white mt-6 rounded-full text-sm lg:text-md'>Click to coordinate meeting</button>
+              <button className="lg:text-md mt-6 w-full rounded-full bg-primary py-2 text-center text-sm text-white">
+                Click to coordinate meeting
+              </button>
             </div>
           </div>
         </div>
