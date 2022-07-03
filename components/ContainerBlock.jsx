@@ -33,6 +33,7 @@ const ContainerBlock = ({
           rel="canonical"
           href={`https://martinmwangi.netlify.com${router.asPath}`}
         />
+        <link rel="icon" href="/assets/my-logo.ico" type="image/icon type" />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Martin Mwangi Portfolio" />
         <meta property="og:description" content={meta.description} />

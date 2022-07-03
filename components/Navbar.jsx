@@ -25,8 +25,9 @@ const Navbar = () => {
     >
       <div className="container relative flex items-center justify-between space-x-8">
         <Link href="/">
-          <a className="block text-2xl font-bold text-dark dark:text-white">
-            <span className="">martin.</span>
+          <a className="text-2xl font-bold text-dark dark:text-white flex items-center gap-2">
+            <img src="/assets/my-logo.png" alt="" className='w-10 h-10 rounded-full' />
+            {/* <span className="">martin.</span> */}
           </a>
         </Link>
 
