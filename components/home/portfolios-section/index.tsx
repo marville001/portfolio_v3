@@ -34,7 +34,7 @@ const Portfolios = (props: any) => {
 
         {/* Show More */}
         <div className="my-10 flex justify-center">
-          <Link href="/portfolios">
+          <Link href="/portfolio">
             <a className="rounded-full bg-primary px-16 py-3 text-white disabled:cursor-not-allowed disabled:opacity-60">
               View more
             </a>
