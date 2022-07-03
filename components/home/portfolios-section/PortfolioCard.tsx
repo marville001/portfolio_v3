@@ -26,8 +26,8 @@ const PortfolioCard = (props: any) => {
           }}
           loop={true}
           autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
+            delay: 5000,
+            disableOnInteraction: true,
           }}
           navigation={{
             prevEl: prevRef.current,

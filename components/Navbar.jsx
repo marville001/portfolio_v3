@@ -19,8 +19,7 @@ const Navbar = () => {
   const [darkTheme, setDarkTheme] = useDarkMode()
   const handleMode = () => setDarkTheme(!darkTheme)
 
-
-  console.log(menuOpen);
+  console.log(menuOpen)
 
   return (
     <div
@@ -36,7 +35,7 @@ const Navbar = () => {
         <div className="hidden items-center space-x-2 lg:flex">
           <Link href="/about-me">
             <a className="rounded-lg py-2 px-5 text-dark hover:bg-dim-dark hover:text-white dark:text-white">
-              About Me
+              <span>About Me</span>
             </a>
           </Link>
           <Link href="/portfolio">
