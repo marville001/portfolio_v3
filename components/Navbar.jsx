@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 
 import HeaderMenu from '../components/HeaderMenu'
 
@@ -18,8 +18,6 @@ const Navbar = () => {
 
   const [darkTheme, setDarkTheme] = useDarkMode()
   const handleMode = () => setDarkTheme(!darkTheme)
-
-  console.log(menuOpen)
 
   return (
     <div
