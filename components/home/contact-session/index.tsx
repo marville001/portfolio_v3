@@ -67,7 +67,7 @@ const ContactSection = () => {
         </h2>
 
         <div className="my-8 grid grid-cols-1 gap-8 rounded-lg bg-white py-2 px-2 sm:grid-cols-2 md:my-16">
-          <div className="row-span-1 min-h-[250px] max-h-[400px] overflow-hidden rounded-lg">
+          <div className="row-span-1 min-h-[250px] lg:ml-6 sm:mt-6 max-h-[400px] overflow-hidden rounded-lg">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15958.828463147733!2d36.94335825!3d-0.42778285!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ske!4v1653428237401!5m2!1sen!2ske"
               className="h-full w-full border-0"
