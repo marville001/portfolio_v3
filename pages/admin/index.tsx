@@ -63,7 +63,7 @@ const Login = () => {
             </div>
 
             <button
-            className=" mt-4 w-full border border-primary bg-primary py-1 px-6 text-lg
+            className=" mt-4 w-full border border-primary rounded-sm bg-primary py-1 px-6 text-lg
               text-white hover:opacity-75
               "
           >
