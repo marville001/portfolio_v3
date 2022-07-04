@@ -1,8 +1,11 @@
 import Link from 'next/link'
-import React from 'react'
-import ContainerBlock from '../../components/ContainerBlock'
+import React, { useState } from 'react'
+import ContainerBlock from '../../components/ContainerBlock';
+
+import {FaTimesCircle} from "react-icons/fa"
 
 const Portfolio = () => {
+  const [filters, setFilters] = useState<number[]>([])
   return (
     <ContainerBlock
       title="Martin Mwangi - My Portfolio Projects"
@@ -32,12 +35,32 @@ const Portfolio = () => {
 
       <div className="bg-white">
         <div className="container  py-12">
-          <div className="mb-4 flex items-center justify-end gap-2">
-            <h4>Language</h4>
-            <select className='border px-5 py-2 rounded-md' name="" id="">
-              <option value="all">All</option>
-            </select>
+          <div className="mb-4">
+            <h4>Filter By:</h4>
+            <div className="mt-2 flex gap-2 flex-wrap">
+              {[1, 2, 3, 4, 5, 6, 7].map((tag, i) => (
+                <div
+                  key={i}
+                  onClick={() =>
+                    setFilters((prev) =>
+                      prev.includes(tag)
+                        ? prev.filter((a) => a !== tag)
+                        : [...prev, tag]
+                    )
+                  }
+                  className={`cursor-pointer flex items-center gap-1 rounded border px-3 py-1 text-center text-xs transition-all duration-50  
+			  ${
+          filters.includes(tag)
+            ? 'bg-primary text-white'
+            : 'border-primary text-primary'
+        }`}
+                >
+                  React.Js {filters.includes(tag) && <span><FaTimesCircle /></span>}
+                </div>
+              ))}
+            </div>
           </div>
+          <hr className="my-4" />
           {/* Portfolios */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((blog) => (
@@ -47,7 +70,7 @@ const Portfolio = () => {
                     <img
                       src="https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png"
                       alt="My Blog"
-                      className="h-52 w-full cursor-pointer object-fill"
+                      className="h-52 w-full cursor-pointer rounded-t object-fill"
                     />
                   </Link>
 
