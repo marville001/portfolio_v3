@@ -7,7 +7,7 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="absolute top-[80px] right-0 z-[66666] w-full sm:w-[400px]"
+        className="absolute top-[80px] right-0 z-[999] w-full sm:w-[400px]"
         onClose={closeModal}
       >
         <div className="lg:hidden">
