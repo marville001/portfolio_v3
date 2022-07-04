@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Navbar from './Navbar'
 import { Footer } from './Footer'
+import { Progress } from './progress'
+import { useProgressStore } from '../store'
 
 const ContainerBlock = ({
   children,
@@ -10,6 +12,7 @@ const ContainerBlock = ({
   ...customMeta
 }) => {
   const router = useRouter()
+   const isAnimating = useProgressStore((state) => state.isAnimating)
 
   const meta = {
     title: 'Martin Mwangi - Software Developer - REACT,NEXT,NODE...',
@@ -56,6 +59,7 @@ const ContainerBlock = ({
       </Head>
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
+        <Progress isAnimating={isAnimating} />
         <div className="mt-[80px]">{children}</div>
         <Footer showInterest={showInterest} />
       </main>

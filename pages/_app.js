@@ -4,11 +4,9 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 import { useProgressStore } from '../store'
-import { Progress } from '../components/progress'
 
 function MyApp({ Component, pageProps }) {
   const setIsAnimating = useProgressStore((state) => state.setIsAnimating)
-  const isAnimating = useProgressStore((state) => state.isAnimating)
   const router = useRouter()
 
   useEffect(() => {
@@ -32,7 +30,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider defaultTheme="light" attribute="class">
-      <Progress isAnimating={isAnimating} />
       <Component {...pageProps} />
     </ThemeProvider>
   )
