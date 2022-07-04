@@ -34,6 +34,16 @@ const ExperienceSection = () => {
               </strong>
               <span className="text-lg opacity-60">Using MERN Stack</span>
             </p>
+
+            <div className="my-4">
+              <p className="">
+                Currently working with ReactJs, NodeJs, GraphQl, TypeScript and
+                PostgresDB
+              </p>
+              <Link href="/now">
+                <a className='bg-primary text-white text-sm px-4 py-1 mt-2 inline-block rounded-md'>View Current</a>
+              </Link>
+            </div>
           </div>
         </div>
 
