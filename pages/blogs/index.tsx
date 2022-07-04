@@ -17,9 +17,17 @@ const Blogs: NextPage = () => {
           </h1>
           <div className="flex justify-center">
             <p className="my-5 max-w-[400px] text-center text-sm text-gray-200">
-              Blogs about web development, docker, aws, kubernetes, React.Js,
-              TailwindCss, Graphql, Node.js etc.
+              Here I share my journey and learning experience in (but not
+              limitted to ) web development, docker, aws, kubernetes, React.Js,
+              Angular TailwindCss, Graphql, Node.js etc.
             </p>
+          </div>
+          <div className="flex justify-center">
+            <Link href="/programming-journey">
+              <a className="rounded-md bg-dark py-1.5 px-6 text-white">
+                View My Journeys
+              </a>
+            </Link>
           </div>
         </div>
       </div>
