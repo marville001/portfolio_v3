@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React from 'react'
 
 import { Project } from '../../../types/project'
 import PortfolioCard from './PortfolioCard'
@@ -20,9 +20,6 @@ const Portfolios = (props: any) => {
               15+ Projects
             </div>
           </div>
-          <p className="mt-3 dark:text-white">
-            Compilation of some of my previous works
-          </p>
         </div>
 
         {/* Portfolios */}

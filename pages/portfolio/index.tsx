@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
-import ContainerBlock from '../../components/ContainerBlock';
+import ContainerBlock from '../../components/ContainerBlock'
 
-import {FaTimesCircle} from "react-icons/fa"
+import { FaChevronLeft, FaChevronRight, FaTimesCircle } from 'react-icons/fa'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import '@splidejs/react-splide/css'
 
 const Portfolio = () => {
   const [filters, setFilters] = useState<number[]>([])
@@ -37,7 +39,7 @@ const Portfolio = () => {
         <div className="container  py-12">
           <div className="mb-4">
             <h4>Filter By:</h4>
-            <div className="mt-2 flex gap-2 flex-wrap">
+            <div className="mt-2 flex flex-wrap gap-2">
               {[1, 2, 3, 4, 5, 6, 7].map((tag, i) => (
                 <div
                   key={i}
@@ -48,14 +50,19 @@ const Portfolio = () => {
                         : [...prev, tag]
                     )
                   }
-                  className={`cursor-pointer flex items-center gap-1 rounded border px-3 py-1 text-center text-xs transition-all duration-50  
+                  className={`duration-50 flex cursor-pointer items-center gap-1 rounded border px-3 py-1 text-center text-xs transition-all  
 			  ${
           filters.includes(tag)
             ? 'bg-primary text-white'
             : 'border-primary text-primary'
         }`}
                 >
-                  React.Js {filters.includes(tag) && <span><FaTimesCircle /></span>}
+                  React.Js{' '}
+                  {filters.includes(tag) && (
+                    <span>
+                      <FaTimesCircle />
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
@@ -66,16 +73,30 @@ const Portfolio = () => {
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((blog) => (
               <div key={blog} className="">
                 <article className="overflow-hidden rounded border">
-                  <Link href="/portfolio">
-                    <img
-                      src="https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png"
-                      alt="My Blog"
-                      className="h-52 w-full cursor-pointer rounded-t object-fill"
-                    />
-                  </Link>
+                  <div className="h-[200px] w-full items-stretch overflow-hidden">
+                    <Splide
+                      options={{
+                        pauseOnHover: true,
+                        autoplay: true,
+                        type: 'loop',
+                        rewind: true,
+                        //   arrows: false,
+                      }}
+                      aria-label="Property Images"
+                    >
+                      {[1, 2, 3, 4].map((i) => (
+                        <SplideSlide key={i}>
+                          <img
+                            src="https://www.radiustheme.com/demo/wordpress/themes/homlisti/wp-content/uploads/classified-listing/2022/03/mike_hussy-400x240.jpg"
+                            className="h-[200px] w-full"
+                          />
+                        </SplideSlide>
+                      ))}
+                    </Splide>
+                  </div>
 
                   <div className="p-4">
-                    <a className="text-lg text-primary">
+                    <a className="text-md text-primary">
                       <h3>Full Ecommerce Website</h3>
                     </a>
 
@@ -106,6 +127,17 @@ const Portfolio = () => {
                 </article>
               </div>
             ))}
+          </div>
+
+          {/*  */}
+          <div className="mt-5 flex justify-end">
+            <div className="flex items-center gap-2">
+              <FaChevronLeft className="cursor-not-allowed text-xl text-slate-300" />
+              <div className="rounded-md bg-primary px-3 py-1 text-sm text-white">
+                1
+              </div>
+              <FaChevronRight className="cursor-pointer text-xl text-slate-900" />
+            </div>
           </div>
 
           {/*  */}
