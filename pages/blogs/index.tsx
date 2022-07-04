@@ -64,7 +64,7 @@ const Blogs: NextPage = () => {
                       <p>Jun 21, 2022</p>
 
                       <Link href="/blogs">
-                        <a className="rounded border border-primary px-3 py-1 text-primary">
+                        <a className="rounded border border-primary hover:text-white hover:bg-primary transition-all duration-150 px-3 py-1 text-primary">
                           Read
                         </a>
                       </Link>
