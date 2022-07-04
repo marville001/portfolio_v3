@@ -77,7 +77,7 @@ export const Footer = ({ showInterest = true }) => {
               This website has been designed and developed by me from scratch :)
             </p>
             <p className="text-sm">
-              Copyright <span className="font-bold text-primary">@Martin</span>{' '}
+              Copyright <span className="font-bold text-primary">@ Martin Mwangi</span>{' '}
               {new Date().getFullYear()}
             </p>
           </div>
