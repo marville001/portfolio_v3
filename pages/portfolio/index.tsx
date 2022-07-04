@@ -3,10 +3,16 @@ import React, { useState } from 'react'
 import ContainerBlock from '../../components/ContainerBlock'
 
 import { FaChevronLeft, FaChevronRight, FaTimesCircle } from 'react-icons/fa'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import '@splidejs/react-splide/css'
 
-const Portfolio = () => {
+import PortfolioCard from '../../components/home/portfolios-section/PortfolioCard'
+import { client } from '../../lib/sanity'
+import { Project } from '../../types/project'
+
+interface Props {
+  projects: Project[]
+}
+
+const Portfolio = (props: Props) => {
   const [filters, setFilters] = useState<number[]>([])
   return (
     <ContainerBlock
@@ -69,63 +75,9 @@ const Portfolio = () => {
           </div>
           <hr className="my-4" />
           {/* Portfolios */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((blog) => (
-              <div key={blog} className="">
-                <article className="overflow-hidden rounded border">
-                  <div className="h-[200px] w-full items-stretch overflow-hidden">
-                    <Splide
-                      options={{
-                        pauseOnHover: true,
-                        autoplay: true,
-                        type: 'loop',
-                        rewind: true,
-                        //   arrows: false,
-                      }}
-                      aria-label="Property Images"
-                    >
-                      {[1, 2, 3, 4].map((i) => (
-                        <SplideSlide key={i}>
-                          <img
-                            src="https://www.radiustheme.com/demo/wordpress/themes/homlisti/wp-content/uploads/classified-listing/2022/03/mike_hussy-400x240.jpg"
-                            className="h-[200px] w-full"
-                          />
-                        </SplideSlide>
-                      ))}
-                    </Splide>
-                  </div>
-
-                  <div className="p-4">
-                    <a className="text-md text-primary">
-                      <h3>Full Ecommerce Website</h3>
-                    </a>
-
-                    <p className="mt-2 text-sm">
-                      We might not like ambiguity, but it’s a fact of life. Find
-                      out how to plan with uncertainty in mind.
-                    </p>
-
-                    <div className="mt-2 flex items-center justify-between">
-                      <Link href="/portfolio">
-                        <a className="flex-1 rounded-l border border-primary px-3 py-1 text-center text-sm text-primary transition-all duration-150 hover:bg-primary hover:text-white">
-                          Demo
-                        </a>
-                      </Link>
-                      <Link href={`/portfolio/slug`}>
-                        <a className="flex-1 border border-x-0 border-primary px-3 py-1 text-center text-sm text-primary transition-all duration-150 hover:bg-primary hover:text-white">
-                          Read More
-                        </a>
-                      </Link>
-
-                      <Link href="/portfolio">
-                        <a className="flex-1 rounded-r border border-primary px-3 py-1 text-center text-sm text-primary transition-all duration-150 hover:bg-primary hover:text-white">
-                          Code
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {props?.projects?.map((project) => (
+              <PortfolioCard project={project} key={project._id} />
             ))}
           </div>
 
@@ -145,6 +97,15 @@ const Portfolio = () => {
       </div>
     </ContainerBlock>
   )
+}
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "project"] | order(_createdAt desc)'
+  const projects = await client.fetch(query)
+
+  return {
+    props: { projects },
+  }
 }
 
 export default Portfolio
