@@ -14,6 +14,8 @@ interface Props {
 
 const Portfolio = (props: Props) => {
   const [filters, setFilters] = useState<number[]>([])
+  const [page, setPage] = useState(1)
+
   return (
     <ContainerBlock
       title="Martin Mwangi - My Portfolio Projects"
@@ -84,11 +86,37 @@ const Portfolio = (props: Props) => {
           {/*  */}
           <div className="mt-5 flex justify-end">
             <div className="flex items-center gap-2">
-              <FaChevronLeft className="cursor-not-allowed text-xl text-slate-300" />
+              <FaChevronLeft
+                onClick={() =>
+                  setPage((prev) =>
+                    props?.projects?.length < 12 + (page - 1) * 10
+                      ? prev - 10
+                      : prev
+                  )
+                }
+                className={`cursor-pointer text-xl ${
+                  props?.projects?.length > 12 + (page - 1) * 10
+                    ? 'cursor-not-allowed text-slate-300'
+                    : ' cursor-pointer text-slate-900'
+                }`}
+              />
               <div className="rounded-md bg-primary px-3 py-1 text-sm text-white">
                 1
               </div>
-              <FaChevronRight className="cursor-pointer text-xl text-slate-900" />
+              <FaChevronRight
+                onClick={() =>
+                  setPage((prev) =>
+                    props?.projects?.length > 12 + (page - 1) * 10
+                      ? prev + 10
+                      : prev
+                  )
+                }
+                className={`cursor-pointer text-xl ${
+                  props?.projects?.length > 12 + (page - 1) * 10
+                    ? 'cursor-not-allowed text-slate-300'
+                    : ' cursor-pointer text-slate-900'
+                }`}
+              />
             </div>
           </div>
 
