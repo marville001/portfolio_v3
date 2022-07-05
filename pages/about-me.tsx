@@ -5,7 +5,7 @@ const AboutMe = () => {
   return (
     <ContainerBlock
       title="Martin Mwangi - Contact Me"
-      description="Get in touch with me to know more"
+      description="About Martin Mwangi"
     >
       AboutMe
     </ContainerBlock>

@@ -19,7 +19,7 @@ const Portfolio = (props: Props) => {
   return (
     <ContainerBlock
       title="Martin Mwangi - My Portfolio Projects"
-      description="Get in touch with me to know more"
+      description="A list of all my projects. Mostly are website applications"
     >
       <div className="bg-primary">
         <div className="md-px-6 mx-auto max-w-[900px] bg-primary py-10 px-2 sm:px-4">

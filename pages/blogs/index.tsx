@@ -8,7 +8,7 @@ const Blogs: NextPage = () => {
   return (
     <ContainerBlock
       title="Martin Mwangi - My Blogs"
-      description="Get in touch with me to know more"
+      description="Welcome to my blog about ReactJs, NodeJs, Angular, Docker, Typescript, Sequelize, DevOps...etc"
     >
       <div className="bg-primary">
         <div className="md-px-6 mx-auto max-w-[900px] bg-primary py-10 px-2 sm:px-4">
@@ -64,7 +64,7 @@ const Blogs: NextPage = () => {
                       <p>Jun 21, 2022</p>
 
                       <Link href="/blogs">
-                        <a className="rounded border border-primary hover:text-white hover:bg-primary transition-all duration-150 px-3 py-1 text-primary">
+                        <a className="rounded border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
                           Read
                         </a>
                       </Link>
