@@ -34,10 +34,26 @@ const AboutMe = () => {
         <div className="mx-auto max-w-[900px] py-12">
           <div className="">
             <h2 className="mb-4 text-2xl font-bold">Hey Friends 👋,</h2>
-            <p className='max-w-[600px]'>
-              I'm <strong className='text-primary text-lg'>Martin Mwangi</strong>. I'm a Software Developer
-              currently working with ReactJs, Angular, NodeJs, GraphQl,
-              Postgres, MongoDB and TypeScript.
+            <p className="max-w-[600px] text-sm">
+              I'm{' '}
+              <strong className="text-base text-primary">Martin Mwangi</strong>.
+              I graduated with a bachelor's degree in Computer Science from {" "}
+              <a className='text-blue-400 underline' href="https://www.dkut.ac.ke/" target="_blank" rel="noopener noreferrer">
+                Dedan Kimathi University Of technology
+              </a>
+              . I'm currently a Software Developer working with ReactJs,
+              Angular, NodeJs, GraphQl, Postgres, MongoDB and TypeScript.
+            </p>
+
+            <p className="max-w-[600px] py-4 text-sm">
+              I'm also learning some DevOps stuffs on AWS and Azure.
+            </p>
+
+            <p className="max-w-[600px] text-sm">
+              The main purpose of starting my own portfolio is to showcase my
+              projects, document my learning journey through blogs and also to
+              document the books am reading by writing book notes.{' '}
+              <i>I hope you get to check them out!</i>
             </p>
           </div>
         </div>
