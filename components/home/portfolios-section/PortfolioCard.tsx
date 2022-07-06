@@ -37,31 +37,34 @@ const PortfolioCard = (props: any) => {
 
         <div className="p-4">
           <a className="text-md text-primary">
-            <h3>Full Ecommerce Website</h3>
+            <h3>{project.name}</h3>
           </a>
 
-          <p className="mt-2 text-sm">
-            We might not like ambiguity, but it’s a fact of life. Find out how
-            to plan with uncertainty in mind.
-          </p>
+          <p className="mt-2 text-sm">{project.description}</p>
 
           <div className="mt-3 flex items-center justify-between">
-            <Link href="/portfolio">
-              <a className="flex-1 rounded-l border border-primary px-3 py-1 text-center text-[10px] sm:text-sm text-primary transition-all duration-150 hover:bg-primary hover:text-white">
-                Demo
-              </a>
-            </Link>
-            <Link href={`/portfolio/slug`}>
-              <a className="flex-1 border border-x-0 border-primary px-3 py-1 text-center text-[10px] sm:text-sm text-primary transition-all duration-150 hover:bg-primary hover:text-white">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 rounded-l border border-primary px-3 py-1 text-center text-[10px] text-primary transition-all duration-150 hover:bg-primary hover:text-white sm:text-sm"
+            >
+              Demo
+            </a>
+            <Link href={`/portfolio/${project.slug.current}`}>
+              <a className="flex-1 border border-x-0 border-primary px-3 py-1 text-center text-[10px] text-primary transition-all duration-150 hover:bg-primary hover:text-white sm:text-sm">
                 Read More
               </a>
             </Link>
 
-            <Link href="/portfolio">
-              <a className="flex-1 rounded-r border border-primary px-3 py-1 text-center text-[10px] sm:text-sm text-primary transition-all duration-150 hover:bg-primary hover:text-white">
-                Code
-              </a>
-            </Link>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 rounded-r border border-primary px-3 py-1 text-center text-[10px] text-primary transition-all duration-150 hover:bg-primary hover:text-white sm:text-sm"
+            >
+              Code
+            </a>
           </div>
         </div>
       </article>
