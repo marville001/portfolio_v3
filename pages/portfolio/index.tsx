@@ -18,7 +18,7 @@ const Portfolio = (props: Props) => {
 
   return (
     <ContainerBlock
-      title="Martin -My Portfolio Projects"
+      title="Martin - My Portfolio Projects"
       description="A list of all my projects. Mostly are website applications"
     >
       <div className="bg-primary">

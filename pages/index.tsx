@@ -14,7 +14,7 @@ import AboutMe from '../components/home/about-section'
 const Home: NextPage = (props: any) => {
   return (
     <ContainerBlock
-      title="Martin -Software Developer - REACT,NEXT,NODE..."
+      title="Martin - Software Developer - REACT,NEXT,NODE..."
       description="I've been developing websites for more than 2 years straight. Get in touch with me to know more."
     >
       <HeroSection />

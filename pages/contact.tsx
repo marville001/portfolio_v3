@@ -61,7 +61,7 @@ const contact: NextPage = () => {
 
   return (
     <ContainerBlock
-      title="Martin -Contact Me"
+      title="Martin - Contact Me"
       description="Get in touch with me to know more"
     >
       <div className="md-px-6 mx-auto min-h-[60vh] max-w-[900px] py-10 px-2 sm:px-4">

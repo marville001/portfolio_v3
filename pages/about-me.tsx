@@ -5,7 +5,7 @@ import ContainerBlock from '../components/ContainerBlock'
 const AboutMe = () => {
   return (
     <ContainerBlock
-      title="Martin - About Me"
+      title="Martin -  About Me"
       description="Am a web developer, fully dedicated in learning Javascript (and typescript) and implement it in fullstack development"
     >
       <div className="bg-primary">
