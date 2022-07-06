@@ -31,7 +31,16 @@ const AboutMe = () => {
       </div>
 
       <div className="bg-white">
-        <div className="container  py-12"></div>
+        <div className="mx-auto max-w-[900px] py-12">
+          <div className="">
+            <h2 className="mb-4 text-2xl font-bold">Hey Friends 👋,</h2>
+            <p className='max-w-[600px]'>
+              I'm <strong className='text-primary text-lg'>Martin Mwangi</strong>. I'm a Software Developer
+              currently working with ReactJs, Angular, NodeJs, GraphQl,
+              Postgres, MongoDB and TypeScript.
+            </p>
+          </div>
+        </div>
       </div>
     </ContainerBlock>
   )
