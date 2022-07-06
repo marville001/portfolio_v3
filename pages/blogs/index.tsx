@@ -7,7 +7,7 @@ import ContainerBlock from '../../components/ContainerBlock'
 const Blogs: NextPage = () => {
   return (
     <ContainerBlock
-      title="Martin Mwangi - My Blogs"
+      title="Martin -My Blogs"
       description="Welcome to my blog about ReactJs, NodeJs, Angular, Docker, Typescript, Sequelize, DevOps...etc"
     >
       <div className="bg-primary">

@@ -5,8 +5,8 @@ import ContainerBlock from '../../components/ContainerBlock'
 const BookNotes = () => {
   return (
     <ContainerBlock
-      title="Martin Mwangi - Contact Me"
-      description="About Martin Mwangi"
+      title="Martin - Book Notes, Summaries, Lessons and Highlights"
+      description="Book Notes, Summaries, Lessons and Highlights on some of the books am reading"
     >
       <div className="bg-primary">
         <div className="md-px-6 mx-auto max-w-[900px] bg-primary py-8 px-2 sm:px-4">
