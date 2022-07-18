@@ -1,8 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { Fragment } from 'react'
+import { useAuth } from '../contexts/auth.context'
 
 const HeaderMenu = ({ isOpen, closeModal }) => {
+  const authContext = useAuth()
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
@@ -47,7 +50,7 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
                   onClick={closeModal}
                   className="w-full border-0 p-4 py-2 text-left  text-dark outline-none ring-0 hover:bg-dim-dark hover:text-white dark:text-white"
                 >
-                   Book Notes
+                  Book Notes
                 </a>
               </Link>
               <Link href="/contact">
@@ -67,6 +70,18 @@ const HeaderMenu = ({ isOpen, closeModal }) => {
               >
                 Hire Me
               </a>
+
+              {authContext.user?.uid && (
+                <button
+                  onClick={() => {
+                    closeModal()
+                    authContext.logoutUser()
+                  }}
+                  className="w-full border-0 p-4 py-2 text-left  text-dark outline-none ring-0 hover:bg-dim-dark hover:text-white dark:text-white"
+                >
+                  Log Out
+                </button>
+              )}
             </div>
           </Transition.Child>
         </div>
