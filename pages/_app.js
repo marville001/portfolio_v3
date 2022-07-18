@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 import { useProgressStore } from '../store'
+import AuthProvider from '../contexts/auth.context'
 
 function MyApp({ Component, pageProps }) {
   const setIsAnimating = useProgressStore((state) => state.setIsAnimating)
@@ -30,7 +31,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider defaultTheme="light" attribute="class">
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
     </ThemeProvider>
   )
 }
