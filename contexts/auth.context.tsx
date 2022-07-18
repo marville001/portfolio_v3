@@ -15,7 +15,7 @@ export interface UserInterface {
 }
 
 interface AuthContextInterface {
-  user: UserInterface | {}
+  user: UserInterface | null
   loginUser: (email: string, pass: string) => void
   logoutUser: () => void
   loadingLogin: boolean
@@ -23,7 +23,7 @@ interface AuthContextInterface {
 }
 
 const authContextDefaults: AuthContextInterface = {
-  user: {},
+  user: null,
   loginUser: (email: string, pass: string) => {},
   logoutUser: () => {},
   loadingLogin: false,
@@ -33,7 +33,7 @@ const authContextDefaults: AuthContextInterface = {
 const AuthContext = createContext<AuthContextInterface>(authContextDefaults)
 
 const AuthProvider = ({ children }: { children: ReactChildren }) => {
-  const [user, setUser] = useState<UserInterface | {}>({})
+  const [user, setUser] = useState<UserInterface | null>(null)
   const [loadingLogin, setLoadingLogin] = useState<boolean>(false)
   const [loginError, setLoginError] = useState<string>('')
 
@@ -41,7 +41,7 @@ const AuthProvider = ({ children }: { children: ReactChildren }) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
     } else {
-      setUser({})
+      setUser(null)
     }
   })
 

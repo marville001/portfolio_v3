@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { FaSpinner } from 'react-icons/fa'
-
+import { useRouter } from 'next/router'
 import ContainerBlock from '../../components/ContainerBlock'
 import { useAuth } from '../../contexts/auth.context'
 
@@ -19,13 +19,19 @@ const Login = () => {
   } = useForm<Inputs>()
 
   const authContext = useAuth()
+  const router = useRouter()
 
   const handleLogin: SubmitHandler<Inputs> = (data) => {
-    console.log(data)
     authContext.loginUser(data.username, data.password)
   }
 
   // console.log(authContext);
+
+  useEffect(()=>{
+    if(authContext.user?.uid){
+      router.push("/admin/hone")
+    }
+  }, [authContext.user])
   
 
   return (
