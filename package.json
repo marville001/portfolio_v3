@@ -12,6 +12,7 @@
     "@splidejs/react-splide": "^0.7.8",
     "@tanem/react-nprogress": "^5.0.6",
     "axios": "^0.26.1",
+    "firebase": "^9.9.0",
     "next": "latest",
     "next-sanity-image": "^3.2.1",
     "next-themes": "^0.1.1",
