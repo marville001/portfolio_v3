@@ -29,7 +29,7 @@ const Login = () => {
 
   useEffect(()=>{
     if(authContext.user?.uid){
-      router.push("/admin/hone")
+      router.push("/admin/home")
     }
   }, [authContext.user])
   

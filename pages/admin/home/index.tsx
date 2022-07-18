@@ -1,9 +1,11 @@
 import { NextPage } from 'next'
 import React from 'react'
 
+import AdminWrapper from "../../../components/admin/AdminWrapper"
+
 const Blogs: NextPage = () => {
   return (
-	<div>Blogs</div>
+	<AdminWrapper>Blogs</AdminWrapper>
   )
 }
 
