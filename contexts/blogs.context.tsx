@@ -1,5 +1,11 @@
 import { query, collection, getDocs } from 'firebase/firestore'
-import { createContext, ReactChildren, useContext, useState } from 'react'
+import {
+  createContext,
+  ReactChildren,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { database } from '../lib/firebaseConfig'
 
 export interface BlogInterface {
@@ -9,30 +15,38 @@ export interface BlogInterface {
 
 interface BlogsContextInterface {
   blogs: BlogInterface[] | []
-  loadBlogs: () => Promise<BlogInterface[] | []> | []
+  loadBlogs: () => void
 }
 
 const blogsContextDefaults: BlogsContextInterface = {
   blogs: [],
-  loadBlogs: () => [],
+  loadBlogs: () => {},
 }
 
 const BlogsContext = createContext<BlogsContextInterface>(blogsContextDefaults)
 
 const BlogsProvider = ({ children }: { children: ReactChildren }) => {
-  const [blogs, setBlogs] = useState<BlogInterface[]>([])
+  const [blogs, setBlogs] = useState<any[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
 
   const loadBlogs = async () => {
-    const blogsQuery = query(collection(database, 'blogs'))
-    const querySnapshot = await getDocs(blogsQuery)
+    try {
+      setLoading(true)
 
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, ' => ', doc.data())
-    })
+      const blogsQuery = query(collection(database, 'blogs'))
+      const querySnapshot = await getDocs(blogsQuery)
+      const data = querySnapshot.docs.map((doc) => doc.data())
 
-    return []
+      setBlogs(data)
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+    }
   }
+
+  useEffect(() => {
+    loadBlogs()
+  }, [])
 
   return (
     <BlogsContext.Provider value={{ blogs, loadBlogs }}>

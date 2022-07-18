@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 
 import { useProgressStore } from '../store'
 import AuthProvider from '../contexts/auth.context'
+import BlogsProvider from '../contexts/blogs.context'
 
 function MyApp({ Component, pageProps }) {
   const setIsAnimating = useProgressStore((state) => state.setIsAnimating)
@@ -32,7 +33,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider defaultTheme="light" attribute="class">
       <AuthProvider>
-        <Component {...pageProps} />
+        <BlogsProvider>
+          <Component {...pageProps} />
+        </BlogsProvider>
       </AuthProvider>
     </ThemeProvider>
   )
