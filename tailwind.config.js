@@ -12,6 +12,7 @@ module.exports = {
         dark: '#1f1f47',
         'dim-dark': '#171647',
         grayish: '#edf1fd',
+        'pale-orange': '#ffefdf',
       },
     },
   },

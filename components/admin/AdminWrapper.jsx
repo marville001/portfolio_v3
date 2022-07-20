@@ -14,7 +14,7 @@ const AdminWrapper = ({ children }) => {
 
   return (
     <div>
-      <div className="min-h-[800px] py-5 px-4">{children}</div>
+      <div className="min-h-[800px] max-w-[1240px] mx-auto py-5 px-4">{children}</div>
     </div>
   )
 }

@@ -11,7 +11,7 @@ const PortfolioCard = (props: any) => {
 
   return (
     <div className="">
-      <article className="overflow-hidden rounded border glass-effect">
+      <article className="overflow-hidden glass-effect">
         <div className="h-[200px] w-full items-stretch overflow-hidden">
           <Splide
             options={{
