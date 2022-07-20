@@ -23,7 +23,10 @@ const Blogs: NextPage = () => {
           </div>
           <div className="flex flex-1 flex-col justify-center">
             <h2 className="text-3xl font-bold">
-              Blogs <span className="bg-primary p-2 text-white rounded-lg text-base">{blogsContext.blogs.length}</span>
+              Blogs{' '}
+              <span className="rounded-lg bg-primary p-2 text-base text-white">
+                {blogsContext.blogs.length}
+              </span>
             </h2>
             <p className="mt-3 text-lg">
               Our mind must be free in order to express our qualities.
@@ -38,16 +41,61 @@ const Blogs: NextPage = () => {
               <div className="">
                 <FaPlus />
               </div>
-              <span>New Post</span>
+              <span>New Blog</span>
             </a>
           </Link>
         </div>
 
-        <div className="flex min-h-[400px] items-center justify-center">
-          <h4 className="text-4xl font-bold uppercase opacity-30">
-            No Post Yet
-          </h4>
-        </div>
+        {blogsContext.blogs.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
+            {blogsContext.blogs.map((blog) => (
+              <article className="overflow-hidden rounded border">
+                {console.log(blog)}
+                <Link href="/blogs">
+                  <img
+                    src={
+                      blog.cover
+                        ? blog.cover
+                        : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
+                    }
+                    alt="My Blog"
+                    className="cursor-pointer border-b h-40 w-full"
+                  />
+                </Link>
+
+                <div className="p-5">
+                  <Link href="/blogs">
+                    <a className="text-lg text-primary hover:underline">
+                      <h3>
+                        {blog.title}
+                      </h3>
+                    </a>
+                  </Link>
+
+                  <p className="mt-3 text-sm">
+                    {blog.intro}
+                  </p>
+
+                  <div className="mt-5 flex items-center justify-between">
+                    <p>Jun 21, 2022</p>
+
+                    <Link href="/blogs">
+                      <a className="rounded border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
+                        Read
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="flex min-h-[400px] items-center justify-center">
+            <h4 className="text-4xl font-bold uppercase opacity-30">
+              No Post Yet
+            </h4>
+          </div>
+        )}
       </AdminWrapper>
     </ContainerBlock>
   )

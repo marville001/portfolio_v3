@@ -1,7 +1,9 @@
-export interface Blog{
-	id?: string;
+export interface Blog {
 	title: string;
-	cover?: string;
+	intro: string;
 	blog: string;
-	
+	cover?: string;
+	slug?: string;
+	id?: string;
+
 }

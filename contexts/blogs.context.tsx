@@ -49,7 +49,7 @@ const BlogsProvider = ({ children }: { children: ReactChildren }) => {
 
       const blogsQuery = query(dbInstance)
       const querySnapshot = await getDocs(blogsQuery)
-      const data = querySnapshot.docs.map((doc) => doc.data())
+      const data = querySnapshot.docs.map((doc) => doc.data())      
 
       setBlogs(data)
       setLoading(false)

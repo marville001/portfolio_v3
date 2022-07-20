@@ -18,6 +18,7 @@ import { Blog } from '../../../types/blog'
 type Inputs = {
   title: string
   blog: string
+  intro: string
 }
 
 const Blogs: NextPage = () => {
@@ -65,8 +66,11 @@ const Blogs: NextPage = () => {
       return
     }
 
+    const id = Math.ceil(Math.random() * 100000000)
     const newBlog: Blog = {
       title: data.title,
+      intro: data.intro,
+      slug: data.title.split(' ').join('-') + id,
       blog: data.blog.toString().replaceAll('<p><br></p>', ''),
     }
 
@@ -77,11 +81,10 @@ const Blogs: NextPage = () => {
       return
     }
 
-    const response = await blogsContext.createBlog(data)
+    const response = await blogsContext.createBlog(newBlog)
     if (response.success) {
       clearForm()
-      router.push("/admin/blogs")
-      
+      router.push('/admin/blogs')
     }
   }
 
@@ -94,7 +97,7 @@ const Blogs: NextPage = () => {
       <AdminWrapper>
         <div className="_shadow2 relative my-12 flex flex-col items-center rounded-2xl bg-white p-6">
           <Link href="/admin/blogs">
-            <a className="absolute top-2 left-2 cursor-pointer p-4 rounded-lg hover:bg-gray-100">
+            <a className="absolute top-2 left-2 cursor-pointer rounded-lg p-4 hover:bg-gray-100">
               <FaChevronLeft />
             </a>
           </Link>
@@ -193,11 +196,11 @@ const Blogs: NextPage = () => {
                   },
                   minLength: {
                     value: 25,
-                    message: 'Title should be 25-50 characters',
+                    message: 'Title should be 25-100 characters',
                   },
                   maxLength: {
                     value: 100,
-                    message: 'Title should be 25-50 characters',
+                    message: 'Title should be 25-100 characters',
                   },
                 })}
               />
@@ -208,8 +211,41 @@ const Blogs: NextPage = () => {
               )}
             </div>
 
+            {/* Title */}
             <div className="mt-6 flex flex-col gap-2">
-              <label htmlFor="title" className="text-sm">
+              <label htmlFor="intro" className="text-sm">
+                Blog Intro
+              </label>
+              <input
+                type="text"
+                placeholder="Blog Intro"
+                className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${
+                  errors.title && 'ring-1 ring-red-400'
+                }`}
+                {...register('intro', {
+                  required: {
+                    value: true,
+                    message: 'Intro is required',
+                  },
+                  minLength: {
+                    value: 25,
+                    message: 'Intro should be 25-150 characters',
+                  },
+                  maxLength: {
+                    value: 150,
+                    message: 'Intro should be 25-150 characters',
+                  },
+                })}
+              />
+              {errors.intro && (
+                <span className="text-sm text-red-600">
+                  {errors.intro.message}
+                </span>
+              )}
+            </div>
+
+            <div className="mt-6 flex flex-col gap-2">
+              <label htmlFor="" className="text-sm">
                 Blog Content
               </label>
               <ReactQuillEditor
@@ -237,7 +273,11 @@ const Blogs: NextPage = () => {
               px-6 text-lg text-white hover:opacity-75 disabled:cursor-not-allowed disabled:bg-opacity-75
               "
             >
-              {blogsContext.creating ? <FaSpinner className="animate-spin" /> : 'Save'}
+              {blogsContext.creating ? (
+                <FaSpinner className="animate-spin" />
+              ) : (
+                'Save'
+              )}
             </button>
           </form>
         </div>
