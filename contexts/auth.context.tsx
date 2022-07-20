@@ -5,7 +5,13 @@ import {
   setPersistence,
   signOut,
 } from 'firebase/auth'
-import { createContext, ReactChildren, useContext, useEffect, useState } from 'react'
+import {
+  createContext,
+  ReactChildren,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { app } from '../lib/firebaseConfig'
 import {
   signInWithEmailAndPassword,
@@ -28,6 +34,7 @@ interface AuthContextInterface {
   loginUser: (email: string, pass: string) => void
   logoutUser: () => void
   loadingLogin: boolean
+  loading: boolean
   loginError: string
 }
 
@@ -36,6 +43,7 @@ const authContextDefaults: AuthContextInterface = {
   loginUser: (email: string, pass: string) => {},
   logoutUser: () => {},
   loadingLogin: false,
+  loading: true,
   loginError: '',
 }
 
@@ -44,6 +52,7 @@ const AuthContext = createContext<AuthContextInterface>(authContextDefaults)
 const AuthProvider = ({ children }: { children: ReactChildren }) => {
   const [user, setUser] = useState<UserInterface | null>(null)
   const [loadingLogin, setLoadingLogin] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(true)
   const [loginError, setLoginError] = useState<string>('')
 
   const auth = getAuth(app)
@@ -89,7 +98,9 @@ const AuthProvider = ({ children }: { children: ReactChildren }) => {
         }
 
         setUser(user_)
+        setLoading(false)
       } else {
+        setLoading(false)
         setUser(null)
       }
     })
@@ -97,7 +108,7 @@ const AuthProvider = ({ children }: { children: ReactChildren }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, loginUser, logoutUser, loadingLogin, loginError }}
+      value={{ user, loginUser, logoutUser, loading, loadingLogin, loginError }}
     >
       {children}{' '}
     </AuthContext.Provider>

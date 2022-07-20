@@ -7,7 +7,7 @@ const AdminWrapper = ({ children }) => {
   const router = useRouter()
 
   useEffect(() => {
-    if (!authContext.user?.uid) {
+    if (!authContext.loading && !authContext.user?.uid) {
       router.push('/')
     }
   }, [authContext.user])

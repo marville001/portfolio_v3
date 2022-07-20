@@ -1,7 +1,7 @@
 import { Menu, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { Fragment } from 'react'
-import { FaBook, FaHashtag, FaRegAddressBook, FaRegUser } from 'react-icons/fa'
+import { FaBook, FaHashtag, FaHome, FaRegAddressBook, FaRegUser } from 'react-icons/fa'
 import { useAuth } from '../contexts/auth.context'
 
 const ProfileMenu = () => {
@@ -29,6 +29,7 @@ const ProfileMenu = () => {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="_shadow sshadow-lg absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white focus:outline-none">
+          <MenuItem title="My Dashboard" to="/admin/home" icon={FaHome} />
           <MenuItem title="My Profile" to="/admin/profile" icon={FaRegUser} />
           <MenuItem title="My Blogs" to="/admin/blogs" icon={FaRegAddressBook} />
           <MenuItem title="Book Notes" to="/admin/book-notes" icon={FaBook} />
