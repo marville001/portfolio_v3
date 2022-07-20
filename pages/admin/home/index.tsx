@@ -32,14 +32,14 @@ const Blogs: NextPage = () => {
           <div className="rounded-md bg-dark p-5 text-white">
             <div className="flex items-center gap-2">
               <h2 className="text-5xl font-bold">12</h2>
-              <p className="text-xl">Blogs</p>
+              <p className="text-xl flex-1 flex justify-center">Blogs</p>
             </div>
-            <div className="mt-3 flex cursor-pointer items-center gap-2 rounded-md p-1 hover:bg-primary hover:text-white">
+            <button className="mt-3 flex cursor-pointer hover:px-3 duration-150 transition-all ease-linear items-center gap-2 rounded-md p-1 hover:bg-primary hover:text-white">
               <div className="">
                 <FaPlus />
               </div>
               <span>New Blog</span>
-            </div>
+            </button>
           </div>
 
 
@@ -49,12 +49,12 @@ const Blogs: NextPage = () => {
               <h2 className="text-5xl font-bold">12</h2>
               <p className="text-xl">Book Notes</p>
             </div>
-            <div className="mt-3 flex cursor-pointer items-center gap-2 justify-start rounded-md p-1 hover:bg-primary hover:text-white">
+            <button className="mt-3 flex cursor-pointer hover:px-3 duration-150 transition-all ease-linear items-center gap-2 justify-start rounded-md p-1 hover:bg-primary hover:text-white">
               <div className="">
                 <FaPlus />
               </div>
               <span>New Book Notes</span>
-            </div>
+            </button>
           </div>
 
           {/* Projects */}
@@ -63,12 +63,12 @@ const Blogs: NextPage = () => {
               <h2 className="text-5xl font-bold">12</h2>
               <p className="text-xl">Projects</p>
             </div>
-            <div className="mt-3 flex cursor-pointer items-center gap-2 rounded-md p-1 hover:bg-primary hover:text-white">
+            <button className="mt-3 flex cursor-pointer hover:px-3 duration-150 transition-all ease-linear items-center gap-2 rounded-md p-1 hover:bg-primary hover:text-white">
               <div className="">
                 <FaPlus />
               </div>
               <span>New Project</span>
-            </div>
+            </button>
           </div>
         </div>
 
