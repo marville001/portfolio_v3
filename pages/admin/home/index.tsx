@@ -30,9 +30,9 @@ const Blogs: NextPage = () => {
 
           {/* Blogs */}
           <div className="rounded-md bg-dark p-5 text-white">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <h2 className="text-5xl font-bold">12</h2>
-              <p className="text-xl flex-1 flex justify-center">Blogs</p>
+              <p className="text-xl">Blogs</p>
             </div>
             <button className="mt-3 flex cursor-pointer hover:px-3 duration-150 transition-all ease-linear items-center gap-2 rounded-md p-1 hover:bg-primary hover:text-white">
               <div className="">
@@ -45,7 +45,7 @@ const Blogs: NextPage = () => {
 
           {/* Book Notes */}
           <div className="rounded-md bg-dark p-5 text-white">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <h2 className="text-5xl font-bold">12</h2>
               <p className="text-xl">Book Notes</p>
             </div>
@@ -59,7 +59,7 @@ const Blogs: NextPage = () => {
 
           {/* Projects */}
           <div className="rounded-md bg-dark p-5 text-white">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <h2 className="text-5xl font-bold">12</h2>
               <p className="text-xl">Projects</p>
             </div>

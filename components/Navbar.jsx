@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 
 import HeaderMenu from '../components/HeaderMenu'
+import ProfileMenu from '../components/ProfileMenu'
 
 import {
   HiMenuAlt1,
@@ -12,11 +13,14 @@ import {
 } from 'react-icons/hi'
 
 import useDarkMode from '../hooks/useDarkMode'
+import { useAuth } from '../contexts/auth.context'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const [darkTheme, setDarkTheme] = useDarkMode()
+  const authContext = useAuth()
+
   const handleMode = () => setDarkTheme(!darkTheme)
 
   return (
@@ -25,8 +29,12 @@ const Navbar = () => {
     >
       <div className="container relative flex items-center justify-between space-x-8">
         <Link href="/">
-          <a className="text-2xl font-bold text-dark dark:text-white flex items-center gap-2">
-            <img src="/assets/my-logo.png" alt="" className='w-10 h-10 rounded-full' />
+          <a className="flex items-center gap-2 text-2xl font-bold text-dark dark:text-white">
+            <img
+              src="/assets/my-logo.png"
+              alt=""
+              className="h-10 w-10 rounded-full"
+            />
             {/* <span className="">martin.</span> */}
           </a>
         </Link>
@@ -100,6 +108,7 @@ const Navbar = () => {
             )}
           </div>
           <HeaderMenu isOpen={menuOpen} closeModal={() => setMenuOpen(false)} />
+          {authContext.user?.uid && <ProfileMenu />}
         </div>
       </div>
     </div>
