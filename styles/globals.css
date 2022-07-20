@@ -33,9 +33,9 @@ body {
   background: linear-gradient(
     180deg,
     rgba(51, 134, 177, 0) 0%,
-    rgba(51, 134, 177, .25) 25%,
-    rgba(51, 134, 177, .50) 50%,
-    rgba(51, 134, 177, .75) 75%,
+    rgba(51, 134, 177, 0.25) 25%,
+    rgba(51, 134, 177, 0.5) 50%,
+    rgba(51, 134, 177, 0.75) 75%,
     rgba(51, 134, 177, 1) 100%
   );
 }
@@ -58,4 +58,17 @@ body {
   body::-webkit-scrollbar-track {
     @apply rounded-3xl bg-dark;
   }
+}
+
+.glass-effect {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
 }
