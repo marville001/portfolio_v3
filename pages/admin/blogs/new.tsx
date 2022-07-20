@@ -128,7 +128,7 @@ const Blogs: NextPage = () => {
               <div className="flex gap-2">
                 <Menu
                   as="div"
-                  className="relative z-[542542542] inline-block text-left ring-0 focus:ring-0"
+                  className="relative z-[542] inline-block text-left ring-0 focus:ring-0"
                 >
                   <div>
                     <Menu.Button className="">
