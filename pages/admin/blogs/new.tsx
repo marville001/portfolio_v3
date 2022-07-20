@@ -1,14 +1,18 @@
 import { Menu, Transition } from '@headlessui/react'
 import { NextPage } from 'next'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { ChangeEvent, Fragment, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { FaChevronLeft, FaRegImage, FaSpinner, FaTimes } from 'react-icons/fa'
 
 import AdminWrapper from '../../../components/admin/AdminWrapper'
 import ContainerBlock from '../../../components/ContainerBlock'
 import ReactQuillEditor from '../../../components/ReactQuillEditor'
+import { useBlogs } from '../../../contexts/blogs.context'
 import fileUploader from '../../../lib/fileUploader'
+import { Blog } from '../../../types/blog'
 // import fileUploader from "../../../lib/fileUploader"
 
 type Inputs = {
@@ -27,7 +31,10 @@ const Blogs: NextPage = () => {
     setValue,
     setError,
     clearErrors,
+    reset,
   } = useForm<Inputs>()
+  const blogsContext = useBlogs()
+  const router = useRouter()
 
   const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
     console.log('Uploading IMAGE')
@@ -46,24 +53,36 @@ const Blogs: NextPage = () => {
     }
   }
 
-  const handleSaveBlog: SubmitHandler<Inputs> = (data: any) => {
-    console.log(data)
+  const clearForm = () => {
+    setValue('blog', '')
+    setCover('')
+    reset()
+  }
 
+  const handleSaveBlog: SubmitHandler<Inputs> = async (data: any) => {
     if (!data.blog || data.blog === '') {
       setError('blog', { message: 'Blog content is required' })
       return
     }
 
-    const newBlog = {
+    const newBlog: Blog = {
       title: data.title,
       blog: data.blog.toString().replaceAll('<p><br></p>', ''),
     }
+
+    if (cover) newBlog.cover = cover
 
     if (newBlog.blog === '') {
       setError('blog', { message: 'Blog content is required' })
       return
     }
-    console.log(newBlog)
+
+    const response = await blogsContext.createBlog(data)
+    if (response.success) {
+      clearForm()
+      router.push("/admin/blogs")
+      
+    }
   }
 
   return (
@@ -75,7 +94,7 @@ const Blogs: NextPage = () => {
       <AdminWrapper>
         <div className="_shadow2 relative my-12 flex flex-col items-center rounded-2xl bg-white p-6">
           <Link href="/admin/blogs">
-            <a className="absolute top-2 left-2 cursor-pointer p-4 hover:bg-gray-100">
+            <a className="absolute top-2 left-2 cursor-pointer p-4 rounded-lg hover:bg-gray-100">
               <FaChevronLeft />
             </a>
           </Link>
@@ -213,11 +232,12 @@ const Blogs: NextPage = () => {
             </div>
 
             <button
+              disabled={blogsContext.creating}
               className=" mt-4 flex w-full justify-center rounded-lg border border-primary bg-primary py-3
               px-6 text-lg text-white hover:opacity-75 disabled:cursor-not-allowed disabled:bg-opacity-75
               "
             >
-              {false ? <FaSpinner className="animate-spin" /> : 'Save'}
+              {blogsContext.creating ? <FaSpinner className="animate-spin" /> : 'Save'}
             </button>
           </form>
         </div>

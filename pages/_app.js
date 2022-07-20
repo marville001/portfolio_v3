@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { ThemeProvider } from 'next-themes'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { Toaster } from 'react-hot-toast'
 
 import { useProgressStore } from '../store'
 import AuthProvider from '../contexts/auth.context'
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider defaultTheme="light" attribute="class">
+      <Toaster position="bottom-center" reverseOrder={false} />
       <AuthProvider>
         <BlogsProvider>
           <Component {...pageProps} />

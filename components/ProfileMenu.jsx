@@ -5,6 +5,7 @@ import { FaBook, FaHashtag, FaHome, FaRegAddressBook, FaRegUser } from 'react-ic
 import { useAuth } from '../contexts/auth.context'
 
 const ProfileMenu = () => {
+  
   const authContext = useAuth()
 
   return (

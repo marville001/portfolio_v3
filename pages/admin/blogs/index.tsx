@@ -5,8 +5,11 @@ import { FaPlus } from 'react-icons/fa'
 
 import AdminWrapper from '../../../components/admin/AdminWrapper'
 import ContainerBlock from '../../../components/ContainerBlock'
+import { useBlogs } from '../../../contexts/blogs.context'
 
 const Blogs: NextPage = () => {
+  const blogsContext = useBlogs()
+
   return (
     <ContainerBlock
       title="Martin - Software Developer - REACT,NEXT,NODE..."
@@ -19,7 +22,9 @@ const Blogs: NextPage = () => {
             <h2 className="text-5xl font-bold text-white">MM</h2>
           </div>
           <div className="flex flex-1 flex-col justify-center">
-            <h2 className="text-3xl font-bold">Posts</h2>
+            <h2 className="text-3xl font-bold">
+              Blogs <span className="bg-primary p-2 text-white rounded-lg text-base">{blogsContext.blogs.length}</span>
+            </h2>
             <p className="mt-3 text-lg">
               Our mind must be free in order to express our qualities.
             </p>
