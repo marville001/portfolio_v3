@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import Link from 'next/link'
 import React from 'react'
 import { FaPlus } from 'react-icons/fa'
 
@@ -27,49 +28,16 @@ const Blogs: NextPage = () => {
         </div>
 
         <div className="mb-6 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
-
           {/* Blogs */}
-          <div className="rounded-md bg-dark p-5 text-white">
-            <div className="flex items-center gap-3">
-              <h2 className="text-5xl font-bold">12</h2>
-              <p className="text-xl">Blogs</p>
-            </div>
-            <button className="mt-3 flex cursor-pointer hover:px-3 duration-150 transition-all ease-linear items-center gap-2 rounded-md p-1 hover:bg-primary hover:text-white">
-              <div className="">
-                <FaPlus />
-              </div>
-              <span>New Blog</span>
-            </button>
-          </div>
-
+          <CountCard count={12} title="Blog" to="/admin/blogs/new" />
 
           {/* Book Notes */}
-          <div className="rounded-md bg-dark p-5 text-white">
-            <div className="flex items-center gap-3">
-              <h2 className="text-5xl font-bold">12</h2>
-              <p className="text-xl">Book Notes</p>
-            </div>
-            <button className="mt-3 flex cursor-pointer hover:px-3 duration-150 transition-all ease-linear items-center gap-2 justify-start rounded-md p-1 hover:bg-primary hover:text-white">
-              <div className="">
-                <FaPlus />
-              </div>
-              <span>New Book Notes</span>
-            </button>
-          </div>
+          <CountCard count={7} title="Book Note" to="/admin/book-notes/new" />
 
           {/* Projects */}
-          <div className="rounded-md bg-dark p-5 text-white">
-            <div className="flex items-center gap-3">
-              <h2 className="text-5xl font-bold">12</h2>
-              <p className="text-xl">Projects</p>
-            </div>
-            <button className="mt-3 flex cursor-pointer hover:px-3 duration-150 transition-all ease-linear items-center gap-2 rounded-md p-1 hover:bg-primary hover:text-white">
-              <div className="">
-                <FaPlus />
-              </div>
-              <span>New Project</span>
-            </button>
-          </div>
+          <CountCard count={45} title="Project" to="/admin/projects/new" />
+
+          {/* END */}
         </div>
 
         <div className="flex justify-between">
@@ -91,5 +59,27 @@ const Blogs: NextPage = () => {
     </ContainerBlock>
   )
 }
+
+interface CountCardProps {
+  title: string
+  to: string
+  count: number
+}
+const CountCard = ({ title, count, to }: CountCardProps) => (
+  <div className="rounded-md bg-dark p-5 text-white">
+    <div className="flex items-center gap-3">
+      <h2 className="text-5xl font-bold">{count}</h2>
+      <p className="text-xl">{title}s</p>
+    </div>
+    <Link href={to}>
+      <a className="mt-3 flex cursor-pointer items-center justify-start gap-2 rounded-md p-1 transition-all duration-150 ease-linear hover:bg-primary hover:px-3 hover:text-white">
+        <div className="">
+          <FaPlus />
+        </div>
+        <span>New {title}</span>
+      </a>
+    </Link>
+  </div>
+)
 
 export default Blogs
