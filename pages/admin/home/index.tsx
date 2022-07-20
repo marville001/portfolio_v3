@@ -16,13 +16,12 @@ const Blogs: NextPage = () => {
       <AdminWrapper>
         <div className="my-12 flex flex-wrap gap-8 rounded-2xl bg-pale-orange p-6">
           <div className="flex h-[200px] w-full items-center justify-center rounded-2xl bg-primary p-5 sm:w-[250px]">
-            <h2 className="text-9xl font-bold text-white">GM</h2>
+            <h2 className="text-9xl font-bold text-white">MM</h2>
           </div>
           <div className="flex flex-1 flex-col justify-center">
             <h2 className="text-3xl font-bold">Martin Mwangi</h2>
             <p className="mt-3 text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-              adipisci a quidem eli
+              Respect and consistency, as hard work during the week is the only way to earn your place.
             </p>
           </div>
         </div>

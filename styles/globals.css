@@ -12,7 +12,19 @@
 ._transition {
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-
+body {
+  overflow-x: hidden;
+}
+.ql-toolbar {
+  border: none !important;
+  background-color: white;
+  border-radius: 10px;
+}
+.ql-container.ql-snow {
+  border: none !important;
+  min-height: 200px !important;
+  max-height: 600px !important;
+}
 ._shadow {
   box-shadow: 0px 0px 15px rgb(0 0 0 / 19%);
 }
@@ -22,10 +34,6 @@
 
 ._shadow3 {
   box-shadow: 0 0 7px 0px #4444441a;
-}
-
-body {
-  overflow-x: hidden;
 }
 
 .blurry {
