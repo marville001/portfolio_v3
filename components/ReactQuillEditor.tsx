@@ -45,6 +45,8 @@ const ReactQuillEditor = ({ handleChange, hasErrors = false }: EditorProos) => {
             padding: '10px',
             borderRadius: '10px',
             border: hasErrors ? '1px solid red' : 'none',
+            maxHeight:"600px",
+            overFlow:"scroll"
           }}
         ></reactQuill.default>
       </div>

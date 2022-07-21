@@ -22,9 +22,17 @@ body {
 }
 .ql-container.ql-snow {
   border: none !important;
-  min-height: 200px !important;
-  max-height: 600px !important;
 }
+.ql-editor {
+  min-height: 200px !important;
+  max-height: 540px !important;
+  overflow-y: scroll;
+}
+.ql-editor::-webkit-scrollbar{
+  display: none;
+}
+
+/* SHADOWS */
 ._shadow {
   box-shadow: 0px 0px 15px rgb(0 0 0 / 19%);
 }
