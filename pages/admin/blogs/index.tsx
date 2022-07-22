@@ -80,8 +80,8 @@ const Blogs: NextPage = () => {
                     <p>Jun 21, 2022</p>
 
                     <Link href="/blogs">
-                      <a className="rounded border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
-                        Read
+                      <a className="rounded tracking-wider border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
+                        Edit
                       </a>
                     </Link>
                   </div>
