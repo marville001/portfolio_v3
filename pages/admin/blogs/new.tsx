@@ -71,7 +71,7 @@ const Blogs: NextPage = () => {
       title: data.title,
       intro: data.intro,
       slug: data.title.split(' ').join('-') + id,
-      blog: data.blog.toString().replaceAll('<p><br></p>', ''),
+      blog: data.blog.toString().replaceAll('<p><br></p>', '').toLowerCase(),
     }
 
     if (cover) newBlog.cover = cover

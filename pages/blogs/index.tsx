@@ -3,8 +3,11 @@ import Link from 'next/link'
 import React from 'react'
 import { FaChevronLeft, FaChevronRight, FaSearch } from 'react-icons/fa'
 import ContainerBlock from '../../components/ContainerBlock'
+import { useBlogs } from '../../contexts/blogs.context'
 
 const Blogs: NextPage = () => {
+  const blogsContext = useBlogs()
+
   return (
     <ContainerBlock
       title="Martin - My Blogs"
@@ -35,14 +38,15 @@ const Blogs: NextPage = () => {
       <div className="bg-white">
         <div className="container">
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((blog) => (
-              <div key={blog} className="">
+            {blogsContext.blogs.map((blog) => (
+              <div key={blog.id} className="_shadow3 hover:scale-105 transition-all duration-150">
                 <article className="overflow-hidden rounded border">
                   <Link href="/blogs">
                     <img
-                      src="https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png"
+                      src={blog?.cover}
+                      // src="https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png"
                       alt="My Blog"
-                      className="cursor-pointer"
+                      className="cursor-pointer h-48 border-b object-cover w-full"
                     />
                   </Link>
 
@@ -63,7 +67,7 @@ const Blogs: NextPage = () => {
                     <div className="mt-5 flex items-center justify-between">
                       <p>Jun 21, 2022</p>
 
-                      <Link href="/blogs">
+                      <Link href={`/blogs/${blog.slug}`}>
                         <a className="rounded border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
                           Read
                         </a>
