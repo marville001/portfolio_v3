@@ -48,12 +48,6 @@ const Blogs: NextPage = () => {
             <span>New Post</span>
           </div>
         </div>
-
-        <div className="flex min-h-[400px] items-center justify-center">
-          <h4 className="text-4xl font-bold uppercase opacity-30">
-            No Post Yet
-          </h4>
-        </div>
       </AdminWrapper>
     </ContainerBlock>
   )
