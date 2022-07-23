@@ -4,23 +4,35 @@ import React, { useEffect, useState } from 'react'
 import ContainerBlock from '../../components/ContainerBlock'
 import { postToJSON } from '../../lib/firebase'
 import { firestore } from '../../lib/firebaseConfig'
+import { Blog } from '../../types/blog'
 
 
 const ReadBlogs: NextPage = ({ blog }: any) => {
-  const [_blog, setBlog] = useState({})
+  const [_blog, setBlog] = useState<Blog | null>(null)
 
   useEffect(() => {
-    setBlog(typeof blog === "object" ? JSON.parse(blog):blog)
-  }, [blog])  
+    setBlog(typeof blog === "string" ? JSON.parse(blog) : {})
+  }, [blog])
+
+  console.log(_blog);
+
 
   return (
     <ContainerBlock
-      title="Martin - My Blogs"
-      description="Welcome to my blog about ReactJs, NodeJs, Angular, Docker, Typescript, Sequelize, DevOps...etc"
+      description={_blog?.intro}
+      image={_blog?.cover
+        ? _blog?.cover
+        : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'}
+      title={_blog?.title}
+      url={`https://my-portfolio-dev.vercel.app/blogs/${_blog?.slug}`}
+      date={_blog?.createdAt}
     >
       <div className="bg-white">
-        <div className="container md:py-10 min-h-[500px]">
+        <div className="max-w-[900px] mx-auto p-2 sm:p-4 bg-red-100 md:py-10 min-h-[500px]">
 
+          <div className="">
+            <img src="https://avatars.githubusercontent.com/u/51154760?v=4" className='w-16 h-16 rounded-full' alt="" />
+          </div>
 
         </div>
       </div>
@@ -44,7 +56,7 @@ export async function getStaticPaths() {
 }
 
 
-export const getStaticProps: GetStaticProps = async (context: any)=> {
+export const getStaticProps: GetStaticProps = async (context: any) => {
   try {
     const blogsRef = collection(firestore, 'blogs')
     const blogsQuery = query(blogsRef, where("slug", "==", context.params.slug))

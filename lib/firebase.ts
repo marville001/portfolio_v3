@@ -7,7 +7,12 @@ export function postToJSON(doc: DocumentSnapshot) {
 	data = {
 		...data,
 		id: doc.id,
+		createdAt: data?.createdAt ? data.createdAt.toDate() : null,
+		updatedAt: data?.updatedAt ? data.updatedAt.toDate() : null,
 	}
+
+	console.log(data);
 	
+
 	return data;
 }

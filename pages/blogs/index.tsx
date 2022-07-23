@@ -113,8 +113,11 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                 <article className="overflow-hidden rounded border">
                   <Link href="/blogs">
                     <img
-                      src={blog?.cover}
-                      // src="https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png"
+                      src={
+                      blog.cover
+                        ? blog.cover
+                        : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
+                    }
                       alt="My Blog"
                       className="cursor-pointer h-48 border-b object-cover w-full"
                     />
@@ -124,18 +127,21 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                     <Link href="/blogs">
                       <a className="text-lg text-primary hover:underline">
                         <h3>
-                          3 Ways to Help Agile Teams Plan Despite Uncertainty
+                          {blog.title}
                         </h3>
                       </a>
                     </Link>
 
                     <p className="mt-3 text-sm">
-                      We might not like ambiguity, but it’s a fact of life. Find
-                      out how to plan with uncertainty in mind.
+                      {blog.intro}
                     </p>
 
                     <div className="mt-5 flex items-center justify-between">
-                      <p>Jun 21, 2022</p>
+                      <p>
+                        {new Date(blog.createdAt).toDateString()}
+                      </p>
+                      {console.log(blog.createdAt)}
+                      
 
                       <Link href={`/blogs/${blog.slug}`}>
                         <a className="rounded border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
@@ -197,7 +203,6 @@ export async function getServerSideProps() {
     };
   } catch (error) {
     console.log(error);
-
     return {
       props: { blogs: [], total: 0 },
     };

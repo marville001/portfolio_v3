@@ -19,6 +19,7 @@ const ContainerBlock = ({
     description: `I've been developing websites for more than 2 years straight. Get in touch with me to know more.`,
     image: '/avatar.png',
     type: 'website',
+    url: "https://my-portfolio-dev.vercel.app/",
     ...customMeta,
   }
 
@@ -26,31 +27,28 @@ const ContainerBlock = ({
     <div>
       <Head>
         <title>{meta.title}</title>
-        <meta name="robots" content="follow, index" />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta content={meta.description} name="description" />
-        <meta
-          property="og:url"
-          content={`https://martinmwangi.netlify.com${router.asPath}`}
-        />
-        <link
-          rel="canonical"
-          href={`https://martinmwangi.netlify.com${router.asPath}`}
-        />
         <link rel="icon" href="/assets/my-logo.ico" type="image/icon type" />
-        <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Martin Mwangi Portfolio" />
-        <meta property="og:description" content={meta.description} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:image" content={meta.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@marville001" />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} />
+        <meta data-rh="true" name="author" content="Martin Mwangi" />
+        <meta data-rh="true" property="og:url" content={meta.url} />
+        <meta data-rh="true" property="og:type" content={meta.type} />
+        <meta data-rh="true" property="og:site_name" content="Martin Mwangi Portfolio" />
+        <meta data-rh="true" property="og:description" content={meta.description} />
+        <meta data-rh="true" property="og:title" content={meta.title} />
+        <meta data-rh="true" property="og:image" content={meta.image} />
+        <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+        <meta data-rh="true" name="twitter:site" content="@marville001" />
+        <meta data-rh="true" name="twitter:title" content={meta.title} />
+        <meta data-rh="true" name="twitter:description" content={meta.description} />
+        <meta data-rh="true" name="twitter:image:src" content={meta.image} />
+        <meta data-rh="true" name="twitter:creator" content="@https://twitter.com/marville001" />
+        <meta data-rh="true" name="twitter:data1" content="6 min read"></meta>
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
 
+        <link rel="canonical" href={meta.url} />
         <script
           src="https://www.google.com/recaptcha/api.js?&render=explicit"
           async
