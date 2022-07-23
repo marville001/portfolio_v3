@@ -11,7 +11,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
   const [_blog, setBlog] = useState({})
 
   useEffect(() => {
-    setBlog(JSON.parse(blog))
+    setBlog(typeof blog === "object" ? JSON.parse(blog):blog)
   }, [blog])  
 
   return (
