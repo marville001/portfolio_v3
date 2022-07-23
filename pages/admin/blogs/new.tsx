@@ -69,8 +69,8 @@ const Blogs: NextPage = () => {
     const newBlog: Blog = {
       title: data.title,
       intro: data.intro,
-      slug: data.title.split(' ').join('-') + "-" + id,
-      blog: data.blog.toString().replaceAll('<p><br></p>', '').toLowerCase(),
+      slug: data.title.split(' ').join('-').toLowerCase() + "-" + id,
+      blog: data.blog.toString().replaceAll('<p><br></p>', ''),
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
     }
