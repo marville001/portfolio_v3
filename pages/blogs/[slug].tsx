@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import ContainerBlock from '../../components/ContainerBlock'
 import { postToJSON } from '../../lib/firebase'
 import { firestore } from '../../lib/firebaseConfig'
-import { Blog } from '../../types/blog'
 
 
 const ReadBlogs: NextPage = ({ blog }: any) => {
