@@ -70,7 +70,7 @@ const Blogs: NextPage = () => {
     const newBlog: Blog = {
       title: data.title,
       intro: data.intro,
-      slug: data.title.split(' ').join('-') + id,
+      slug: data.title.split(' ').join('-') + "-" + id,
       blog: data.blog.toString().replaceAll('<p><br></p>', '').toLowerCase(),
     }
 
