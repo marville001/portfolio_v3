@@ -13,15 +13,11 @@ const fileUploader = async (file: any) => {
         }
     );
 
-    console.log(response);
-
 
     const data = await response.json()
 
 
     const url = data.url.toString().replace("http:", "https:");
-    console.log({data, url});
-
     return url
 };
 

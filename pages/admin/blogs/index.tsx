@@ -50,7 +50,6 @@ const Blogs: NextPage = () => {
           <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
             {blogsContext.blogs.map((blog) => (
               <article className="overflow-hidden rounded border">
-                {console.log(blog)}
                 <Link href="/blogs">
                   <img
                     src={

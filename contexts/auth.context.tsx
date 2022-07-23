@@ -1,11 +1,5 @@
-import {
-  browserSessionPersistence,
-  setPersistence,
-  signOut,
-} from 'firebase/auth'
-import { createContext, ReactChildren, useContext, useState } from 'react'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import firebaseParseError from '../lib/firebaseParseError'
+import { createContext, ReactChildren, useContext } from 'react'
+
 import useFirebaseAuth, { UserInterface } from '../hooks/useFirebaseAuth'
 
 interface AuthContextInterface {

@@ -29,7 +29,6 @@ export default function useFirebaseAuth() {
   const auth = getAuth(app)
 
   const loginUser = async (email: string, password: string) => {
-    console.log(email, password)
     try {
       setLoadingLogin(true)
       setLoginError('')
@@ -58,7 +57,6 @@ export default function useFirebaseAuth() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user)
         const user_: UserInterface = {
           email: user.email ?? '',
           name: user.displayName ?? '',

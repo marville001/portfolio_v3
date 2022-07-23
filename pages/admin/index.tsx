@@ -25,8 +25,6 @@ const Login = () => {
     authContext.loginUser(data.username, data.password)
   }
 
-  // console.log(authContext);
-
   useEffect(()=>{
     if(authContext.user?.uid){
       router.push("/admin/home")

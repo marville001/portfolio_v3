@@ -1,10 +1,10 @@
 import { Menu, Transition } from '@headlessui/react'
+import { serverTimestamp } from 'firebase/firestore'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { ChangeEvent, Fragment, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
 import { FaChevronLeft, FaRegImage, FaSpinner, FaTimes } from 'react-icons/fa'
 
 import AdminWrapper from '../../../components/admin/AdminWrapper'
@@ -12,6 +12,7 @@ import ContainerBlock from '../../../components/ContainerBlock'
 import ReactQuillEditor from '../../../components/ReactQuillEditor'
 import { useBlogs } from '../../../contexts/blogs.context'
 import fileUploader from '../../../lib/fileUploader'
+import { firestore } from '../../../lib/firebaseConfig'
 import { Blog } from '../../../types/blog'
 // import fileUploader from "../../../lib/fileUploader"
 
@@ -38,8 +39,6 @@ const Blogs: NextPage = () => {
   const router = useRouter()
 
   const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    console.log('Uploading IMAGE')
-
     const { files } = e.target
     if (files!.length === 0) return
 
@@ -72,6 +71,8 @@ const Blogs: NextPage = () => {
       intro: data.intro,
       slug: data.title.split(' ').join('-') + "-" + id,
       blog: data.blog.toString().replaceAll('<p><br></p>', '').toLowerCase(),
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
     }
 
     if (cover) newBlog.cover = cover
@@ -86,6 +87,8 @@ const Blogs: NextPage = () => {
       clearForm()
       router.push('/admin/blogs')
     }
+
+    
   }
 
   return (

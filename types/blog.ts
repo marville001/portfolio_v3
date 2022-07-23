@@ -1,3 +1,4 @@
+
 export interface Blog {
 	title: string;
 	intro: string;
@@ -5,5 +6,6 @@ export interface Blog {
 	cover?: string;
 	slug?: string;
 	id?: string;
-
+	createdAt?: any,
+	updatedAt?: any,
 }

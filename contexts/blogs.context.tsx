@@ -15,7 +15,8 @@ import {
   useState,
 } from 'react'
 import toast from 'react-hot-toast'
-import { database } from '../lib/firebaseConfig'
+import { firestore } from '../lib/firebaseConfig'
+import { postToJSON } from '../lib/firebase'
 import { Blog } from '../types/blog'
 
 interface BlogsContextInterface {
@@ -41,19 +42,24 @@ const BlogsProvider = ({ children }: { children: ReactChildren }) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [creating, setCreating] = useState<boolean>(false)
 
-  const dbInstance = collection(database, 'blogs')
+  const dbInstance = collection(firestore, 'blogs')
 
-  const loadBlogs = async () => {
+  const loadBlogs = async (limit=10, page=1) => {
     try {
       setLoading(true)
 
       const blogsQuery = query(dbInstance)
       const querySnapshot = await getDocs(blogsQuery)
-      const data = querySnapshot.docs.map((doc) => doc.data())      
-
+      
+      const data = querySnapshot.docs.map((doc) => postToJSON(doc))  
+      
       setBlogs(data)
+
       setLoading(false)
+      return data;
     } catch (error) {
+      console.log(error);
+      
       setLoading(false)
     }
   }
