@@ -26,13 +26,33 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
       title={_blog?.title}
       url={`https://my-portfolio-dev.vercel.app/blogs/${_blog?.slug}`}
       date={_blog?.createdAt}
+      type="article"
     >
       <div className="bg-white">
-        <div className="max-w-[900px] mx-auto p-2 sm:p-4 bg-red-100 md:py-10 min-h-[500px]">
+        <div className="max-w-[768px] _shadow3 rounded-lg mt-28 mb-10 mx-auto p-4 sm:p-6 min-h-[500px]">
 
-          <div className="">
-            <img src="https://avatars.githubusercontent.com/u/51154760?v=4" className='w-16 h-16 rounded-full' alt="" />
+          <h2 className='my-6 text-xl font-semibold tracking-wider sm:text-3xl font-edium'>{_blog?.title}</h2>
+
+          <div className="flex gap-6 mt-8">
+            <img src="https://avatars.githubusercontent.com/u/51154760?v=4" className='w-20 h-20 rounded-full' alt="" />
+            <div className="">
+              <h2 className='text-lg sm:text-2xl font-bold  opacity-75'>Martin Mwangi</h2>
+              <p className='text-sm sm:text-base mt-3 font-bold opacity-50'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p>
+            </div>
           </div>
+
+          <article className='mt-6 mb-12'>
+            {
+              _blog?.cover && <img className='w-full rounded-lg max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
+            }
+
+            <div
+
+              className='prose lg:prose-lg mt-6'
+              dangerouslySetInnerHTML={{ __html: _blog?.blog || "" }}
+            ></div>
+
+          </article>
 
         </div>
       </div>
