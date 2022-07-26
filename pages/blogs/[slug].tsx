@@ -2,6 +2,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore'
 import { GetStaticProps, NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 import ContainerBlock from '../../components/ContainerBlock'
+import RichTextMainWrapper from '../../components/RichTextMainWrapper'
 import { postToJSON } from '../../lib/firebase'
 import { firestore } from '../../lib/firebaseConfig'
 import { Blog } from '../../types/blog'
@@ -31,7 +32,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
       <div className="bg-white">
         <div className="max-w-[768px] _shadow3 rounded-lg mt-28 mb-10 mx-auto p-4 sm:p-6 min-h-[500px]">
 
-          <h2 className='my-6 text-xl font-semibold tracking-wider sm:text-3xl font-edium'>{_blog?.title}</h2>
+          <h2 className='my-6 text-xl font-semibold sm:text-3xl font-edium'>{_blog?.title}</h2>
 
           <div className="flex gap-6 mt-8">
             <img src="https://avatars.githubusercontent.com/u/51154760?v=4" className='w-20 h-20 rounded-full' alt="" />
@@ -41,16 +42,13 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
             </div>
           </div>
 
-          <article className='mt-6 mb-12'>
+          <article className='mt-6 mb-12 flex flex-col items-center'>
             {
               _blog?.cover && <img className='w-full rounded-lg max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
             }
-
-            <div
-
-              className='prose lg:prose-lg mt-6'
-              dangerouslySetInnerHTML={{ __html: _blog?.blog || "" }}
-            ></div>
+            <RichTextMainWrapper>
+              <div dangerouslySetInnerHTML={{ __html: _blog?.blog || "" }} />
+            </RichTextMainWrapper>
 
           </article>
 
