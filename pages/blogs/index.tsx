@@ -111,7 +111,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
             {blogPosts.map((blog) => (
               <div key={blog.id} className="_shadow3 hover:scale-105 transition-all duration-150">
                 <article className="overflow-hidden rounded border">
-                  <Link href="/blogs">
+                  <Link href={`/blogs/${blog.slug}`}>
                     <img
                       src={
                       blog.cover
@@ -124,7 +124,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                   </Link>
 
                   <div className="p-5">
-                    <Link href="/blogs">
+                    <Link href={`/blogs/${blog.slug}`}>
                       <a className="text-lg text-primary hover:underline">
                         <h3>
                           {blog.title}

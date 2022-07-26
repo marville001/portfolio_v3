@@ -8,4 +8,7 @@ export interface Blog {
 	id?: string;
 	createdAt?: any,
 	updatedAt?: any,
+	draft?: boolean,
+	published?: boolean;
+	publishedAt?: any,
 }

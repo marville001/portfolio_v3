@@ -19,9 +19,10 @@ const modules = {
 interface EditorProos {
   handleChange: (e: string) => void
   hasErrors?: boolean
+  value?: string;
 }
 
-const ReactQuillEditor = ({ handleChange, hasErrors = false }: EditorProos) => {
+const ReactQuillEditor = ({ handleChange, hasErrors = false, value="" }: EditorProos) => {
   const [reactQuill, setReactQuill] = useState<any>()
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const ReactQuillEditor = ({ handleChange, hasErrors = false }: EditorProos) => {
         <reactQuill.default
           modules={modules}
           theme="snow"
+          value={value}
           onChange={handleChange}
           placeholder="Start typing in here... "
           style={{

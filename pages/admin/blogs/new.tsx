@@ -73,6 +73,9 @@ const Blogs: NextPage = () => {
       blog: data.blog.toString().replaceAll('<p><br></p>', ''),
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
+      publishedAt: serverTimestamp(),
+      draft: false,
+      published: false
     }
 
     if (cover) newBlog.cover = cover
@@ -88,7 +91,7 @@ const Blogs: NextPage = () => {
       router.push('/admin/blogs')
     }
 
-    
+
   }
 
   return (
@@ -156,9 +159,8 @@ const Blogs: NextPage = () => {
                       <div className="mt-5 px-1 py-1">
                         <label
                           htmlFor="cover-uploader"
-                          className={`cursor-pointer border bg-white ${
-                            uploading && 'cursor-not-allowed'
-                          }  flex  items-center justify-start gap-2 rounded-full bg-primary px-8 py-3 text-white`}
+                          className={`cursor-pointer border bg-white ${uploading && 'cursor-not-allowed'
+                            }  flex  items-center justify-start gap-2 rounded-full bg-primary px-8 py-3 text-white`}
                         >
                           {uploading && (
                             <FaSpinner className="animate-spin text-lg" />
@@ -189,9 +191,8 @@ const Blogs: NextPage = () => {
               <input
                 type="text"
                 placeholder="Blog Title"
-                className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${
-                  errors.title && 'ring-1 ring-red-400'
-                }`}
+                className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.title && 'ring-1 ring-red-400'
+                  }`}
                 {...register('title', {
                   required: {
                     value: true,
@@ -222,9 +223,8 @@ const Blogs: NextPage = () => {
               <input
                 type="text"
                 placeholder="Blog Intro"
-                className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${
-                  errors.title && 'ring-1 ring-red-400'
-                }`}
+                className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.title && 'ring-1 ring-red-400'
+                  }`}
                 {...register('intro', {
                   required: {
                     value: true,

@@ -49,8 +49,8 @@ const Blogs: NextPage = () => {
         {blogsContext.blogs.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
             {blogsContext.blogs.map((blog) => (
-              <article className="overflow-hidden rounded border">
-                <Link href="/blogs">
+              <article className="overflow-hidden rounded border self-start">
+                <Link href={`/blogs/${blog.slug}`}>
                   <img
                     src={
                       blog.cover
@@ -58,12 +58,12 @@ const Blogs: NextPage = () => {
                         : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
                     }
                     alt="My Blog"
-                    className="cursor-pointer border-b h-40 w-full"
+                    className="cursor-pointer object-cover border-b h-48 w-full"
                   />
                 </Link>
 
                 <div className="p-5">
-                  <Link href="/blogs">
+                  <Link href={`/blogs/${blog.slug}`}>
                     <a className="text-lg text-primary hover:underline">
                       <h3>
                         {blog.title}
@@ -71,14 +71,10 @@ const Blogs: NextPage = () => {
                     </a>
                   </Link>
 
-                  <p className="mt-3 text-sm">
-                    {blog.intro}
-                  </p>
-
                   <div className="mt-5 flex items-center justify-between">
                     <p>Jun 21, 2022</p>
 
-                    <Link href="/blogs">
+                    <Link href={`/admin/blogs/${blog.id}`}>
                       <a className="rounded tracking-wider border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
                         Edit
                       </a>
