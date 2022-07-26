@@ -97,19 +97,19 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 			<AdminWrapper>
 				{
 					loadedBlog?.title &&
-					<div className="_shadow2 relative my-12 flex flex-col items-center rounded-2xl bg-white p-6">
+					<div className="_shadow2 relative  mx-auto  md:w-[700px] my-12 flex flex-col items-center rounded-2xl bg-white p-6">
 						<Link href="/admin/blogs">
 							<a className="absolute top-2 left-2 cursor-pointer rounded-lg p-4 hover:bg-gray-100">
 								<FaChevronLeft />
 							</a>
 						</Link>
-						<div className="flex flex-1 justify-center">
+						<div className="self-start mt-8">
 							<h2 className="text-3xl font-bold">Update Blog</h2>
 						</div>
 
 						<form
 							onSubmit={handleSubmit(handleUpdateBlog)}
-							className="my-16 w-full p-4 md:w-[700px]"
+							className="my-6 w-full p-4 md:w-[700px]"
 						>
 							{/* Blog Cover Image */}
 							{cover ? (

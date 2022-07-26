@@ -48,7 +48,7 @@ const BlogsProvider = ({ children }: { children: ReactChildren }) => {
 
   const dbInstance = collection(firestore, 'blogs')
 
-  const loadBlogs = async (limit = 10, page = 1) => {
+  const loadBlogs = async () => {
     try {
       setLoading(true)
 
@@ -100,7 +100,7 @@ const BlogsProvider = ({ children }: { children: ReactChildren }) => {
       toast.success('Blog updated successfully')
 
       loadBlogs()
-      
+
       return {
         success: true,
       }
