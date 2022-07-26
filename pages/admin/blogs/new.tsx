@@ -95,11 +95,7 @@ const Blogs: NextPage = () => {
   }
 
   return (
-    <ContainerBlock
-      title="Martin - Software Developer - REACT,NEXT,NODE..."
-      description="I've been developing websites for more than 2 years straight. Get in touch with me to know more."
-      showInterest={false}
-    >
+    <ContainerBlock>
       <AdminWrapper>
         <div className="_shadow2 relative my-12 flex flex-col items-center rounded-2xl bg-white p-6">
           <Link href="/admin/blogs">

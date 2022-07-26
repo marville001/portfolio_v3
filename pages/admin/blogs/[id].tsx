@@ -78,8 +78,6 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 		if (response.success) {
 			router.push('/admin/blogs')
 		}
-
-
 	}
 
 	useEffect(() => {
@@ -95,17 +93,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 	}, [blog])
 
 	return (
-		<ContainerBlock
-			description={loadedBlog?.intro}
-			image={loadedBlog?.cover
-				? loadedBlog?.cover
-				: 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'}
-			title={loadedBlog?.title}
-			url={`https://my-portfolio-dev.vercel.app/blogs/${loadedBlog?.slug}`}
-			date={loadedBlog?.createdAt}
-			type="article"
-		>
-
+		<ContainerBlock>
 			<AdminWrapper>
 				{
 					loadedBlog?.title &&
