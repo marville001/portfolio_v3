@@ -109,7 +109,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
         <div className="container">
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
             {blogPosts.map((blog) => (
-              <div key={blog.id} className="_shadow3 hover:scale-105 transition-all duration-150">
+              <div key={blog.id} className="_shadow3 sm:hover:scale-[1.02] transition-all duration-150">
                 <article className="overflow-hidden rounded border">
                   <Link href={`/blogs/${blog.slug}`}>
                     <img
@@ -119,7 +119,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                         : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
                     }
                       alt="My Blog"
-                      className="cursor-pointer h-48 border-b object-cover w-full"
+                      className="cursor-pointer h-56 border-b object-cover w-full"
                     />
                   </Link>
 
