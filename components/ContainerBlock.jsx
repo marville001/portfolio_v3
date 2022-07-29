@@ -71,7 +71,7 @@ const ContainerBlock = ({
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
         <Progress isAnimating={isAnimating} />
-        <div className="mt-[80px]">{children}</div>
+        <div className="">{children}</div>
         <Footer showInterest={showInterest} />
       </main>
     </div>

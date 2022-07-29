@@ -29,29 +29,33 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
       date={_blog?.createdAt}
       type="article"
     >
-      <div className="bg-white">
-        <div className="max-w-[768px] _shadow3 rounded-lg mt-28 mb-10 mx-auto p-4 sm:p-6 min-h-[500px]">
+      <div className="bg-[#f9f9f9] py-8 p-2 sm:px-6">
+        <div className="flex mx-auto max-w-[1200px] flex-col lg:flex-row justify-center gap-8">
+          <div className="max-w-[768px] mx-auto lg:mx-0 lg:max-w-[66.666%] w-auto bg-white _shadow3 rounded-lg p-4 sm:p-6 min-h-[500px]">
 
-          <h2 className='my-6 text-xl font-semibold sm:text-3xl font-edium'>{_blog?.title}</h2>
+            <h2 className='my-6 text-xl text-center font-semibold sm:text-3xl font-edium'>{_blog?.title}</h2>
 
-          <div className="flex gap-6 mt-8">
-            <img src="https://avatars.githubusercontent.com/u/51154760?v=4" className='w-20 h-20 rounded-full' alt="" />
-            <div className="">
-              <h2 className='text-lg sm:text-2xl font-bold  opacity-75'>Martin Mwangi</h2>
-              <p className='text-sm sm:text-base mt-3 font-bold opacity-50'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p>
+            <div className="flex gap-6 mt-8">
+              <img src="https://avatars.githubusercontent.com/u/51154760?v=4" className='w-20 h-20 rounded-full' alt="" />
+              <div className="">
+                <h2 className='text-lg sm:text-2xl font-bold  opacity-75'>Martin Mwangi</h2>
+                <p className='text-sm sm:text-base mt-3 font-bold opacity-50'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p>
+              </div>
             </div>
+
+            <article className='mt-6 mb-12 flex flex-col items-center'>
+              {
+                _blog?.cover && <img className='w-full rounded-lg max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
+              }
+              <RichTextMainWrapper>
+                <div dangerouslySetInnerHTML={{ __html: _blog?.blog || "" }} />
+              </RichTextMainWrapper>
+
+            </article>
+
           </div>
 
-          <article className='mt-6 mb-12 flex flex-col items-center'>
-            {
-              _blog?.cover && <img className='w-full rounded-lg max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
-            }
-            <RichTextMainWrapper>
-              <div dangerouslySetInnerHTML={{ __html: _blog?.blog || "" }} />
-            </RichTextMainWrapper>
-
-          </article>
-
+          <div className="p-6 hidden lg:block min-w-[300px] bg-white rounded-lg sticky top-5 min-h-[calc(100vh-2.75rem)] _shadow3"></div>
         </div>
       </div>
     </ContainerBlock>
