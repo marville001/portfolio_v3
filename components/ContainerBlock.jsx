@@ -32,7 +32,8 @@ const ContainerBlock = ({
         <title>{meta.title}</title>
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta content={meta.description} name="description" />
-        <link rel="icon" href="/assets/my-logo.ico" type="image/icon type" />
+        <meta name="target" content="all"/>
+        <meta name="audience" content="all"/>
         <meta data-rh="true" name="author" content="Martin Mwangi" />
         <meta data-rh="true" property="og:url" content={meta.url} />
         <meta data-rh="true" property="og:type" content={meta.type} />
@@ -42,10 +43,10 @@ const ContainerBlock = ({
         <meta data-rh="true" property="og:image" content={meta.image} />
         <meta data-rh="true" name="twitter:card" content="summary_large_image" />
         <meta data-rh="true" name="twitter:site" content="@marville001" />
+        <meta data-rh="true" name="twitter:creator" content="@marville001" />
         <meta data-rh="true" name="twitter:title" content={meta.title} />
         <meta data-rh="true" name="twitter:description" content={meta.description} />
-        <meta data-rh="true" name="twitter:image:src" content={meta.image} />
-        <meta data-rh="true" name="twitter:creator" content="@https://twitter.com/marville001" />
+        <meta data-rh="true" name="twitter:image" content={meta.image} />
         {meta.date && (<meta property="article:published_time" content={meta.date} />)}
         {
           meta.tags.map((tag, i) => ( <meta key={i} data-rh="true" property="article:tag" content={tag} />  ))
@@ -58,9 +59,11 @@ const ContainerBlock = ({
             <meta data-rh="true" name="twitter:label1" content="Time to read" />
             <meta data-rh="true" name="twitter:data1" content={meta.timeToRead} />
             <meta property="article:author" content="https://www.linkedin.com/in/marville001/" />
+            <meta property="article:publisher" content="https://www.linkedin.com/in/marville001"></meta>
           </>
         }
 
+        <link rel="icon" href="/assets/my-logo.ico" type="image/icon type" />
         <link rel="canonical" href={meta.url} />
         <script
           src="https://www.google.com/recaptcha/api.js?&render=explicit"
