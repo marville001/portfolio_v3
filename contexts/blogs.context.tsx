@@ -17,10 +17,10 @@ import toast from 'react-hot-toast'
 import { firestore } from '../lib/firebaseConfig'
 import { postToJSON } from '../lib/firebase'
 import { Blog } from '../types/blog'
+import { getAllBlogsService } from '../services/blogs.service'
 
 interface BlogsContextInterface {
   blogs: Blog[] | []
-  loadBlogs: () => void
   createBlog: (blog: Blog) => any
   updateBlog: (blog: Blog, id: string) => any
   loading: boolean
@@ -30,7 +30,6 @@ interface BlogsContextInterface {
 
 const blogsContextDefaults: BlogsContextInterface = {
   blogs: [],
-  loadBlogs: () => { },
   createBlog: () => { },
   updateBlog: () => { },
   loading: false,
@@ -51,16 +50,9 @@ const BlogsProvider = ({ children }: { children: ReactChildren }) => {
   const loadBlogs = async () => {
     try {
       setLoading(true)
-
-      const blogsQuery = query(dbInstance)
-      const querySnapshot = await getDocs(blogsQuery)
-
-      const data = querySnapshot.docs.map((doc) => postToJSON(doc))
-
+      const data = await getAllBlogsService();
       setBlogs(data)
-
       setLoading(false)
-      return data;
     } catch (error) {
       console.log(error);
 
@@ -122,7 +114,7 @@ const BlogsProvider = ({ children }: { children: ReactChildren }) => {
 
   return (
     <BlogsContext.Provider
-      value={{ blogs, loadBlogs, createBlog, updateBlog, loading, creating, updating }}
+      value={{ blogs, createBlog, updateBlog, loading, creating, updating }}
     >
       {children}{' '}
     </BlogsContext.Provider>
