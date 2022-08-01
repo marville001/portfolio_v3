@@ -1,25 +1,23 @@
 import {
-  query,
   collection,
-  getDocs,
   doc,
   addDoc,
   updateDoc,
 } from 'firebase/firestore'
 import {
-  createContext,
-  ReactChildren,
-  useContext,
   useEffect,
+  createContext,
+  useContext,
   useState,
-} from 'react'
+  ReactElement,
+  ReactNode,
+} from 'react';
 import toast from 'react-hot-toast'
 import { firestore } from '../lib/firebaseConfig'
-import { postToJSON } from '../lib/firebase'
 import { Blog } from '../types/blog'
 import { getAllBlogsService } from '../services/blogs.service'
 
-interface BlogsContextInterface {
+interface ContextProps {
   blogs: Blog[] | []
   createBlog: (blog: Blog) => any
   updateBlog: (blog: Blog, id: string) => any
@@ -28,7 +26,7 @@ interface BlogsContextInterface {
   updating: boolean
 }
 
-const blogsContextDefaults: BlogsContextInterface = {
+const blogsContextDefaults: ContextProps = {
   blogs: [],
   createBlog: () => { },
   updateBlog: () => { },
@@ -37,9 +35,13 @@ const blogsContextDefaults: BlogsContextInterface = {
   updating: false,
 }
 
-const BlogsContext = createContext<BlogsContextInterface>(blogsContextDefaults)
+const BlogsContext = createContext<ContextProps>(blogsContextDefaults)
 
-const BlogsProvider = ({ children }: { children: ReactChildren }) => {
+type Props = {
+  children: ReactNode;
+};
+
+const BlogsProvider = ({ children }: Props): ReactElement => {
   const [blogs, setBlogs] = useState<any[]>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [updating, setUpdating] = useState<boolean>(false)
@@ -51,7 +53,7 @@ const BlogsProvider = ({ children }: { children: ReactChildren }) => {
     try {
       setLoading(true)
       const data = await getAllBlogsService();
-      setBlogs(data)
+      if (data) setBlogs(data)
       setLoading(false)
     } catch (error) {
       console.log(error);
@@ -116,10 +118,10 @@ const BlogsProvider = ({ children }: { children: ReactChildren }) => {
     <BlogsContext.Provider
       value={{ blogs, createBlog, updateBlog, loading, creating, updating }}
     >
-      {children}{' '}
+      {children}
     </BlogsContext.Provider>
   )
 }
 
-export const useBlogs = () => useContext(BlogsContext)
+export const useBlogs = (): ContextProps => useContext(BlogsContext)
 export default BlogsProvider
