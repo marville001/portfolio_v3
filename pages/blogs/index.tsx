@@ -119,7 +119,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                         : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
                     }
                       alt="My Blog"
-                      className="cursor-pointer  sm:group-hover:hover:scale-[1.02] transition-all duration-150 h-56 border-b object-cover w-full"
+                      className="cursor-pointer  group-hover:scale-[1.02] transition-all duration-150 h-56 border-b object-cover w-full"
                     />
                   </Link>
 
