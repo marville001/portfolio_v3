@@ -109,7 +109,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
         <div className="container">
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
             {blogPosts.map((blog) => (
-              <div key={blog.id} className="_shadow3 sm:hover:scale-[1.02] transition-all duration-150">
+              <div key={blog.id} className="_shadow3 group">
                 <article className="overflow-hidden rounded border">
                   <Link href={`/blogs/${blog.slug}`}>
                     <img
@@ -119,7 +119,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                         : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
                     }
                       alt="My Blog"
-                      className="cursor-pointer h-56 border-b object-cover w-full"
+                      className="cursor-pointer  sm:group-hover:hover:scale-[1.02] transition-all duration-150 h-56 border-b object-cover w-full"
                     />
                   </Link>
 
@@ -161,24 +161,6 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
               </h4>
             </div>
           }
-
-          {/* {!postsEnd && */}
-          {/* <div className="mb-8 flex justify-end">
-            <div className="flex items-center gap-2">
-              <FaChevronLeft
-                onClick={(page <= 1) ? () => { } : getPreviousPosts}
-                className={`text-xl ${page === 1 ? "cursor-not-allowed text-slate-300" : "cursor-pointer text-slate-900"}`}
-              />
-              <div className="rounded-md bg-primary px-3 py-1 text-sm text-white">
-                1
-              </div>
-              <FaChevronRight
-                onClick={(page * (pageSize) >= totalPosts) ? () => { } : getNextPosts}
-                className={`text-xl ${(page * (pageSize) >= totalPosts) ? "cursor-not-allowed text-slate-300" : "cursor-pointer text-slate-900"}`}
-              />
-            </div>
-          </div> */}
-          {/* } */}
         </div>
       </div>
     </ContainerBlock>
