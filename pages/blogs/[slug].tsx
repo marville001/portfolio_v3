@@ -31,8 +31,10 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
         <div className="flex mx-auto max-w-[1200px] flex-col lg:flex-row justify-center gap-8">
           <div className="max-w-[768px] mx-auto lg:mx-0 lg:max-w-[66.666%] w-auto bg-white _shadow3 rounded-lg p-4 sm:p-6 min-h-[500px]">
 
-            <h2 className='my-6 text-xl text-center font-semibold sm:text-3xl max-w-[300px] bg-red-400'>{_blog?.title}</h2>
-            
+            <div className="flex justify-center">
+              <h2 className='my-6 text-xl text-center font-semibold sm:text-4xl max-w-[600px]'>{_blog?.title}</h2>
+            </div>
+
             <div className="flex gap-6 mt-8 justify-center flex-wrap">
               <span className='bg-gray-100 px-3 py-1.5 tracking-wider leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>#</b> ReactJs</span>
               <span className='bg-gray-100 px-3 py-1.5 tracking-wider leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>#</b> ReactJs</span>
