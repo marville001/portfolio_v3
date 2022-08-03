@@ -37,13 +37,13 @@ const Tags: NextPage = () => {
 				</div>
 
 				<div className="flex justify-between">
-					<h2 className="text-lg">Posts By Martin</h2>
+					<h2 className="text-lg">All Tags</h2>
 					<Link href="/admin/blogs/new">
 						<a className="flex cursor-pointer items-center gap-2 rounded-md px-4 py-1 hover:bg-primary hover:text-white">
 							<div className="">
 								<FaPlus />
 							</div>
-							<span>New Blog</span>
+							<span>New Tag</span>
 						</a>
 					</Link>
 				</div>
