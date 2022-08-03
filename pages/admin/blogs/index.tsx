@@ -23,9 +23,11 @@ const Blogs: NextPage = () => {
           </div>
           <div className="flex flex-1 flex-col justify-center">
             <h2 className="text-3xl font-bold">
-              Blogs{' '}
-              <span className="rounded-lg bg-primary p-2 text-base text-white">
-                {blogsContext.blogs.length}
+              Blogs
+              <span className="rounded-lg bg-primary px-2 pt-2 ml-2 text-base text-white">
+                <sup>
+                  {blogsContext.blogs.length}
+                </sup>
               </span>
             </h2>
             <p className="mt-3 text-lg">
