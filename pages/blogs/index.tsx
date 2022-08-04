@@ -111,7 +111,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
             {blogPosts.map((blog) => (
               <div key={blog.id} className="_shadow4 group">
                 <Link href={`/blogs/${blog.slug}`}>
-                  <article className="overflow-hidden rounded">
+                  <article className="overflow-hidden rounded cursor-pointer">
                     <img
                       src={
                         blog.cover
