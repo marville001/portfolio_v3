@@ -75,7 +75,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
 
     setBlogPosts(typeof blogs === "object" ? [] : JSON.parse(blogs));
   }, [blogs, total])
-  
+
 
 
   return (
@@ -88,7 +88,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
           <h1 className="text-center text-4xl font-light text-white">
             Welcome to Martin Mwangi's Blog
           </h1>
-          <div className="flex justify-center">
+          <div className="flex justify-center_">
             <p className="my-5 max-w-[400px] text-center text-sm text-gray-200">
               Here I share my journey and learning experience in (but not
               limitted to ) web development, docker, aws, kubernetes, React.Js,
@@ -109,48 +109,32 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
         <div className="container">
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
             {blogPosts.map((blog) => (
-              <div key={blog.id} className="_shadow3 group">
-                <article className="overflow-hidden rounded border">
-                  <Link href={`/blogs/${blog.slug}`}>
+              <div key={blog.id} className="_shadow4 group">
+                <Link href={`/blogs/${blog.slug}`}>
+                  <article className="overflow-hidden rounded">
                     <img
                       src={
-                      blog.cover
-                        ? blog.cover
-                        : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
-                    }
+                        blog.cover
+                          ? blog.cover
+                          : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
+                      }
                       alt="My Blog"
                       className="cursor-pointer  group-hover:scale-[1.02] transition-all duration-150 h-56 border-b object-cover w-full"
                     />
-                  </Link>
 
-                  <div className="p-5">
-                    <Link href={`/blogs/${blog.slug}`}>
-                      <a className="text-lg text-primary hover:underline">
+                    <div className="p-5">
+                      <a className="text-xl text-primary hover:underline">
                         <h3>
                           {blog.title}
                         </h3>
                       </a>
-                    </Link>
 
-                    <p className="mt-3 text-sm">
-                      {blog.intro}
-                    </p>
-
-                    <div className="mt-5 flex items-center justify-between">
-                      <p>
-                        {new Date(blog.createdAt).toDateString()}
+                      <p className="mt-5 text-[15px]">
+                        {blog.intro}
                       </p>
-                      {console.log(blog.createdAt)}
-                      
-
-                      <Link href={`/blogs/${blog.slug}`}>
-                        <a className="rounded border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
-                          Read
-                        </a>
-                      </Link>
                     </div>
-                  </div>
-                </article>
+                  </article>
+                </Link>
               </div>
             ))}
           </div>
