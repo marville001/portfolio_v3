@@ -3,7 +3,7 @@ import { serverTimestamp } from 'firebase/firestore'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { ChangeEvent, Fragment, useState } from 'react'
+import React, { ChangeEvent, Fragment, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { FaChevronLeft, FaRegImage, FaSpinner, FaTimes } from 'react-icons/fa'
 
@@ -20,6 +20,7 @@ type Inputs = {
   title: string
   blog: string
   intro: string
+  tags: string
 }
 
 const Blogs: NextPage = () => {
@@ -71,6 +72,9 @@ const Blogs: NextPage = () => {
       intro: data.intro,
       slug: data.title.split(' ').join('-').toLowerCase() + "-" + id,
       blog: data.blog.toString().replaceAll('<p><br></p>', ''),
+      tags: data.tags && data.tags.length > 5
+        ? data.tags.trim().split(",").map((tag: string) => tag.trim())
+        : [],
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
       publishedAt: serverTimestamp(),
@@ -93,6 +97,12 @@ const Blogs: NextPage = () => {
 
 
   }
+
+  // useEffect(() => {
+  //   setValue
+
+  // }, [setValue])
+
 
   return (
     <ContainerBlock>
@@ -195,12 +205,12 @@ const Blogs: NextPage = () => {
                     message: 'Title is required',
                   },
                   minLength: {
-                    value: 25,
-                    message: 'Title should be 25-100 characters',
+                    value: 10,
+                    message: 'Title should be 10-100 characters',
                   },
                   maxLength: {
                     value: 100,
-                    message: 'Title should be 25-100 characters',
+                    message: 'Title should be 10-100 characters',
                   },
                 })}
               />
@@ -211,7 +221,7 @@ const Blogs: NextPage = () => {
               )}
             </div>
 
-            {/* Title */}
+            {/* Intro */}
             <div className="mt-6 flex flex-col gap-2">
               <label htmlFor="intro" className="text-sm">
                 Blog Intro
@@ -228,12 +238,8 @@ const Blogs: NextPage = () => {
                   },
                   minLength: {
                     value: 25,
-                    message: 'Intro should be 25-150 characters',
-                  },
-                  maxLength: {
-                    value: 150,
-                    message: 'Intro should be 25-150 characters',
-                  },
+                    message: 'Intro should be more than 25 characters',
+                  }
                 })}
               />
               {errors.intro && (
@@ -243,6 +249,20 @@ const Blogs: NextPage = () => {
               )}
             </div>
 
+            {/* Tags */}
+            <div className="mt-6 flex flex-col gap-2">
+              <label htmlFor="intro" className="text-sm">
+                Blog Tags
+              </label>
+              <input
+                type="text"
+                placeholder="tags1, tag 2, tag-3,"
+                className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0`}
+                {...register('tags')}
+              />
+            </div>
+
+            {/* Blog */}
             <div className="mt-6 flex flex-col gap-2">
               <label htmlFor="" className="text-sm">
                 Blog Content
@@ -253,8 +273,10 @@ const Blogs: NextPage = () => {
                     ? errors?.blog?.message?.length > 0
                     : false
                 }
-                handleChange={(e) => {
-                  setValue('blog', e)
+                handleChange={(blog) => {
+                  console.log(blog);
+
+                  setValue('blog', blog)
                   clearErrors('blog')
                   // setError('blog', { message: '' })
                 }}
