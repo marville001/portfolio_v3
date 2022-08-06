@@ -45,8 +45,8 @@ const Portfolio = (props: Props) => {
 
       <div className="bg-white">
         <div className="container  py-12">
-          <div className="mb-4 flex flex-col items-center">
-            <h4>Filter By:</h4>
+          <div className="mb-8 flex flex-col items-center">
+            <h4>Filters</h4>
             <div className="mt-2 max-w-[700px] flex justify-center flex-wrap gap-2">
               {[1, 2, 3, 4, 5, 6, 7, 8,9,0].map((tag, i) => (
                 <div
@@ -75,7 +75,6 @@ const Portfolio = (props: Props) => {
               ))}
             </div>
           </div>
-          <hr className="my-4" />
           {/* Portfolios */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {props?.projects?.map((project) => (
