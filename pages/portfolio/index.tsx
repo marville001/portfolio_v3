@@ -45,10 +45,10 @@ const Portfolio = (props: Props) => {
 
       <div className="bg-white">
         <div className="container  py-12">
-          <div className="mb-4">
+          <div className="mb-4 flex flex-col items-center">
             <h4>Filter By:</h4>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {[1, 2, 3, 4, 5, 6, 7].map((tag, i) => (
+            <div className="mt-2 max-w-[700px] flex justify-center flex-wrap gap-2">
+              {[1, 2, 3, 4, 5, 6, 7, 8,9,0].map((tag, i) => (
                 <div
                   key={i}
                   onClick={() =>
@@ -58,7 +58,7 @@ const Portfolio = (props: Props) => {
                         : [...prev, tag]
                     )
                   }
-                  className={`duration-50 flex cursor-pointer items-center gap-1 rounded border px-3 py-1 text-center text-xs transition-all  
+                  className={`duration-50 flex cursor-pointer items-center gap-1 rounded border px-3 py-1 text-center text-sm transition-all  
 			  ${
           filters.includes(tag)
             ? 'bg-primary text-white'
