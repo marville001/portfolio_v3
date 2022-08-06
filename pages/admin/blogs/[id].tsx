@@ -50,7 +50,6 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 			setUploading(false)
 		} catch (error) {
 			setUploading(false)
-			console.log(error)
 		}
 	}
 
