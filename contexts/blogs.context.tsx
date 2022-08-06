@@ -56,8 +56,6 @@ const BlogsProvider = ({ children }: Props): ReactElement => {
       if (data) setBlogs(data)
       setLoading(false)
     } catch (error) {
-      console.log(error);
-
       setLoading(false)
     }
   }
