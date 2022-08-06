@@ -32,15 +32,19 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
         <div className="flex mx-auto max-w-[1200px] flex-col lg:flex-row justify-center gap-8">
           <div className="max-w-[768px] mx-auto lg:mx-0 lg:max-w-[66.666%] w-[100%0] rounded-lg p-2 sm:p-6 min-h-[500px]">
 
-            <div className="flex gap-6 mt-8 max-w-[600px] mx-auto justify-center flex-wrap">
-              <Link href={`/tags/${"reactjs"}`}>
-                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 
+            {_blog?.tags && _blog?.tags?.length > 0 &&
+              <div className="flex gap-6 mt-8 max-w-[600px] mx-auto justify-center flex-wrap">
+                {_blog?.tags?.map((tag: string, i: number) => (
+                  <Link href={`/tags/${tag}`} key={i}>
+                    <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 
                     hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white 
                     cursor-pointer rounded-md transition-all duration-150 ease-linear'><b className='text-gray-600'>
-                  #</b> ReactJs
-                </a>
-              </Link>
-            </div>
+                        #</b> {tag}
+                    </a>
+                  </Link>
+                ))}
+              </div>
+            }
 
             <div className="flex justify-center">
               <h2 className='my-6 text-xl text-center font-semibold sm:text-4xl max-w-[600px]'>{_blog?.title}</h2>
