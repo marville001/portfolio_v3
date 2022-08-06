@@ -50,7 +50,6 @@ const Blogs: NextPage = () => {
       setUploading(false)
     } catch (error) {
       setUploading(false)
-      console.log(error)
     }
   }
 
