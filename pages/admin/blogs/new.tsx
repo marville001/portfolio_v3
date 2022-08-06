@@ -274,8 +274,6 @@ const Blogs: NextPage = () => {
                     : false
                 }
                 handleChange={(blog) => {
-                  console.log(blog);
-
                   setValue('blog', blog)
                   clearErrors('blog')
                   // setError('blog', { message: '' })

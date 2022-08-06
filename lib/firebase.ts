@@ -11,8 +11,5 @@ export function postToJSON(doc: DocumentSnapshot) {
 		updatedAt: data?.updatedAt ? data.updatedAt.toDate() : null,
 	}
 
-	console.log(data);
-	
-
 	return data;
 }
