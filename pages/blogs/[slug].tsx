@@ -111,8 +111,6 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       revalidate: 60, // after 60seconds.. it will revalidate the old cache
     };
   } catch (error) {
-    console.log(error);
-
     return {
       props: { blogs: {} },
     };
