@@ -74,7 +74,7 @@ const Blogs: NextPage = () => {
                   </Link>
 
                   <div className="mt-5 flex items-center justify-between">
-                    <p>Jun 21, 2022</p>
+                    <p>{new Date(blog?.createdAt).toDateString().substring(3)}</p>
 
                     <Link href={`/admin/blogs/${blog.id}`}>
                       <a className="rounded tracking-wider border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
