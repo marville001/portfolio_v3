@@ -1,5 +1,6 @@
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { GetStaticProps, NextPage } from 'next'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import ContainerBlock from '../../components/ContainerBlock'
 import RichTextMainWrapper from '../../components/RichTextMainWrapper'
@@ -29,20 +30,46 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
     >
       <div className="bg-[#f9f9f9] py-8 p-2 sm:px-6">
         <div className="flex mx-auto max-w-[1200px] flex-col lg:flex-row justify-center gap-8">
-          <div className="max-w-[768px] mx-auto lg:mx-0 lg:max-w-[66.666%] w-auto bg-white _shadow3 rounded-lg p-4 sm:p-6 min-h-[500px]">
+          <div className="max-w-[768px] mx-auto lg:mx-0 lg:max-w-[66.666%] w-auto rounded-lg p-4 sm:p-6 min-h-[500px]">
+
+            <div className="flex gap-6 mt-8 max-w-[600px] mx-auto justify-center flex-wrap">
+              <Link href={`/tags/${"reactjs"}`}>
+                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
+                  #</b> ReactJs
+                </a>
+              </Link>
+              <Link href={`/tags/${"reactjs"}`}>
+                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
+                  #</b> ReactJs
+                </a>
+              </Link>
+              <Link href={`/tags/${"reactjs"}`}>
+                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
+                  #</b> ReactJs
+                </a>
+              </Link>
+              <Link href={`/tags/${"reactjs"}`}>
+                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
+                  #</b> ReactJs
+                </a>
+              </Link>
+              <Link href={`/tags/${"reactjs"}`}>
+                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
+                  #</b> ReactJs
+                </a>
+              </Link>
+              <Link href={`/tags/${"reactjs"}`}>
+                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
+                  #</b> ReactJs
+                </a>
+              </Link>
+            </div>
 
             <div className="flex justify-center">
               <h2 className='my-6 text-xl text-center font-semibold sm:text-4xl max-w-[600px]'>{_blog?.title}</h2>
             </div>
 
-            <div className="flex gap-6 mt-8 justify-center flex-wrap">
-              <span className='bg-gray-100 px-3 py-1.5 tracking-wider leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>#</b> ReactJs</span>
-              <span className='bg-gray-100 px-3 py-1.5 tracking-wider leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>#</b> ReactJs</span>
-              <span className='bg-gray-100 px-3 py-1.5 tracking-wider leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>#</b> ReactJs</span>
-              <span className='bg-gray-100 px-3 py-1.5 tracking-wider leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>#</b> ReactJs</span>
-              <span className='bg-gray-100 px-3 py-1.5 tracking-wider leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>#</b> ReactJs</span>
-              <span className='bg-gray-100 px-3 py-1.5 tracking-wider leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>#</b> ReactJs</span>
-            </div>
+
 
             <div className="flex gap-6 mt-8">
               <img src="https://avatars.githubusercontent.com/u/51154760?v=4" className='w-20 h-20 rounded-full' alt="" />
@@ -64,7 +91,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 
           </div>
 
-          <div className="p-6 hidden lg:block min-w-[300px] bg-white rounded-lg sticky top-5 min-h-[calc(100vh-2.75rem)] _shadow3"></div>
+          {/* <div className="p-6 hidden lg:block min-w-[300px] bg-white rounded-lg sticky top-5 min-h-[calc(100vh-2.75rem)] _shadow3"></div> */}
         </div>
       </div>
     </ContainerBlock>
