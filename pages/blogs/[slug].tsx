@@ -47,8 +47,9 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
             </div>
 
             <div className="flex justify-center items-center gap-5 sm:gap-8 sm:divide-x-2 flex-col sm:flex-row">
-              <h4 className='text-lg font-[400]'>By <Link href="/about-me/"><a className='hover:text-primary ml-2'>Martin Mwangi</a></Link></h4>
-              <p className='text-lg font-[400] sm:pl-8'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p>
+              <h4 className='text-lg font-[400] text-center'>By <Link href="/about-me/"><a className='hover:text-primary ml-2'>Martin Mwangi</a></Link></h4>
+              <p className='text-lg font-[400] text-center sm:pl-8'>{new Date(_blog?.createdAt).toDateString().substring(3)}</p>
+              {/* <p className='text-lg font-[400] text-center sm:pl-8'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p> */}
             </div>
 
             <article className='mt-16 mb-12 flex flex-col items-center'>
