@@ -10,8 +10,8 @@ const PortfolioCard = (props: any) => {
   const project: Project = props.project
 
   return (
-    <div className="">
-      <article className="overflow-hidden glass-effect">
+    <div className="max-w-[400px] mx-auto">
+      <article className="overflow-hidden _shadow2 rounded-lg border border-grayish group">
         <div className="h-[200px] w-full items-stretch overflow-hidden">
           <Splide
             options={{
@@ -28,7 +28,7 @@ const PortfolioCard = (props: any) => {
                 <img
                   src={urlFor(image).url()}
                   alt={`${image}`}
-                  className="h-[200px] w-full"
+                  className="h-[200px] w-full hover:scale-105"
                 />
               </SplideSlide>
             ))}
