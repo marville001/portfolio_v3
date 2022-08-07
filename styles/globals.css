@@ -17,6 +17,8 @@
 body {
   overflow-x: hidden;
 }
+
+/* Editor */
 .ql-toolbar {
   border: none !important;
   background-color: white;
@@ -32,6 +34,15 @@ body {
 }
 .ql-editor::-webkit-scrollbar{
   display: none;
+}
+
+/* Slider */
+.splide__pagination__page{
+  background-color: #64ffda !important;
+}
+
+.splide__pagination__page.is-active{
+  background-color: #3386B1 !important;
 }
 
 /* SHADOWS */
