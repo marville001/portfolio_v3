@@ -34,32 +34,9 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 
             <div className="flex gap-6 mt-8 max-w-[600px] mx-auto justify-center flex-wrap">
               <Link href={`/tags/${"reactjs"}`}>
-                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
-                  #</b> ReactJs
-                </a>
-              </Link>
-              <Link href={`/tags/${"reactjs"}`}>
-                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
-                  #</b> ReactJs
-                </a>
-              </Link>
-              <Link href={`/tags/${"reactjs"}`}>
-                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
-                  #</b> ReactJs
-                </a>
-              </Link>
-              <Link href={`/tags/${"reactjs"}`}>
-                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
-                  #</b> ReactJs
-                </a>
-              </Link>
-              <Link href={`/tags/${"reactjs"}`}>
-                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
-                  #</b> ReactJs
-                </a>
-              </Link>
-              <Link href={`/tags/${"reactjs"}`}>
-                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white cursor-pointer rounded-md'><b className='text-gray-600'>
+                <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 
+                    hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white 
+                    cursor-pointer rounded-md transition-all duration-150 ease-linear'><b className='text-gray-600'>
                   #</b> ReactJs
                 </a>
               </Link>
@@ -69,19 +46,14 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
               <h2 className='my-6 text-xl text-center font-semibold sm:text-4xl max-w-[600px]'>{_blog?.title}</h2>
             </div>
 
-
-
-            <div className="flex gap-6 mt-8">
-              <img src="https://avatars.githubusercontent.com/u/51154760?v=4" className='w-20 h-20 rounded-full' alt="" />
-              <div className="">
-                <h2 className='text-lg sm:text-2xl font-bold  opacity-75'>Martin Mwangi</h2>
-                <p className='text-sm sm:text-base mt-3 font-bold opacity-50'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p>
-              </div>
+            <div className="flex justify-center items-center gap-8 divide-x-2">
+              <h4 className='text-lg font-[400]'>By <Link href="/about-me/"><a className='hover:text-primary ml-2'>Martin Mwangi</a></Link></h4>
+              <p className='text-lg font-[400] pl-8'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p>
             </div>
 
-            <article className='mt-6 mb-12 flex flex-col items-center'>
+            <article className='mt-16 mb-12 flex flex-col items-center'>
               {
-                _blog?.cover && <img className='w-full rounded-lg max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
+                _blog?.cover && <img className='w-full max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
               }
               <RichTextMainWrapper>
                 <div dangerouslySetInnerHTML={{ __html: _blog?.blog || "" }} />
