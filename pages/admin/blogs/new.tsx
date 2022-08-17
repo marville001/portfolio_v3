@@ -225,8 +225,7 @@ const Blogs: NextPage = () => {
               <label htmlFor="intro" className="text-sm">
                 Blog Intro
               </label>
-              <input
-                type="text"
+              <textarea
                 placeholder="Blog Intro"
                 className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.title && 'ring-1 ring-red-400'
                   }`}
@@ -240,7 +239,7 @@ const Blogs: NextPage = () => {
                     message: 'Intro should be more than 25 characters',
                   }
                 })}
-              />
+              ></textarea>
               {errors.intro && (
                 <span className="text-sm text-red-600">
                   {errors.intro.message}

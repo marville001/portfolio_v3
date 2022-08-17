@@ -36,8 +36,8 @@ const Portfolios = (props: any) => {
         {/* Show More */}
         <div className="my-10 flex justify-center">
           <Link href="/portfolio">
-            <a className="rounded-full bg-primary bg-opacity-80 hover:bg-opacity-100 tracking-wider px-8 py-2 uppercase text-sm text-white">
-              View more
+            <a className="rounded-full bg-primary bg-opacity-80 hover:bg-opacity-100 tracking-wider px-8 py-2 capitalize text-sm text-white">
+              View All Projects
             </a>
           </Link>
         </div>
