@@ -5,7 +5,6 @@ import ContainerBlock from '../../components/ContainerBlock'
 import { FaChevronLeft, FaChevronRight, FaTimesCircle } from 'react-icons/fa'
 
 import PortfolioCard from '../../components/home/portfolios-section/PortfolioCard'
-import { client } from '../../lib/sanity'
 import { Project } from '../../types/project'
 
 interface Props {
@@ -128,10 +127,9 @@ const Portfolio = (props: Props) => {
 
 export const getServerSideProps = async () => {
   const query = '*[_type == "project"] | order(_createdAt desc)'
-  const projects = await client.fetch(query)
 
   return {
-    props: { projects },
+    props: { projects: [] },
   }
 }
 

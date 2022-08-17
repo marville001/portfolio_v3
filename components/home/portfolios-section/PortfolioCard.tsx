@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import { Project } from '../../../types/project'
-import { urlFor } from '../../../lib/sanity'
 
 const PortfolioCard = (props: any) => {
   const project: Project = props.project
@@ -23,10 +22,10 @@ const PortfolioCard = (props: any) => {
             }}
             aria-label="Property Images"
           >
-            {project?.image?.map((image, i) => (
+            {project?.images?.map((image, i) => (
               <SplideSlide key={i}>
                 <img
-                  src={urlFor(image).url()}
+                  src={image}
                   alt={`${image}`}
                   className="h-[200px] w-full hover:scale-105"
                 />
