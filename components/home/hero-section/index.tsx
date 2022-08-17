@@ -4,19 +4,37 @@ import { FaGithubAlt, FaLinkedinIn, FaMapMarkerAlt } from 'react-icons/fa'
 
 const HeroSection = () => {
   return (
-    <div className="section grid grid-cols-1 bg-[#01014a] py-10 md:max-h-[600px] md:grid-cols-2">
+    <div className="section grid grid-cols-1 py-10 md:py-16 lg:py-28 md:max-h-[600px] md:grid-cols-2 container">
+
+      <div className="px-4 py-8 sm:px-10">
+        <h2 className="flex items-center gap-4 font-bold opacity-30">
+          <FaMapMarkerAlt />
+          <span>Nyeri, Kenya</span>
+        </h2>
+
+        <h1 className="mt-10 text-3xl font-bold sm:text-4xl">Martin Mwangi</h1>
+        <h1 className="mb-10 mt-5 text-xl font-bold sm:text-2xl opacity-75">
+          Junior Software Developer
+        </h1>
+        <p className="mt-8 max-w-[700px] text-">
+          With some years of experience in software development, I am dedicated
+          to designing and developing User Interfaces and experiences focused on
+          their emotions ( UI / UX ), used in web platforms and apps.
+        </p>
+      </div>
       <div
         style={{
-          backgroundImage: `url('/assets/undraw_programming_re_kg9v.svg')`,
+          backgroundImage: `url('')`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
         }}
-        className="h-40 md:h-auto"
+        className="h-40 md:h-auto flex items-center justify-center"
       >
-        <div className="flex h-full w-full flex-col justify-center bg-[#01014a] bg-opacity-80 px-4 sm:px-10 md:items-end">
-          <div className="bg-orange-400 py-4 px-6 text-xl text-white sm:px-16 sm:text-2xl">
+        <img className='h-[100%] md:h-[80%]' src="/assets/undraw_programming_re_kg9v.svg" alt="Martin Mwangi" />
+        <div className="flex hidden h-full w-full flex-col justify-center px-4 sm:px-10 md:items-end">
+          <p className="bg-orange-400 py-4 px-6 text-xl text-white sm:px-16 sm:text-2xl">
             Martin Mwangi
-          </div>
+          </p>
           <div className="my-8 flex gap-5">
             <Link href="https://www.linkedin.com/in/marville001/">
               <a
@@ -40,27 +58,6 @@ const HeroSection = () => {
             </Link>
           </div>
         </div>
-      </div>
-      <div className="px-4 py-8 text-white sm:px-10">
-        <h2 className="flex items-center gap-4 font-bold opacity-30">
-          <FaMapMarkerAlt />
-          <span>Nyeri, Kenya</span>
-        </h2>
-
-        <h1 className="mt-10 text-3xl font-bold sm:text-4xl">Junior</h1>
-        <h1 className="mb-10 mt-5 text-3xl font-bold sm:text-4xl">
-          Software Developer
-        </h1>
-
-        <div className="font-sans text-sm italic text-secondary">
-          Full Stack
-        </div>
-        <div className="mt-2 h-2 w-24 rounded-sm bg-primary"></div>
-        <p className="mt-8 max-w-[700px] text-sm">
-          With some years of experience in software development, I am dedicated
-          to designing and developing User Interfaces and experiences focused on
-          their emotions ( UI / UX ), used in web platforms and apps.
-        </p>
       </div>
     </div>
   )

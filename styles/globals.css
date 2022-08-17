@@ -75,7 +75,7 @@ body {
 
 @layer components {
   .container {
-    @apply mx-auto w-[95%] max-w-[1170px];
+    @apply mx-auto w-[95%] max-w-[1080px];
   }
 
   .section {

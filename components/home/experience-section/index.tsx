@@ -48,7 +48,7 @@ const ExperienceSection = () => {
         </div>
 
         <div className="py-2 sm:px-6 md:px-6">
-          <div className="z-[200] -translate-y-10  rounded-t-md bg-[#ffffff] py-4 px-2 dark:bg-dim-dark sm:px-6">
+          <div className="z-[200] -translate-y-0  rounded-t-md bg-[#ffffff] py-4 px-2 dark:bg-dim-dark sm:px-6">
             <Link href="https://api.whatsapp.com/send?phone=254700207054&text=Hey Martin">
               <a
                 target="_blank"

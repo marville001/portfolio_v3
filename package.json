@@ -12,6 +12,7 @@
     "@sanity/image-url": "^1.0.1",
     "@splidejs/react-splide": "^0.7.8",
     "@tanem/react-nprogress": "^5.0.6",
+    "daisyui": "^2.24.0",
     "firebase": "^9.9.0",
     "next": "latest",
     "next-sanity-image": "^3.2.1",
