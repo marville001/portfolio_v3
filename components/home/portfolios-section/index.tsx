@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { HiOutlineExternalLink } from 'react-icons/hi'
 
 import { Project } from '../../../types/project'
 import PortfolioCard from './PortfolioCard'
@@ -23,11 +24,16 @@ const Portfolios = (props: any) => {
           {[1, 2, 3, 4, 5, 6].map(project => (
             <div key={project}
               className="relative min-h-[225px] group bg-opacity-40 hover:bg-opacity-100 justify-center 
-                      rounded-xl duration-150 ease-linear  p-4 flex flex-col items-center cursor-pointer">
+                      rounded-xl duration-150 ease-linear  p-4 flex flex-col items-center">
 
-                <img className='rounded-lg border h-auto md:h-52 w-full' src="https://cdn.sanity.io/images/dgoqf851/production/7af39add5b4c748bb1e6bb2492cbd95e7bfcae70-1428x917.png" alt="" />
-                <h4 className='self-start mt-4'>The New Project Around Lorem ipsum dolor sit.</h4>
-              </div>
+              <img className='rounded-lg border h-auto md:h-52 w-full' src="https://cdn.sanity.io/images/dgoqf851/production/7af39add5b4c748bb1e6bb2492cbd95e7bfcae70-1428x917.png" alt="" />
+              <h4 className='self-start mt-4'>The New Project Around Lorem ipsum dolor sit.</h4>
+              <a href="http://herosect.com" target="_blank" rel="noopener noreferrer"
+                className='bg-primary text-sm flex items-center gap-1.5 bg-opacity-20 px-2 underline py-1 mt-2 text-primary self-start rounded-lg'>
+                <HiOutlineExternalLink className='text-base' />
+                <span className='font-light'>aherosect.com</span>
+              </a>
+            </div>
           ))}
 
 

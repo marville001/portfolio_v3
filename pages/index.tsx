@@ -17,7 +17,7 @@ const Home: NextPage = (props: any) => {
       description="I've been developing websites for more than 2 years straight. Get in touch with me to know more."
     >
       <HeroSection />
-      <div className="container bg-gray-400 my-0 h-[1px] bg-opacity-20"></div>
+      <div className="bg-gray-400 my-0 h-[1px] bg-opacity-20"></div>
       <ExperienceSection />
       <LangToolsSection />
       <ServicesSection />

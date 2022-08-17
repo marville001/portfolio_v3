@@ -8,7 +8,7 @@ const ExperienceSection = () => {
     <div className="section dark:bg-dim-dark dark:text-white">
       <div className="container grid grid-cols-1 md:py-20 md:grid-cols-2">
         <div className="py-10 px-2 sm:px-10">
-          <h2 className="mb-10 text-2xl font-bold text-dark dark:text-white">
+          <h2 className="mb-6 text-3xl capitalize font-bold text-dark dark:text-white">
             Experience and knowledge to highlight
           </h2>
           <div className="">
@@ -16,23 +16,23 @@ const ExperienceSection = () => {
               <strong className="mr-2 text-lg font-bold text-dim-dark dark:text-white">
                 +3 years
               </strong>
-              <span className="text-lg opacity-60">
-                Designing and Developing web applications
+              <span className="opacity-60">
+                Designing and Developing web applications using ReactJs, NextJs and NodeJs (MERN Stack), etc
               </span>
             </p>
             <p className="my-2">
               <strong className="mr-2 text-lg font-bold text-dim-dark dark:text-white">
                 +1 years
               </strong>
-              <span className="text-lg opacity-60">
-                Designing and Developing mobile applications
+              <span className="opacity-60">
+                Designing and Developing mobile applications using React Native
               </span>
             </p>
             <p className="my-2">
               <strong className="mr-2 text-lg font-bold text-dim-dark dark:text-white">
                 +3 years
               </strong>
-              <span className="text-lg opacity-60">Using MERN Stack</span>
+              <span className="opacity-60">Using MERN Stack</span>
             </p>
 
             <div className="my-4">
@@ -73,7 +73,7 @@ const ExperienceSection = () => {
                 into action.
               </p>
 
-              <button className="lg:text-md mt-6 w-full rounded-full bg-primary py-2 text-center text-sm text-white">
+              <button className="lg:text-md mt-6 w-full btn hover:bg-primary bg-opacity-80 hover:bg-opacity-100 border-0 rounded-full bg-primary py-2 text-center text-sm text-white">
                 Click to coordinate meeting
               </button>
             </div>
