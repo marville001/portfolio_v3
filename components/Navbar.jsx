@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`_shadow fixedd top-0 left-0 right-0 z-[999] flex  h-[80px] items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3`}
+      className={`_shadow3 bg-opacity-[0.95] sticky top-0 left-0 right-0 z-[999] flex  h-[80px] items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3`}
     >
       <div className="container relative flex items-center justify-between space-x-8">
         <Link href="/">

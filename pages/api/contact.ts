@@ -1,7 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { client } from '../../lib/sanity';
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,11 +13,7 @@ export default async function handler(
     const date = new Date().toISOString();
 
     try {
-      await client.create({
-        _type: "message",
-        name, email, subject, message, date
-
-      })
+      
       res.status(200).json({ message: "Message sent successfully", success: true });
 
     } catch (error: any) {

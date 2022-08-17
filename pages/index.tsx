@@ -6,7 +6,6 @@ import ExperienceSection from '../components/home/experience-section'
 import ServicesSection from '../components/home/services-section'
 import Portfolios from '../components/home/portfolios-section'
 
-import { client } from '../lib/sanity'
 import LangToolsSection from '../components/home/lang-tools-section'
 import ContactSection from '../components/home/contact-session'
 import AboutMe from '../components/home/about-section'
@@ -18,6 +17,7 @@ const Home: NextPage = (props: any) => {
       description="I've been developing websites for more than 2 years straight. Get in touch with me to know more."
     >
       <HeroSection />
+      <div className="container bg-gray-400 my-0 h-[1px] bg-opacity-20"></div>
       <ExperienceSection />
       <LangToolsSection />
       <ServicesSection />
@@ -29,11 +29,9 @@ const Home: NextPage = (props: any) => {
 }
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "project" && major == true] | order(_createdAt desc)'
-  const projects = await client.fetch(query)
 
   return {
-    props: { projects },
+    props: { projects: [] },
   }
 }
 

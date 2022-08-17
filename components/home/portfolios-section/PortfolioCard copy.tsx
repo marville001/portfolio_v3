@@ -7,7 +7,6 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
 import { Project } from '../../../types/project'
-import { urlFor } from '../../../lib/sanity'
 import { FaArrowsAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import Link from 'next/link'
 
@@ -43,11 +42,11 @@ const PortfolioCard = (props: any) => {
           modules={[Autoplay, Navigation]}
           className="h-full w-full"
         >
-          {project?.image?.map((image, idx) => (
+          {project?.images?.map((image, idx) => (
             <SwiperSlide key={idx}>
               <div className="h-full w-full">
                 <img
-                  src={urlFor(image).url()}
+                  src={image}
                   className="h-full w-full  rounded-xl object-cover"
                 />
               </div>
