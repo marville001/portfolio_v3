@@ -6,7 +6,7 @@ import { HiOutlineExternalLink } from 'react-icons/hi'
 const ExperienceSection = () => {
   return (
     <div className="section dark:bg-dim-dark dark:text-white">
-      <div className="container grid grid-cols-1 md:grid-cols-2">
+      <div className="container grid grid-cols-1 md:py-20 md:grid-cols-2">
         <div className="py-10 px-2 sm:px-10">
           <h2 className="mb-10 text-2xl font-bold text-dark dark:text-white">
             Experience and knowledge to highlight

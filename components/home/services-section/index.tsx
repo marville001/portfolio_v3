@@ -39,15 +39,19 @@ const ServicesSection = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className="group flex cursor-pointer  flex-col gap-6 rounded-md bg-white p-6 pb-6 transition-all duration-100 ease-in-out hover:bg-primary hover:text-white"
+              className="group flex cursor-pointer  flex-col gap-6 rounded-md bg-white p-2 sm:p-6 pb-6 transition-all duration-100 ease-in-out hover:bg-primary hover:text-white"
             >
               <div className="h-16 w-16 rounded-lg">
                 <img src={service.icon} alt="" className="w-full" />
               </div>
 
-              <h4 className="text-lg font-bold">{service.name}</h4>
-              <p>{service.description}</p>
+              <div className="flex-1">
 
+
+                <h4 className="text-lg font-bold">{service.name}</h4>
+                <p>{service.description}</p>
+
+              </div>
               <Link href="#">
                 <a className="bg-primary text-white group-hover:bg-white group-hover:text-primary text-center cursor-pointer py-2 rounded-lg text-lg">
                   Learn More
