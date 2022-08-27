@@ -61,9 +61,9 @@ const AboutMe = () => {
                   Contact Me Via Email
                 </a>
               </Link>
-              <button className="rounded-full bg-dark px-8 py-3 text-center text-[16px] font-semibold text-white hover:bg-opacity-80 dark:bg-white dark:text-dark">
+              <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" download="Martin Resume"  className="rounded-full bg-dark px-8 py-3 text-center text-[16px] font-semibold text-white hover:bg-opacity-80 dark:bg-white dark:text-dark">
                 Download My CV
-              </button>
+              </a>
             </div>
           </div>
         </div>

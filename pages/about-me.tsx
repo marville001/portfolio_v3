@@ -21,11 +21,9 @@ const AboutMe = () => {
             />
           </div>
           <div className="flex justify-center">
-            <Link href="/archive">
-              <a className="rounded-md bg-dark py-1.5 px-6 text-sm text-white">
+            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" download="Martin Resume"  className="rounded-md bg-dark py-1.5 px-6 text-sm text-white">
                 Download My CV
               </a>
-            </Link>
           </div>
         </div>
       </div>
