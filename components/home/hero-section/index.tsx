@@ -6,17 +6,17 @@ const HeroSection = () => {
   return (
     <div className="section grid grid-cols-1 py-10 md:py-16 lg:py-20 dark:bg-dark md:max-h-[600px] md:grid-cols-2 container">
 
-      <div className="px-4 py-8 sm:px-10">
-        <h2 className="flex items-center gap-4 font-bold opacity-30">
+      <div className="px-4  py-8 sm:px-10">
+        <h2 className="flex text-dark dark:text-white items-center gap-4 font-bold opacity-30">
           <FaMapMarkerAlt />
           <span>Nyeri, Kenya</span>
         </h2>
 
-        <h1 className="mt-10 text-3xl font-bold sm:text-4xl">Martin Mwangi</h1>
-        <h1 className="mb-6 mt-5 text-xl font-bold sm:text-2xl opacity-75">
+        <h1 className="mt-10 text-accent text-3xl font-bold sm:text-4xl">Martin Mwangi</h1>
+        <h1 className="mb-6 text-dark dark:text-white mt-5 text-xl font-bold sm:text-2xl opacity-75">
           Junior Software Developer
         </h1>
-        <p className="mt-5 max-w-[700px] text-">
+        <p className="mt-5 max-w-[700px] text-dark dark:text-white">
           With some years of experience in software development, I am dedicated
           to designing and developing User Interfaces and experiences focused on
           their emotions ( UI / UX ), used in web platforms and apps.

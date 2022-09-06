@@ -10,7 +10,7 @@ const Portfolios = (props: any) => {
 
   return (
     <div className="">
-      <div className="container py-8">
+      <div className="container py-8 dark:text-white">
 
         <h1 className="mb-2 select-none text-center text-xl font-bold uppercase opacity-50">
           featured projects
@@ -29,7 +29,7 @@ const Portfolios = (props: any) => {
               <img className='rounded-lg border h-auto md:h-52 w-full' src="https://cdn.sanity.io/images/dgoqf851/production/7af39add5b4c748bb1e6bb2492cbd95e7bfcae70-1428x917.png" alt="" />
               <h4 className='self-start mt-4'>The New Project Around Lorem ipsum dolor sit.</h4>
               <a href="http://herosect.com" target="_blank" rel="noopener noreferrer"
-                className='bg-primary text-sm flex items-center gap-1.5 bg-opacity-20 px-2 underline py-1 mt-2 text-primary self-start rounded-lg'>
+                className='bg-primary text-sm flex items-center gap-1.5 bg-opacity-20 px-2 underline py-1 mt-2 text-accent self-start rounded-lg'>
                 <HiOutlineExternalLink className='text-base' />
                 <span className='font-light'>aherosect.com</span>
               </a>
@@ -42,7 +42,7 @@ const Portfolios = (props: any) => {
         {/* Show More */}
         <div className="my-10 flex justify-center">
           <Link href="/portfolio">
-            <a className="rounded-full bg-primary bg-opacity-80 hover:bg-opacity-100 tracking-wider px-8 py-2 capitalize text-sm text-white">
+            <a className="rounded-full bg-accent bg-opacity-80 hover:bg-opacity-100 tracking-wider px-8 py-2 capitalize text-sm text-white">
               View All Projects
             </a>
           </Link>

@@ -17,11 +17,15 @@ const Home: NextPage = (props: any) => {
       description="I've been developing websites for more than 2 years straight. Get in touch with me to know more."
     >
       <HeroSection />
-      <div className="bg-gray-400 my-0 h-[1px] bg-opacity-20"></div>
+      <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
       <ExperienceSection />
+      <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
       <LangToolsSection />
+      <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
       <ServicesSection />
+      <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
       <Portfolios projects={props?.projects} />
+      <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
       <AboutMe />
       <ContactSection />
     </ContainerBlock>

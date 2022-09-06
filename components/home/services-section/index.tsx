@@ -26,7 +26,7 @@ const ServicesSection = () => {
   ]
 
   return (
-    <div className="section bg-gray-100 dark:bg-dark">
+    <div className="section bg-gray-100 dark:bg-dark  dark:text-white">
       <div className="container py-10">
         <h1 className="mb-2 select-none text-center text-xl font-bold uppercase opacity-50">
           Services
@@ -39,7 +39,7 @@ const ServicesSection = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className="group flex cursor-pointer  flex-col gap-6 rounded-md bg-white p-2 sm:p-6 pb-6 transition-all duration-100 ease-in-out hover:bg-primary hover:text-white"
+              className="group flex cursor-pointer  flex-col gap-6 rounded-md bg-white dark:bg-dim-dark p-2 sm:p-6 pb-6 transition-all duration-100 ease-in-out hover:bg-primary hover:text-white"
             >
               <div className="h-16 w-16 rounded-lg">
                 <img src={service.icon} alt="" className="w-full" />
@@ -49,7 +49,7 @@ const ServicesSection = () => {
 
 
                 <h4 className="text-lg font-bold">{service.name}</h4>
-                <p>{service.description}</p>
+                <p className='mt-2'>{service.description}</p>
 
               </div>
               <Link href="#">

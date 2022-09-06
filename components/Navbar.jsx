@@ -34,36 +34,40 @@ const Navbar = () => {
 
         <div className="flex gap-4">
           <div
-            className={`absolute ${menuOpen?"h-auto opacity-100":"h-0 opacity-0 lg:opacity-100 overflow-hidden lg:min-h-min"} transition-all duration-150 ease-linear inset-x-0 top-[90px] lg:top-0 flex flex-col items-center gap-y-4 bg-white py-10 dark:bg-dark lg:static lg:flex-row lg:gap-y-0 lg:space-x-2`}
+            className={`absolute ${
+              menuOpen
+                ? 'h-min opacity-100'
+                : 'h-0 overflow-hidden opacity-0 lg:h-min lg:opacity-100'
+            } inset-x-0 top-[90px] flex flex-col items-center gap-y-4 bg-white py-10 transition-all duration-150 ease-linear dark:bg-dark lg:static lg:top-0 lg:flex-row lg:gap-y-0 lg:space-x-2 lg:bg-transparent lg:dark:bg-transparent lg:transition-none`}
           >
             <Link href="/services">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
                 <span>Services</span>
               </a>
             </Link>
             <Link href="/about-me">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
                 <span>About</span>
               </a>
             </Link>
             <Link href="/portfolio">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
                 Portfolio
               </a>
             </Link>
 
             <Link href="/blogs">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
                 Blog
               </a>
             </Link>
             <Link href="/book-notes">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
                 Book Notes
               </a>
             </Link>
             <Link href="/contact">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
                 Contact
               </a>
             </Link>
