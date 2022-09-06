@@ -43,10 +43,10 @@ const LangToolsSection = () => {
             {langs.map((lang) => (
               <div
                 key={lang.id}
-                className="cursor-pointer flex flex-col transition-all duration-100 ease-linear items-center p-3 px-5 hover:shadow bg-opacity-100 hover:bg-white rounded-lg"
+                className="cursor-pointer group flex flex-col transition-all duration-100 ease-linear items-center p-3 px-5 hover:shadow bg-opacity-100 hover:bg-white rounded-lg"
               >
                 <img className="w-14" src={lang.icon} alt="" />
-                <p className="mt-3 text-center text-sm">{lang.name}</p>
+                <p className="mt-3 text-center text-sm group-hover:text-dark">{lang.name}</p>
               </div>
             ))}
           </div>

@@ -5,8 +5,8 @@ import ProfileMenu from '../components/ProfileMenu'
 
 import { HiMenuAlt1, HiMoon, HiOutlineXCircle, HiSun } from 'react-icons/hi'
 
-import useDarkMode from '../hooks/useDarkMode'
 import { useAuth } from '../contexts/auth.context'
+import useDarkMode from '../hooks/useDarkMode'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`_shadow3 sticky top-0 left-0 right-0 z-[999] flex h-[100px] items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3`}
+      className={`_shadow3  border-b border-b-white/10 sticky top-0 left-0 right-0 z-[999] flex h-[100px] items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3`}
     >
       <div className="container flex items-center justify-between space-x-8">
         <Link href="/">
@@ -32,7 +32,7 @@ const Navbar = () => {
           </a>
         </Link>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <div
             className={`absolute ${
               menuOpen
