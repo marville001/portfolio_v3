@@ -108,7 +108,7 @@ const contact: NextPage = () => {
                   },
                 })}
                 placeholder="Enter your name here."
-                className={`w-full border-0 py-3 px-3 text-lg outline-none ring-1 ${errors.name ? 'ring-red-400' : 'ring-primary'
+                className={`w-full border-0 py-3 px-3 text-lg dark:bg-dim-dark outline-none ring-1 ${errors.name ? 'ring-red-400' : 'ring-primary'
                   } focus:border-0 focus:outline-none`}
               />
             </div>
@@ -127,7 +127,7 @@ const contact: NextPage = () => {
                   },
                 })}
                 placeholder="Enter your email here."
-                className={`w-full border-0 py-3 px-3 outline-none ring-1  text-lg ${errors.email ? 'ring-red-400' : 'ring-primary'
+                className={`w-full border-0 py-3 px-3 outline-none ring-1 dark:bg-dim-dark text-lg ${errors.email ? 'ring-red-400' : 'ring-primary'
                   } focus:border-0 focus:outline-none`}
               />
             </div>
@@ -147,7 +147,7 @@ const contact: NextPage = () => {
                 },
               })}
               placeholder="Enter the subject here."
-              className={`w-full border-0 py-3 px-3 outline-none ring-1  text-lg ${errors.subject ? 'ring-red-400' : 'ring-primary'
+              className={`w-full border-0 py-3 px-3 outline-none ring-1 dark:bg-dim-dark text-lg ${errors.subject ? 'ring-red-400' : 'ring-primary'
                 } focus:border-0 focus:outline-none`}
             />
           </div>
@@ -166,7 +166,7 @@ const contact: NextPage = () => {
               })}
               placeholder="Enter the message."
               rows={5}
-              className={`w-full border-0 py-3 px-3 outline-none ring-1  text-lg ${errors.message ? 'ring-red-400' : 'ring-primary'
+              className={`w-full border-0 py-3 px-3 outline-none ring-1 dark:bg-dim-dark  text-lg ${errors.message ? 'ring-red-400' : 'ring-primary'
                 } focus:border-0 focus:outline-none`}
             ></textarea>
           </div>

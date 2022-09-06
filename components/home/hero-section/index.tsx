@@ -47,8 +47,7 @@ const HeroSection = () => {
       <div
         className="h-60 md:h-auto flex items-center justify-center"
       >
-        <img className='h-[100%] md:h-[80%]' src="/assets/undraw_programming_re_kg9v.svg" alt="Martin Mwangi" />
-
+        <img className='h-[100%] md:h-[80%]' src="/assets/hero-me-dark.gif" alt="Martin Mwangi" />
       </div>
     </div>
   )

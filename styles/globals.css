@@ -112,3 +112,20 @@ article iframe {
   aspect-ratio: 16/9;
   border-radius: 5px;
 }
+
+.portfolio-grid {
+  display: grid;
+  gap: 2.5rem 1.5rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  justify-items: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(auto-fill, minmax(250px, 0.5fr));
+    justify-items: start;
+  }
+}
