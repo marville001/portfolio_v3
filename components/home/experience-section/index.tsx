@@ -52,7 +52,7 @@ const ExperienceSection = () => {
             <Link href="https://api.whatsapp.com/send?phone=254700207054&text=Hey Martin">
               <a
                 target="_blank"
-                className="flex items-center justify-between rounded-md bg-[#358a76] px-5 py-3 text-lg text-white lg:text-xl"
+                className="flex animate-pulse hover:animate-none items-center justify-between rounded-md bg-[#358a76] px-5 py-3 text-lg text-white lg:text-xl"
               >
                 <FaWhatsapp className="text-lg lg:text-2xl" />
                 <span>+254700207054</span>

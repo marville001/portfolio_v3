@@ -9,19 +9,17 @@ module.exports = {
       colors: {
         primary: '#3386B1',
         secondary: '#64ffda',
-        dark: '#1f1f47',
+        dark: '#0a1930',
         'dim-dark': '#171647',
         grayish: '#edf1fd',
         'pale-orange': '#ffefdf',
+        accent: '#f46663',
       },
     },
   },
   daisyui: {
     styled: true,
-    themes: false
+    themes: false,
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require("daisyui")
-  ],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
 }

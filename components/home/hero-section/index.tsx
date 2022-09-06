@@ -4,7 +4,7 @@ import { FaGithubAlt, FaLinkedinIn, FaMapMarkerAlt } from 'react-icons/fa'
 
 const HeroSection = () => {
   return (
-    <div className="section grid grid-cols-1 py-10 md:py-16 lg:py-28 md:max-h-[600px] md:grid-cols-2 container">
+    <div className="section grid grid-cols-1 py-10 md:py-16 lg:py-20 dark:bg-dark md:max-h-[600px] md:grid-cols-2 container">
 
       <div className="px-4 py-8 sm:px-10">
         <h2 className="flex items-center gap-4 font-bold opacity-30">
