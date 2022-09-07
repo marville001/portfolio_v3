@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import ContactCallAction from '../components/ContactCallAction'
 import ContainerBlock from '../components/ContainerBlock'
 
 const AboutMe = () => {
@@ -56,6 +57,7 @@ const AboutMe = () => {
           </div>
         </div>
       </div>
+      <ContactCallAction />
     </ContainerBlock>
   )
 }

@@ -70,7 +70,7 @@ export const Footer = ({ showInterest = true }) => {
           </div>
         </div>
       )}
-      <div className="bg-white py-10">
+      <div className="bg-white dark:bg-dim-dark dark:text-white py-10">
         <div className="container flex flex-col items-start gap-4 md:flex-row md:justify-center">
           <div className="flex flex-1 flex-col">
             <p>

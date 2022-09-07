@@ -6,6 +6,7 @@ import { FaChevronLeft, FaChevronRight, FaTimesCircle } from 'react-icons/fa'
 
 import PortfolioCard from '../../components/home/portfolios-section/PortfolioCard'
 import { Project } from '../../types/project'
+import ContactCallAction from '../../components/ContactCallAction'
 
 interface Props {
   projects: Project[]
@@ -121,6 +122,7 @@ const Portfolio = (props: Props) => {
           {/*  */}
         </div>
       </div>
+      <ContactCallAction />
     </ContainerBlock>
   )
 }

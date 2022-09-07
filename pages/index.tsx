@@ -7,8 +7,8 @@ import ServicesSection from '../components/home/services-section'
 import Portfolios from '../components/home/portfolios-section'
 
 import LangToolsSection from '../components/home/lang-tools-section'
-import ContactSection from '../components/home/contact-session'
 import AboutMe from '../components/home/about-section'
+import ContactCallAction from '../components/ContactCallAction'
 
 const Home: NextPage = (props: any) => {
   return (
@@ -27,7 +27,7 @@ const Home: NextPage = (props: any) => {
       <Portfolios projects={props?.projects} />
       <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
       <AboutMe />
-      <ContactSection />
+      <ContactCallAction />
     </ContainerBlock>
   )
 }

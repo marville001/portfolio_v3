@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import ContainerBlock from '../../components/ContainerBlock'
+import ContactCallAction from '../../components/ContactCallAction'
 
 const BookNotes = () => {
   return (
@@ -56,6 +57,7 @@ const BookNotes = () => {
           </div>
         </div>
       </div>
+      <ContactCallAction />
     </ContainerBlock>
   )
 }

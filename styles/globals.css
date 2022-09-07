@@ -74,6 +74,15 @@ body {
   );
 }
 
+@layer utilities{
+  .animation-delay-2000{
+    animation-delay: 2s;
+  }
+  .animation-delay-4000{
+    animation-delay: 4s;
+  }
+}
+
 @layer components {
   .container {
     @apply mx-auto w-[95%] max-w-[1080px];

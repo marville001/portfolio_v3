@@ -11,6 +11,8 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 // import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import ContainerBlock from '../../components/ContainerBlock'
+import ContactCallAction from '../../components/ContactCallAction'
+
 import { postToJSON } from '../../lib/firebase'
 import { firestore } from '../../lib/firebaseConfig'
 
@@ -147,6 +149,8 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
           }
         </div>
       </div>
+
+      <ContactCallAction />
     </ContainerBlock>
   )
 }

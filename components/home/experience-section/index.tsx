@@ -7,8 +7,8 @@ const ExperienceSection = () => {
   return (
     <div className="section dark:bg-dark dark:text-white">
       <div className="container grid grid-cols-1 md:py-20 md:grid-cols-2">
-        <div className="py-10 px-2 sm:px-10">
-          <h2 className="mb-6 text-3xl capitalize font-bold text-dark dark:text-white">
+        <div className="py-10 px-2 sm:px-10 z-20">
+          <h2 className="mb-6 text-3xl z-[2] capitalize font-bold text-dark dark:text-white">
             Experience and knowledge to highlight
           </h2>
           <div className="">
