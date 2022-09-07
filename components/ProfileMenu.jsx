@@ -11,11 +11,11 @@ const ProfileMenu = () => {
   return (
     <Menu
       as="div"
-      className="relative inline-block text-left ring-0 focus:ring-0"
+      className="relative inline-block text-left ring-0 focus:ring-0 "
     >
       <div>
         <Menu.Button className="">
-          <div className="cursor-pointer rounded-full bg-primary p-2 text-sm text-white">
+          <div className="cursor-pointer rounded-full bg-primary dark:bg-dim-dark p-2 text-sm text-white">
             MM
           </div>
         </Menu.Button>
@@ -29,7 +29,7 @@ const ProfileMenu = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="_shadow sshadow-lg absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white focus:outline-none">
+        <Menu.Items className="_shadow sshadow-lg absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-dim-dark focus:outline-none">
           <MenuItem title="My Dashboard" to="/admin/home" icon={FaHome} />
           <MenuItem title="My Profile" to="/admin/profile" icon={FaRegUser} />
           <MenuItem title="My Blogs" to="/admin/blogs" icon={FaRegAddressBook} />
@@ -42,7 +42,7 @@ const ProfileMenu = () => {
                 <button
                   onClick={authContext.logoutUser}
                   className={`${
-                    active ? 'bg-primary text-white' : 'text-gray-900'
+                    active ? 'bg-primary  text-white' : 'text-gray-900 dark:text-white'
                   } group flex w-full items-center rounded-md px-2 py-1 justify-center`}
                 >
                   Log Out
@@ -63,7 +63,7 @@ const MenuItem = ({ to, title, icon: Icon }) => (
         <Link href={to}>
           <a
             className={`${
-              active ? 'bg-primary text-white' : 'text-gray-900'
+              active ? 'bg-primary text-white' : 'text-gray-900 dark:text-white'
             } group flex w-full items-center rounded-md px-2 py-1 gap-3`}
           >
             <Icon />
