@@ -107,11 +107,11 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
         </div>
       </div>
 
-      <div className="bg-white">
+      <div className="bg-white dark:bg-dark">
         <div className="container">
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
             {blogPosts.map((blog) => (
-              <div key={blog.id} className="_shadow4 group">
+              <div key={blog.id} className="_shadow4 group dark:bg-dim-dark dark:text-white">
                 <Link href={`/blogs/${blog.slug}`}>
                   <article className="overflow-hidden rounded cursor-pointer">
                     <img
@@ -149,6 +149,8 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
           }
         </div>
       </div>
+
+      <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
 
       <ContactCallAction />
     </ContainerBlock>

@@ -43,38 +43,11 @@ const Portfolio = (props: Props) => {
         </div>
       </div>
 
-      <div className="bg-white">
+      <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
+
+      <div className="bg-white dark:bg-dark">
         <div className="container  py-12">
-          <div className="mb-8 flex flex-col items-center">
-            <h4>Filters</h4>
-            <div className="mt-2 max-w-[700px] flex justify-center flex-wrap gap-2">
-              {[1, 2, 3, 4, 5, 6, 7, 8,9,0].map((tag, i) => (
-                <div
-                  key={i}
-                  onClick={() =>
-                    setFilters((prev) =>
-                      prev.includes(tag)
-                        ? prev.filter((a) => a !== tag)
-                        : [...prev, tag]
-                    )
-                  }
-                  className={`duration-50 flex cursor-pointer items-center gap-1 rounded border px-3 py-1 text-center text-sm transition-all  
-			  ${
-          filters.includes(tag)
-            ? 'bg-primary text-white'
-            : 'border-primary text-primary'
-        }`}
-                >
-                  React.Js{' '}
-                  {filters.includes(tag) && (
-                    <span>
-                      <FaTimesCircle />
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
+
           {/* Portfolios */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {props?.projects?.map((project) => (
@@ -82,46 +55,13 @@ const Portfolio = (props: Props) => {
             ))}
           </div>
 
-          {/*  */}
-          <div className="mt-5 flex justify-end">
-            <div className="flex items-center gap-2">
-              <FaChevronLeft
-                onClick={() =>
-                  setPage((prev) =>
-                    props?.projects?.length < 12 + (page - 1) * 10
-                      ? prev - 10
-                      : prev
-                  )
-                }
-                className={`cursor-pointer text-xl ${
-                  props?.projects?.length > 12 + (page - 1) * 10
-                    ? 'cursor-not-allowed text-slate-300'
-                    : ' cursor-pointer text-slate-900'
-                }`}
-              />
-              <div className="rounded-md bg-primary px-3 py-1 text-sm text-white">
-                1
-              </div>
-              <FaChevronRight
-                onClick={() =>
-                  setPage((prev) =>
-                    props?.projects?.length > 12 + (page - 1) * 10
-                      ? prev + 10
-                      : prev
-                  )
-                }
-                className={`cursor-pointer text-xl ${
-                  props?.projects?.length > 12 + (page - 1) * 10
-                    ? 'cursor-not-allowed text-slate-300'
-                    : ' cursor-pointer text-slate-900'
-                }`}
-              />
-            </div>
-          </div>
+         
 
           {/*  */}
         </div>
       </div>
+
+      <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
       <ContactCallAction />
     </ContainerBlock>
   )
