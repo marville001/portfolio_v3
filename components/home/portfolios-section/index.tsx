@@ -21,7 +21,21 @@ const Portfolios = (props: any) => {
 
         {/* Portfolios */}
         <div className="my-8 lg:my-16 grid select-none grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map(project => (
+           <div
+              className="relative min-h-[225px] group bg-opacity-40 hover:bg-opacity-100 justify-center 
+                      rounded-xl duration-150 ease-linear  p-4 flex flex-col items-center">
+
+            <img className='rounded-lg border h-auto md:h-52 w-full'
+              src="/assets/portfolio/lottery-app.png" alt="" />
+              <h4 className='self-start mt-4'>Lottery app made with NextJs and Web3 (solidity and thirdweb)</h4>
+              <a href="https://lottery-xi.vercel.app/" target="_blank" rel="noopener noreferrer"
+                className='bg-primary text-sm flex items-center gap-1.5 bg-opacity-20 px-2 underline py-1 mt-2 text-accent self-start rounded-lg'>
+                <HiOutlineExternalLink className='text-base' />
+                <span className='font-light'>lottery-xi.vercel.app</span>
+              </a>
+          </div>
+          
+          {[1, 2, 3, 4, 5].map(project => (
             <div key={project}
               className="relative min-h-[225px] group bg-opacity-40 hover:bg-opacity-100 justify-center 
                       rounded-xl duration-150 ease-linear  p-4 flex flex-col items-center">
