@@ -24,8 +24,8 @@ const Home: NextPage = (props: any) => {
       <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
       <ServicesSection />
       <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
-      <Portfolios projects={props?.projects} />
-      <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
+      <Portfolios />
+      {/* <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div> */}
       <AboutMe />
       <ContactCallAction />
     </ContainerBlock>

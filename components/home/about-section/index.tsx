@@ -5,7 +5,7 @@ import { FaLinkedinIn } from 'react-icons/fa'
 
 const AboutMe = () => {
   return (
-    <div className="py-8 bg-gray-[150] dark:bg-dim-dark dark:bg-opacity-50 dark:text-white">
+    <div className="py-8 bg-gray-100 dark:bg-dim-dark dark:bg-opacity-50 dark:text-white">
       <div className="container flex flex-col items-center md:gap- py-16">
         <h2 className="text-4xl font-bold ">About Me</h2>
         <div className="my-6">
