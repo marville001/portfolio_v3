@@ -3,7 +3,7 @@ import { serverTimestamp } from 'firebase/firestore'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { ChangeEvent, Fragment, useEffect, useState } from 'react'
+import React, { ChangeEvent, Fragment, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { FaChevronLeft, FaRegImage, FaSpinner, FaTimes } from 'react-icons/fa'
 
@@ -12,9 +12,7 @@ import ContainerBlock from '../../../components/ContainerBlock'
 import ReactQuillEditor from '../../../components/ReactQuillEditor'
 import { useBlogs } from '../../../contexts/blogs.context'
 import fileUploader from '../../../lib/fileUploader'
-import { firestore } from '../../../lib/firebaseConfig'
 import { Blog } from '../../../types/blog'
-// import fileUploader from "../../../lib/fileUploader"
 
 type Inputs = {
   title: string
@@ -106,7 +104,7 @@ const Blogs: NextPage = () => {
   return (
     <ContainerBlock>
       <AdminWrapper>
-        <div className="_shadow2 relative my-12 flex flex-col items-center rounded-2xl bg-white p-6">
+        <div className="_shadow2 relative my-12 flex flex-col items-center rounded-2xl bg-white dark:bg-dim-dark dark:text-white p-6">
           <Link href="/admin/blogs">
             <a className="absolute top-2 left-2 cursor-pointer rounded-lg p-4 hover:bg-gray-100">
               <FaChevronLeft />

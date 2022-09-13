@@ -192,15 +192,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 										required: {
 											value: true,
 											message: 'Title is required',
-										},
-										minLength: {
-											value: 25,
-											message: 'Title should be 25-100 characters',
-										},
-										maxLength: {
-											value: 100,
-											message: 'Title should be 25-100 characters',
-										},
+										}
 									})}
 								/>
 								{errors.title && (
@@ -224,14 +216,6 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 										required: {
 											value: true,
 											message: 'Intro is required',
-										},
-										minLength: {
-											value: 25,
-											message: 'Intro should be 25-150 characters',
-										},
-										maxLength: {
-											value: 150,
-											message: 'Intro should be 25-150 characters',
 										},
 									})}
 								/>

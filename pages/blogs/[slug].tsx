@@ -28,7 +28,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
       date={_blog?.createdAt}
       type="article"
     >
-      <div className="bg-[#f9f9f9] py-8 p-2 sm:px-6">
+      <div className="bg-[#f9f9f9] dark:text-white dark:bg-dark py-8 px-3.5 sm:px-6">
         <div className="flex mx-auto max-w-[1200px] flex-col lg:flex-row justify-center gap-8">
           <div className="max-w-[768px] mx-auto lg:mx-0 lg:max-w-[66.666%] w-[100%0] rounded-lg p-2 sm:p-6 min-h-[500px]">
 
@@ -56,7 +56,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
               {/* <p className='text-lg font-[400] text-center sm:pl-8'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p> */}
             </div>
 
-            <article className='mt-16 mb-12 flex flex-col items-center'>
+            <article className='mt-6 grid grid-cols-1 mb-12 items-center'>
               {
                 _blog?.cover && <img className='w-full max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
               }
