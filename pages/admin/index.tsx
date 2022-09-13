@@ -45,11 +45,11 @@ const Login = () => {
     w-full
     items-center
     justify-center
-    bg-white
+    bg-white dark:bg-dark
     p-5
   "
       >
-        <div className="mx-2 w-full rounded-md bg-slate-100 px-5 py-5 shadow-xl sm:mx-5 sm:w-[500px]">
+        <div className="mx-2 w-full rounded-md dark:text-white dark:bg-dim-dark bg-slate-100 px-5 py-5 shadow-xl sm:mx-5 sm:w-[500px]">
           <form onSubmit={handleSubmit(handleLogin)} className="w-full">
             <h2 className="text-center text-xl font-bold">Admin Login</h2>
             {authContext.loginError && (
@@ -64,7 +64,7 @@ const Login = () => {
                 placeholder="Enter your username"
                 type="text"
                 id="username"
-                className={`mt-1 w-full rounded-sm p-2 shadow-sm focus:outline-none focus:ring-1 ${
+                className={`mt-1 w-full rounded-sm p-2 shadow-sm dark:bg-black/10 focus:outline-none focus:ring-1 ${
                   errors.username && 'ring-1 ring-red-400'
                 }`}
                 {...register('username', { required: true })}
@@ -82,7 +82,7 @@ const Login = () => {
                 placeholder="Enter your password"
                 type="password"
                 id="password"
-                className={`mt-1 w-full rounded-sm p-2 shadow-sm focus:outline-none focus:ring-1 ${
+                className={`mt-1 w-full rounded-sm p-2 shadow-sm dark:bg-black/10 focus:outline-none focus:ring-1 ${
                   errors.password && 'ring-1 ring-red-400'
                 }`}
                 {...register('password', { required: true })}
@@ -101,7 +101,7 @@ const Login = () => {
               "
             >
               {authContext.loadingLogin ? (
-                <FaSpinner className="animate-spin" />
+                <FaSpinner className="animate-spin my-2" />
               ) : (
                 'Login'
               )}

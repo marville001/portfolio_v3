@@ -16,24 +16,24 @@ const NotFound = () => {
     w-full
     items-center
     justify-center
-    bg-white
+    bg-white dark:bg-dark
     p-5
   "
       >
-        <div className="mx-5 rounded-md bg-slate-100 px-10 py-20 shadow-xl md:px-20">
+        <div className="mx-5 rounded-md dark:text-white px-10 py-20 md:px-20">
           <div className="flex flex-col items-center">
             <h1 className="text-dim-dark0 text-9xl font-bold">404</h1>
 
-            <h6 className="mb-2 text-center text-2xl font-bold text-gray-800 md:text-3xl">
+            <h6 className="mb-2 text-center text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">
               <span className="text-red-500">Oops!</span> Page not found
             </h6>
 
-            <p className="mb-8 text-center text-gray-500 md:text-lg">
+            <p className="mb-8 text-center text-gray-500 dark:text-white md:text-lg">
               The page you’re looking for doesn’t exist or is under development.
             </p>
 
             <Link href="/">
-              <a className="rounded-md bg-dark px-6 py-2 text-sm font-semibold text-white">
+              <a className="rounded-md bg-dark dark:bg-dim-dark px-6 py-2 text-sm font-semibold text-white">
                 Go home
               </a>
             </Link>

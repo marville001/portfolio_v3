@@ -9,8 +9,8 @@ const BookNotes = () => {
       title="Martin -  Book Notes, Summaries, Lessons and Highlights"
       description="Book Notes, Summaries, Lessons and Highlights on some of the books am reading"
     >
-      <div className="bg-primary">
-        <div className="md:px-6 mx-auto max-w-[900px] bg-primary py-8 px-2 sm:px-4">
+      <div className="bg-primary dark:bg-dim-dark">
+        <div className="md:px-6 mx-auto max-w-[900px] bg-primary dark:bg-dim-dark py-8 px-2 sm:px-4">
           <h1 className="text-center text-4xl font-light text-white">
             Book Summaries
           </h1>
@@ -24,12 +24,12 @@ const BookNotes = () => {
         </div>
       </div>
 
-      <div className="bg-white">
+      <div className="bg-white dark:bg-dark dark:text-white">
         <div className="mx-auto max-w-[900px] px-2 py-12">
           <div className="grid gap-12 sm:grid-cols-2">
             {[1, 2, 3, 4].map((note) => (
               <Link key={note} href="">
-                <a className="flex gap-4 hover:bg-gray-50 p-1 rounded-md">
+                <a className="flex gap-4 hover:bg-gray-50 dark:hover:bg-dim-dark p-1 rounded-md">
                   <div className="min-w-[100px] sm:min-w-[150px]">
                     <img
                       src="/assets/books/Atomic-Habits.jpg"
@@ -38,7 +38,7 @@ const BookNotes = () => {
                     />
                   </div>
                   <div className="">
-                    <h2 className="text-primary">
+                    <h2 className="text-primary font-bold">
                       Atomic Habits - James Clear
                     </h2>
                     <h3 className="mt-2 text-sm font-bold">

@@ -59,13 +59,14 @@ interface CountCardProps {
   count: number
 }
 const CountCard = ({ title, count, to }: CountCardProps) => (
-  <div className="rounded-md bg-dark p-5 text-white">
+  <div className="rounded-md bg-dark dark:bg-dim-dark p-5 text-white">
     <div className="flex items-center gap-3">
       <h2 className="text-5xl font-bold">{count}</h2>
       <p className="text-xl">{title}s</p>
     </div>
     <Link href={to}>
-      <a className="mt-3 flex cursor-pointer items-center justify-start gap-2 rounded-md p-1 transition-all duration-150 ease-linear hover:bg-primary hover:px-3 hover:text-white">
+      <a className="mt-3 w-auto flex cursor-pointer items-center justify-start gap-2 rounded-md p-1 
+      transition-all duration-150 ease-linear hover:text-accent hover:px-3">
         <div className="">
           <FaPlus />
         </div>

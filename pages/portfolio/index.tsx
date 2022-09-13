@@ -21,8 +21,8 @@ const Portfolio = (props: Props) => {
       title="Martin - My Portfolio Projects"
       description="A list of all my projects. Mostly are website applications"
     >
-      <div className="bg-primary">
-        <div className="md-px-6 mx-auto max-w-[900px] bg-primary py-10 px-2 sm:px-4">
+      <div className="bg-primary dark:bg-dim-dark">
+        <div className="md-px-6 mx-auto max-w-[900px] bg-primary dark:bg-dim-dark py-10 px-2 sm:px-4">
           <h1 className="text-center text-4xl font-light text-white">
             Welcome to My Portfolio
           </h1>
@@ -35,7 +35,7 @@ const Portfolio = (props: Props) => {
           </div>
           <div className="flex justify-center">
             <Link href="/archive">
-              <a className="rounded-md bg-dark py-1.5 px-6 text-white">
+              <a className="rounded-md bg-dark hover:bg-accent py-1.5 px-6 text-white">
                 View Archive
               </a>
             </Link>

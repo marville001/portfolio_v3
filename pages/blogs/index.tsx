@@ -85,8 +85,8 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
       title="Martin - My Blogs"
       description="Welcome to my blog about ReactJs, NodeJs, Angular, Docker, Typescript, Sequelize, DevOps...etc"
     >
-      <div className="bg-primary">
-        <div className="md-px-6 mx-auto max-w-[900px] bg-primary py-10 px-2 sm:px-4">
+      <div className="bg-primary dark:bg-dim-dark">
+        <div className="md-px-6 mx-auto max-w-[900px] bg-primary dark:bg-dim-dark py-10 px-2 sm:px-4">
           <h1 className="text-center text-4xl font-bold uppercase text-white">
             Welcome
           </h1>
@@ -99,7 +99,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
           </div>
           <div className="flex justify-center">
             <Link href="/programming-journey">
-              <a className="rounded-md bg-dark hover:bg-dim-dark py-1.5 px-6 text-white">
+              <a className="rounded-md bg-dark hover:bg-accent py-1.5 px-6 text-white">
                 View My Journeys
               </a>
             </Link>
@@ -111,7 +111,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
         <div className="container">
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
             {blogPosts.map((blog) => (
-              <div key={blog.id} className="shadow-hover border group dark:bg-dim-dark dark:text-white">
+              <div key={blog.id} className="shadow-hover border cursor-pointer transition-all duration-150 ease-linear group dark:bg-dim-dark dark:text-white">
                 <Link href={`/blogs/${blog.slug}`}>
                   <article className="overflow-hidden rounded cursor-pointer">
                     <img

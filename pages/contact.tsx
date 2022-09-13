@@ -2,12 +2,9 @@ import { NextPage } from 'next'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaSpinner } from 'react-icons/fa'
-import Recaptcha from 'react-recaptcha'
 import ContainerBlock from '../components/ContainerBlock'
 
 const contact: NextPage = () => {
-  const [isVerified, setisVerified] = useState(false)
-  const [verifyError, setVerifyError] = useState(false)
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
@@ -20,12 +17,6 @@ const contact: NextPage = () => {
   } = useForm()
 
   const handleSendMessage = async (data: any) => {
-    if (!isVerified) {
-      setVerifyError(true)
-      return
-    }
-
-    setVerifyError(false)
 
     setLoading(true)
     try {
@@ -45,18 +36,6 @@ const contact: NextPage = () => {
         setError('')
       }, 4000)
     }
-  }
-
-  const verifyCallback = (response: any) => {
-    setVerifyError(false)
-
-    if (response) {
-      setisVerified(true)
-    }
-  }
-
-  const expiredCallback = () => {
-    setisVerified(false)
   }
 
   return (
@@ -183,34 +162,19 @@ const contact: NextPage = () => {
               </button>
             </div>
           ) : (
-            <>
-              <div className="my-5 flex flex-col items-start">
-                <Recaptcha
-                  render="explicit"
-                  size="normal"
-                  sitekey={'6Ldk7RcgAAAAAHWlxwTNeSA4SMIlRDWkXiFZwcaZ'}
-                  verifyCallback={verifyCallback}
-                  expiredCallback={expiredCallback}
-                />
-                {verifyError && (
-                  <p className="mt-1 text-red-400">Please verify recapture</p>
+            <div className="my-5 flex justify-center">
+              <button
+                type="submit"
+                disabled={loading}
+                className="cursor-pointer border-0 bg-accent px-10 py-2 rounded-full text-white outline-none ring-1 ring-accent focus:border-0 focus:outline-none disabled:cursor-not-allowed disabled:bg-opacity-75"
+              >
+                {loading ? (
+                  <FaSpinner className="animate-spin" />
+                ) : (
+                  'Send Message'
                 )}
-              </div>
-
-              <div className="my-5 flex justify-center">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="cursor-pointer border-0 bg-accent px-10 py-2 rounded-full text-white outline-none ring-1 ring-accent focus:border-0 focus:outline-none disabled:cursor-not-allowed disabled:bg-opacity-75"
-                >
-                  {loading ? (
-                    <FaSpinner className="animate-spin" />
-                  ) : (
-                    'Send Message'
-                  )}
-                </button>
-              </div>
-            </>
+              </button>
+            </div>
           )}
         </form>
       </div>
