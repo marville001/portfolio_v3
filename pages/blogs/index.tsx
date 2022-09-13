@@ -111,7 +111,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
         <div className="container">
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
             {blogPosts.map((blog) => (
-              <div key={blog.id} className="_shadow4 group dark:bg-dim-dark dark:text-white">
+              <div key={blog.id} className="shadow-hover border group dark:bg-dim-dark dark:text-white">
                 <Link href={`/blogs/${blog.slug}`}>
                   <article className="overflow-hidden rounded cursor-pointer">
                     <img
@@ -121,19 +121,13 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                           : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
                       }
                       alt="My Blog"
-                      className="cursor-pointer  group-hover:scale-[1.02] transition-all duration-150 h-56 border-b object-cover w-full"
+                      className="cursor-pointer h-56 border-b object-cover w-full"
                     />
 
                     <div className="p-5">
-                      <a className="text-xl text-primary hover:underline">
-                        <h3>
-                          {blog.title}
-                        </h3>
-                      </a>
-
-                      <p className="mt-5 text-[15px]">
-                        {blog.intro}
-                      </p>
+                      <h3 className='text-xl font-bold'>
+                        {blog.title}
+                      </h3>
                     </div>
                   </article>
                 </Link>

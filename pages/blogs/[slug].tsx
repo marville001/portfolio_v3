@@ -58,7 +58,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 
             <article className='mt-6 grid grid-cols-1 mb-12 items-center'>
               {
-                _blog?.cover && <img className='w-full max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
+                _blog?.cover && <img className='w-full border max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
               }
               <RichTextMainWrapper>
                 <div dangerouslySetInnerHTML={{ __html: _blog?.blog || "" }} />

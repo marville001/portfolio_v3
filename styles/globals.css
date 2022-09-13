@@ -63,6 +63,11 @@ body {
   box-shadow: 0px 30px 90px rgb(0 0 0 / 14%);
 }
 
+.shadow-hover:hover{
+  /* box-shadow: 20px 30px 90px rgb(0 0 0 / 14%); */
+  box-shadow: rgb(0 0 0 / 10%) 0px 1rem 2rem 0px;
+}
+
 .blurry {
   background: rgb(255, 255, 255);
   background: linear-gradient(
