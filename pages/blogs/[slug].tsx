@@ -1,11 +1,8 @@
-import { collection, getDocs, query, where } from 'firebase/firestore'
 import { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import ContainerBlock from '../../components/ContainerBlock'
 import RichTextMainWrapper from '../../components/RichTextMainWrapper'
-import { postToJSON } from '../../lib/firebase'
-import { firestore } from '../../lib/firebaseConfig'
 import { Blog } from '../../types/blog'
 import blogsModel from '../../models/blogs.model'
 

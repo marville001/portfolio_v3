@@ -1,5 +1,5 @@
 import { Menu, Transition } from '@headlessui/react'
-import { collection, doc, getDoc, getDocs, query, serverTimestamp } from 'firebase/firestore'
+import { serverTimestamp } from 'firebase/firestore'
 import { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -11,8 +11,6 @@ import ContainerBlock from '../../../components/ContainerBlock'
 import ReactQuillEditor from '../../../components/ReactQuillEditor'
 import { useBlogs } from '../../../contexts/blogs.context'
 import fileUploader from '../../../lib/fileUploader'
-import { postToJSON } from '../../../lib/firebase'
-import { firestore } from '../../../lib/firebaseConfig'
 import { Blog } from '../../../types/blog'
 import blogsModel from "../../../models/blogs.model"
 
@@ -88,7 +86,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 	}
 
 	useEffect(() => {
-		const b = typeof blog === "string" ? JSON.parse(blog) : {}	
+		const b = typeof blog === "string" ? JSON.parse(blog) : {}
 
 		if (b?.title) {
 			setLoadedBlog(b);
