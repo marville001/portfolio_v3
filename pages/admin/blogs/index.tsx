@@ -74,10 +74,10 @@ const Blogs: NextPage = () => {
                   </Link>
 
                   <div className="mt-5 flex items-center justify-between">
-                    <p>{new Date(blog?.createdAt).toDateString().substring(3)}</p>
+                    <p className='dark:text-white'>{new Date(blog?.createdAt).toDateString().substring(3)}</p>
 
                     <Link href={`/admin/blogs/${blog.id}`}>
-                      <a className="rounded tracking-wider border border-primary px-3 py-1 text-primary transition-all duration-150 hover:bg-primary hover:text-white">
+                      <a className="rounded tracking-wider border border-accent px-3 py-1 text-accent transition-all duration-150 hover:bg-accent hover:text-white">
                         Edit
                       </a>
                     </Link>

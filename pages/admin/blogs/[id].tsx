@@ -59,11 +59,6 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 			return
 		}
 
-		console.log("================");
-
-		console.log(data);
-
-
 		const updatedBlog: Blog = {
 			title: data.title,
 			intro: data.intro,
@@ -103,18 +98,18 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 			<AdminWrapper>
 				{
 					loadedBlog?.title &&
-					<div className="_shadow2 relative  mx-auto my-12 flex flex-col items-center rounded-2xl bg-white p-6">
+					<div className="_shadow2 relative  mx-auto my-12 flex flex-col items-center rounded-2xl   bg-white dark:bg-dim-dark p-6">
 						<Link href="/admin/blogs">
-							<a className="absolute top-2 left-2 cursor-pointer rounded-lg p-4 hover:bg-gray-100">
+							<a className="absolute dark:text-white top-2 left-2 cursor-pointer rounded-lg p-4 hover:bg-gray-100 dark:hover:text-dark">
 								<FaChevronLeft />
 							</a>
 						</Link>
 						<div className="self-start mt-8 w-full">
-							<h2 className="text-3xl font-bold text-center">Update Blog</h2>
+							<h2 className="text-3xl font-bold text-center dark:text-white">Update Blog</h2>
 						</div>
 
 						<form onSubmit={handleSubmit(handleUpdateBlog)} className="flex flex-col md:flex-row my-16 w-full">
-							<div className="w-full md:w-[300px] dark:bg-dark rounded-md shadow h-min p-5">
+							<div className="w-full md:w-[300px] bg-white dark:bg-dark  dark:text-white rounded-md shadow h-min p-5">
 								<h2 className='font-bold mb-2'>Settings</h2>
 								<hr className='mb-3' />
 								<label htmlFor="isDraft" className='flex items-center space-x-3 mt-3'>
@@ -129,7 +124,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 							>
 								{/* Blog Cover Image */}
 								{cover ? (
-									<div className="relative">
+									<div className="relative dark:text-white">
 										<div
 											onClick={() => setCover('')}
 											className="absolute right-2 top-2 cursor-pointer rounded-lg bg-white p-2"
@@ -143,7 +138,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 										/>
 									</div>
 								) : (
-									<div className="flex gap-2">
+									<div className="flex gap-2 dark:text-white">
 										<Menu
 											as="div"
 											className="relative z-[542] inline-block text-left ring-0 focus:ring-0"
@@ -197,8 +192,8 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 
 								{/* Title */}
 								<div className="mt-6 flex flex-col gap-2">
-									<label htmlFor="title" className="text-sm">
-										Blog Title
+									<label htmlFor="title" className="dark:text-white">
+										Title
 									</label>
 									<input
 										type="text"
@@ -221,8 +216,8 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 
 								{/* Title */}
 								<div className="mt-6 flex flex-col gap-2">
-									<label htmlFor="intro" className="text-sm">
-										Blog Intro
+									<label htmlFor="intro" className="dark:text-white">
+										Intro
 									</label>
 									<input
 										type="text"
@@ -244,8 +239,8 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 								</div>
 
 								<div className="mt-6 flex flex-col gap-2">
-									<label htmlFor="" className="text-sm">
-										Blog Content
+									<label htmlFor="" className="dark:text-white">
+										Content
 									</label>
 									<ReactQuillEditor
 										hasErrors={

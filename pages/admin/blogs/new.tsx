@@ -101,18 +101,18 @@ const Blogs: NextPage = () => {
   return (
     <ContainerBlock>
       <AdminWrapper>
-        <div className="_shadow2 relative my-12 flex flex-col items-center rounded-2xl bg-white dark:bg-dim-dark dark:text-white p-6">
+        <div className="_shadow2 relative my-12 flex flex-col items-center rounded-2xl bg-white dark:bg-dim-dark  p-6">
           <Link href="/admin/blogs">
-            <a className="absolute top-2 left-2 cursor-pointer rounded-lg p-4 hover:bg-gray-100">
+            <a className="absolute top-2 left-2 cursor-pointer rounded-lg dark:hover:text-dark dark:text-white p-4 hover:bg-gray-100">
               <FaChevronLeft />
             </a>
           </Link>
-          <div className="flex flex-1 justify-center">
+          <div className="flex flex-1 justify-center dark:text-white">
             <h2 className="text-3xl font-bold">New Blog</h2>
           </div>
 
           <form onSubmit={handleSubmit(handleSaveBlog)} className="flex flex-col md:flex-row my-16 w-full">
-            <div className="w-full md:w-[300px] dark:bg-dark rounded-md shadow h-min p-5">
+            <div className="w-full md:w-[300px] dark:bg-dark dark:text-white rounded-md shadow h-min p-5">
               <h2 className='font-bold mb-2'>Settings</h2>
               <hr className='mb-3' />
               <label htmlFor="isDraft" className='flex items-center space-x-3 mt-3'>
@@ -141,7 +141,7 @@ const Blogs: NextPage = () => {
                   />
                 </div>
               ) : (
-                <div className="flex gap-2">
+                <div className="flex gap-2 dark:text-white">
                   <Menu
                     as="div"
                     className="relative z-[542] inline-block text-left ring-0 focus:ring-0"
@@ -195,7 +195,7 @@ const Blogs: NextPage = () => {
 
               {/* Title */}
               <div className="mt-6 flex flex-col gap-2">
-                <label htmlFor="title" className="">
+                <label htmlFor="title" className="dark:text-white">
                   Title
                 </label>
                 <input
@@ -219,7 +219,7 @@ const Blogs: NextPage = () => {
 
               {/* Intro */}
               <div className="mt-6 flex flex-col gap-2">
-                <label htmlFor="intro" className="">
+                <label htmlFor="intro" className="dark:text-white">
                   Intro
                 </label>
                 <textarea
@@ -242,7 +242,7 @@ const Blogs: NextPage = () => {
 
               {/* Tag */}
               <div className="mt-6 flex flex-col gap-2">
-                <label htmlFor="intro" className="">
+                <label htmlFor="intro" className="dark:text-white">
                   Tag
                 </label>
                 <input
