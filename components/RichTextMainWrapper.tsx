@@ -8,6 +8,8 @@ const RichTextMainWrapper = ({ children }: { children: ReactChild }) => {
                 prose-pre:overflow-x-auto dark:prose-headings:text-white
                 prose-a:!text-primary prose-a:underline
                 prose-pre:bg-dark dark:prose-pre:bg-dim-dark
+
+                
                 prose-h1:my-6 prose-h2:my-5 lg:prose-h2:my-6
                 prose-h3:my-4 prose-h4:my-4 lg:prose-h4:my-6
                 prose-h5:my-3 lg:prose-h5:my-4 prose-h6:my-3 lg:prose-h6:my-4

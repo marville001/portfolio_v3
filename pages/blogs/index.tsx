@@ -1,80 +1,16 @@
-import {
-  collection,
-  // collectionGroup, endBefore,
-  getDocs,
-  // limit,
-  orderBy, query,
-  // startAfter
-} from 'firebase/firestore'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-// import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import ContainerBlock from '../../components/ContainerBlock'
 import ContactCallAction from '../../components/ContactCallAction'
 
-import { postToJSON } from '../../lib/firebase'
-import { firestore } from '../../lib/firebaseConfig'
+import blogsModel from '../../models/blogs.model'
 
 const Blogs: NextPage = ({ blogs, total }: any) => {
 
   const [blogPosts, setBlogPosts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  // const [totalPosts, setTotalPosts] = useState(0);
-  // const [page, setPage] = useState(1);
-  // const [pageSize, _setPageSize] = useState(1);
-
-  // const getNextPosts = async () => {
-  //   setLoading(true);
-
-  //   console.log(blogPosts);
-
-  //   try {
-  //     const last = blogPosts[blogPosts.length - 1];
-  //     const dbInstance = collection(firestore, 'blogs')
-  //     let blogsQuery= query(dbInstance, orderBy('createdAt', "desc"), limit(pageSize+1), startAfter(last.createdAt))
-
-  //     const querySnapshot = await getDocs(blogsQuery)
-  //     const blogs = querySnapshot.docs.map(postToJSON)
-
-  //     setBlogPosts(blogs);
-  //     setPage(page + 1)
-  //     setLoading(false);
-
-  //   } catch (error) {
-  //     console.log(error);
-  //     setLoading(false)
-  //   }
-  // };
-
-  // const getPreviousPosts = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const first = blogPosts[0];
-
-  //     const dbInstance = collection(firestore, 'blogs')
-  //     const blogsQuery = query(dbInstance, orderBy('createdAt', "desc"), limit(pageSize), endBefore(first.createdAt))
-  //     const querySnapshot = await getDocs(blogsQuery)
-  //     const blogs = querySnapshot.docs.map(postToJSON)
-
-  //     setBlogPosts(blogs);
-  //     setLoading(false);
-  //     setPage(page - 1)
-  //   } catch (error) {
-  //     console.log(error);
-  //     setLoading(false)
-  //   }
-
-  // };
-
 
   useEffect(() => {
-    setLoading(false)
-
-    if (total) {
-      // setTotalPosts(total)
-    }
-
     setBlogPosts(typeof blogs === "object" ? [] : JSON.parse(blogs));
   }, [blogs, total])
 
@@ -111,8 +47,8 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
         <div className="container">
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
             {blogPosts.map((blog) => (
-              <div key={blog.id} className="shadow-hover border cursor-pointer transition-all duration-150 ease-linear group dark:bg-dim-dark dark:text-white">
-                <Link href={`/blogs/${blog.slug}`}>
+              <Link key={blog.id} href={`/blogs/${blog.slug}`}>
+                <a className="shadow-hover border cursor-pointer transition-all duration-150 ease-linear group dark:bg-dim-dark dark:text-white">
                   <article className="overflow-hidden rounded cursor-pointer">
                     <img
                       src={
@@ -130,11 +66,11 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                       </h3>
                     </div>
                   </article>
-                </Link>
-              </div>
+                </a>
+              </Link>
             ))}
           </div>
-          {blogPosts.length === 0 && !loading &&
+          {blogPosts.length === 0 &&
             <div className="flex min-h-[400px]  items-center justify-center">
               <h4 className="text-4xl font-bold uppercase opacity-30">
                 No Blog Post Yet
@@ -151,21 +87,12 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
   )
 }
 
-// export async function getStaticProps() {
-
-// }
-
 export async function getServerSideProps() {
   try {
-    const dbInstance = collection(firestore, 'blogs')
-    const blogsQuery = query(dbInstance, orderBy('createdAt', "desc"))
-    const querySnapshot = await getDocs(blogsQuery)
-    const blogs = querySnapshot.docs.map(postToJSON)
-
-    const total = (await getDocs(query(collection(firestore, 'blogs')))).size
+    const blogs = await blogsModel.getAllBlogs('createdAt', "desc")
 
     return {
-      props: { blogs: JSON.stringify(blogs) || [], total: total || 0 },
+      props: { blogs: JSON.stringify(blogs) || [] },
     };
   } catch (error) {
     console.log(error);

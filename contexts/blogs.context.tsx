@@ -15,7 +15,7 @@ import {
 import toast from 'react-hot-toast'
 import { firestore } from '../lib/firebaseConfig'
 import { Blog } from '../types/blog'
-import { getAllBlogsService } from '../services/blogs.service'
+import blogsModel from '../models/blogs.model'
 
 interface ContextProps {
   blogs: Blog[] | []
@@ -52,7 +52,7 @@ const BlogsProvider = ({ children }: Props): ReactElement => {
   const loadBlogs = async () => {
     try {
       setLoading(true)
-      const data = await getAllBlogsService();
+      const data = await blogsModel.getAllBlogs('createdAt', 'desc');
       if (data) setBlogs(data)
       setLoading(false)
     } catch (error) {

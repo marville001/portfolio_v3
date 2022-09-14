@@ -7,6 +7,7 @@ import RichTextMainWrapper from '../../components/RichTextMainWrapper'
 import { postToJSON } from '../../lib/firebase'
 import { firestore } from '../../lib/firebaseConfig'
 import { Blog } from '../../types/blog'
+import blogsModel from '../../models/blogs.model'
 
 
 const ReadBlogs: NextPage = ({ blog }: any) => {
@@ -15,7 +16,6 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
   useEffect(() => {
     setBlog(typeof blog === "string" ? JSON.parse(blog) : {})
   }, [blog])
-
 
   return (
     <ContainerBlock
@@ -32,22 +32,14 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
         <div className="flex mx-auto max-w-[1200px] flex-col lg:flex-row justify-center gap-8">
           <div className="max-w-[768px] mx-auto lg:mx-0 lg:max-w-[66.666%] w-[100%0] rounded-lg p-2 sm:p-6 min-h-[500px]">
 
-            {_blog?.tags && _blog?.tags?.length > 0 &&
               <div className="flex gap-6 mt-8 max-w-[600px] mx-auto justify-center flex-wrap">
-                {_blog?.tags?.map((tag: string, i: number) => (
-                  <Link href={`/tags/${tag}`} key={i}>
-                    <a className='bg-gray-100 px-3 py-1.5 tracking-wider border border-gray-500 
-                    hover:border-0 leading-none text-sm hover:bg-gray-800 hover:text-white 
-                    cursor-pointer rounded-md transition-all duration-150 ease-linear'><b className='text-gray-600'>
-                        #</b> {tag}
-                    </a>
-                  </Link>
-                ))}
+                    <p className='font-semibold text-accent uppercase tracking-wider'>
+                       {_blog?.tag}
+                    </p>
               </div>
-            }
 
-            <div className="flex justify-center">
-              <h2 className='my-6 text-xl text-center font-semibold sm:text-4xl max-w-[600px]'>{_blog?.title}</h2>
+            <div className="flex justify-center my-3">
+              <h2 className='text-xl text-center font-semibold sm:text-4xl max-w-[600px]'>{_blog?.title}</h2>
             </div>
 
             <div className="flex justify-center items-center gap-5 sm:gap-8 sm:divide-x-2 flex-col sm:flex-row">
@@ -56,7 +48,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
               {/* <p className='text-lg font-[400] text-center sm:pl-8'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p> */}
             </div>
 
-            <article className='mt-6 grid grid-cols-1 mb-12 items-center'>
+            <article className='mt-4 grid grid-cols-1 mb-12 items-center'>
               {
                 _blog?.cover && <img className='w-full border max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
               }
@@ -76,10 +68,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 }
 
 export async function getStaticPaths() {
-  const dbInstance = collection(firestore, 'blogs')
-  const blogsQuery = query(dbInstance)
-  const querySnapshot = await getDocs(blogsQuery)
-  const blogs = querySnapshot.docs.map(postToJSON)
+  const blogs = await blogsModel.getAllBlogs() ?? []
 
   const paths = blogs.map(blog => ({
     params: { slug: blog.slug }
@@ -93,14 +82,9 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async (context: any) => {
   try {
-    const blogsRef = collection(firestore, 'blogs')
-    const blogsQuery = query(blogsRef, where("slug", "==", context.params.slug))
-    const querySnapshot = await getDocs(blogsQuery)
-    const blogs = querySnapshot.docs.map(postToJSON)
+    const blog = await blogsModel.getBlogBySlugs(context.params.slug) ?? []
 
-    const blog = blogs.length > 0 ? blogs[0] : {}
-
-    if (blogs.length <= 0) {
+    if (!blog) {
       return {
         notFound: true,
       };
