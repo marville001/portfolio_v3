@@ -11,7 +11,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
   const [_blog, setBlog] = useState<Blog | null>(null)
 
   useEffect(() => {
-    
+
     setBlog(typeof blog === "string" ? JSON.parse(blog) : {})
   }, [blog])
 
@@ -27,39 +27,41 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
       type="article"
     >
       <div className="bg-[#f9f9f9] dark:text-white dark:bg-dark py-8 px-3.5 sm:px-6">
-        <div className="flex mx-auto max-w-[1200px] flex-col lg:flex-row justify-center gap-8">
-          <div className="max-w-[768px] mx-auto lg:mx-0 lg:max-w-[66.666%] w-[100%0] rounded-lg p-2 sm:p-6 min-h-[500px]">
+        {_blog?.id &&
+          <div className="flex mx-auto max-w-[1200px] flex-col lg:flex-row justify-center gap-8">
+            <div className="max-w-[768px] mx-auto lg:mx-0 lg:max-w-[66.666%] w-[100%0] rounded-lg p-2 sm:p-6 min-h-[500px]">
 
               <div className="flex gap-6 mt-8 max-w-[600px] mx-auto justify-center flex-wrap">
-                    <p className='font-semibold text-accent uppercase tracking-wider'>
-                       {_blog?.tag}
-                    </p>
+                <p className='font-semibold text-accent uppercase tracking-wider'>
+                  {_blog?.tag}
+                </p>
               </div>
 
-            <div className="flex justify-center my-3">
-              <h2 className='text-xl text-center font-semibold sm:text-4xl max-w-[600px]'>{_blog?.title}</h2>
+              <div className="flex justify-center my-3">
+                <h2 className='text-xl text-center font-semibold sm:text-4xl max-w-[600px]'>{_blog?.title}</h2>
+              </div>
+
+              <div className="flex justify-center items-center gap-5 sm:gap-8 sm:divide-x-2 flex-col sm:flex-row">
+                <h4 className='text-lg font-[400] text-center'>By <Link href="/about-me/"><a className='hover:text-primary ml-2'>Martin Mwangi</a></Link></h4>
+                <p className='text-lg font-[400] text-center sm:pl-8'>{new Date(_blog?.createdAt).toDateString().substring(3)}</p>
+                {/* <p className='text-lg font-[400] text-center sm:pl-8'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p> */}
+              </div>
+
+              <article className='mt-4 grid grid-cols-1 mb-12 items-center'>
+                {
+                  _blog?.cover && <img className='w-full border max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
+                }
+                <RichTextMainWrapper>
+                  <div dangerouslySetInnerHTML={{ __html: _blog?.blog || "" }} />
+                </RichTextMainWrapper>
+
+              </article>
+
             </div>
 
-            <div className="flex justify-center items-center gap-5 sm:gap-8 sm:divide-x-2 flex-col sm:flex-row">
-              <h4 className='text-lg font-[400] text-center'>By <Link href="/about-me/"><a className='hover:text-primary ml-2'>Martin Mwangi</a></Link></h4>
-              <p className='text-lg font-[400] text-center sm:pl-8'>{new Date(_blog?.createdAt).toDateString().substring(3)}</p>
-              {/* <p className='text-lg font-[400] text-center sm:pl-8'>{new Date(_blog?.createdAt).toUTCString().toString().replace("GMT", "")}</p> */}
-            </div>
-
-            <article className='mt-4 grid grid-cols-1 mb-12 items-center'>
-              {
-                _blog?.cover && <img className='w-full border max-h-[400px] object-cover' src={_blog?.cover} alt={_blog?.title} />
-              }
-              <RichTextMainWrapper>
-                <div dangerouslySetInnerHTML={{ __html: _blog?.blog || "" }} />
-              </RichTextMainWrapper>
-
-            </article>
-
+            {/* <div className="p-6 hidden lg:block min-w-[300px] bg-white rounded-lg sticky top-5 min-h-[calc(100vh-2.75rem)] _shadow3"></div> */}
           </div>
-
-          {/* <div className="p-6 hidden lg:block min-w-[300px] bg-white rounded-lg sticky top-5 min-h-[calc(100vh-2.75rem)] _shadow3"></div> */}
-        </div>
+        }
       </div>
     </ContainerBlock>
   )
