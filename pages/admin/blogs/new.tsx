@@ -19,7 +19,7 @@ type Inputs = {
   blog: string
   intro: string
   tag: string
-  draft: string
+  draft: boolean
 }
 
 const Blogs: NextPage = () => {
@@ -111,8 +111,8 @@ const Blogs: NextPage = () => {
             <h2 className="text-3xl font-bold">New Blog</h2>
           </div>
 
-          <form onSubmit={handleSubmit(handleSaveBlog)} className="flex my-16 w-full">
-            <div className="w-[300px] dark:bg-dark rounded-md shadow h-min p-5">
+          <form onSubmit={handleSubmit(handleSaveBlog)} className="flex flex-col md:flex-row my-16 w-full">
+            <div className="w-full md:w-[300px] dark:bg-dark rounded-md shadow h-min p-5">
               <h2 className='font-bold mb-2'>Settings</h2>
               <hr className='mb-3' />
               <label htmlFor="isDraft" className='flex items-center space-x-3 mt-3'>
