@@ -14,6 +14,7 @@ import fileUploader from '../../../lib/fileUploader'
 import { postToJSON } from '../../../lib/firebase'
 import { firestore } from '../../../lib/firebaseConfig'
 import { Blog } from '../../../types/blog'
+import blogsModel from "../../../models/blogs.model"
 
 type Inputs = {
 	title: string
@@ -87,7 +88,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 	}
 
 	useEffect(() => {
-		const b = typeof blog === "string" ? JSON.parse(blog) : {}
+		const b = typeof blog === "string" ? JSON.parse(blog) : {}	
 
 		if (b?.title) {
 			setLoadedBlog(b);
@@ -119,7 +120,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 								<h2 className='font-bold mb-2'>Settings</h2>
 								<hr className='mb-3' />
 								<label htmlFor="isDraft" className='flex items-center space-x-3 mt-3'>
-									<input checked={isDraft} onChange={e=>setIsDraft(e.target.checked)} type="checkbox" className='h-5 w-5' name="" id="isDraft" />
+									<input checked={isDraft} onChange={e => setIsDraft(e.target.checked)} type="checkbox" className='h-5 w-5' name="" id="isDraft" />
 									<span>Save as draft</span>
 								</label>
 							</div>
@@ -286,10 +287,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 }
 
 export async function getStaticPaths() {
-	const dbInstance = collection(firestore, 'blogs')
-	const blogsQuery = query(dbInstance)
-	const querySnapshot = await getDocs(blogsQuery)
-	const blogs = querySnapshot.docs.map(postToJSON)
+	const blogs = await blogsModel.getAllBlogs() ?? []
 
 	const paths = blogs.map(blog => ({
 		params: { id: blog.id }
@@ -304,17 +302,9 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async (context: any) => {
 	try {
 		const { id } = context.params;
-		const blogsRef = doc(firestore, 'blogs', id)
-		const blogSnap = await getDoc(blogsRef);
+		const blog = await blogsModel.getBlogById(id);
 
-
-		if (!blogSnap.exists()) {
-			return {
-				notFound: true,
-			};
-		}
-		const blog = blogSnap.data();
-		blog.id = id;
+		if (!blog) return { notFound: true };
 
 		return {
 			props: { blog: JSON.stringify(blog) },

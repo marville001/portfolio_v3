@@ -51,7 +51,7 @@ const Blogs: NextPage = () => {
         {blogsContext.blogs.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
             {blogsContext.blogs.map((blog) => (
-              <article className="overflow-hidden rounded border self-start">
+              <article key={blog?.id} className="overflow-hidden rounded border self-start">
                 <Link href={`/blogs/${blog.slug}`}>
                   <img
                     src={

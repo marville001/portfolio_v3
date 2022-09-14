@@ -7,7 +7,7 @@ import { Blog } from "../types/blog"
 class Blogs {
 	blogsRef = collection(firestore, 'blogs')
 
-	async getAllBlogs(order_by = "id", order:OrderByDirection  = "asc") {
+	async getAllBlogs(order_by = "id", order: OrderByDirection = "asc") {
 		try {
 			const blogsQuery = query(this.blogsRef, orderBy(order_by, order))
 			const querySnapshot = await getDocs(blogsQuery)
@@ -23,12 +23,11 @@ class Blogs {
 
 	async getBlogById(id: string) {
 		try {
-			const docRef = doc(firestore, 'blogs', id)
-			const docSnap = await getDoc(docRef)
+			const blogRef = doc(firestore, 'blogs', id)
+			const blogSnap = await getDoc(blogRef);
 
-			if (docSnap.exists()) {
-
-				return docSnap.data()
+			if (blogSnap.exists()) {
+				return { id, ...blogSnap.data() }
 			} else {
 				return null;
 			}
@@ -38,17 +37,11 @@ class Blogs {
 	}
 
 	async getBlogBySlugs(slug: string) {
-
-		console.log(slug);
-
 		try {
-			const blogsQuery = query(this.blogsRef,  where("slug", "==", slug))
+			const blogsQuery = query(this.blogsRef, where("slug", "==", slug))
 			const querySnapshot = await getDocs(blogsQuery)
 
 			const data = querySnapshot.docs.map((doc) => postToJSON(doc))
-
-			console.log(data);
-			
 
 			if (data.length > 0)
 				return data[0]
