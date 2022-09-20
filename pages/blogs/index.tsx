@@ -14,6 +14,17 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
     setBlogPosts(typeof blogs === "object" ? [] : JSON.parse(blogs));
   }, [blogs, total])
 
+  useEffect(() => {
+    const get = async () => {
+      let b = await blogsModel.getNotDraftBlogs();
+      console.log(b);
+      
+    }
+
+    get()
+  }, [])
+  
+
 
 
   return (
@@ -89,7 +100,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
 
 export async function getServerSideProps() {
   try {
-    const blogs = await blogsModel.getAllBlogs('createdAt', "desc")
+    const blogs = await blogsModel.getNotDraftBlogs('createdAt', "desc")
 
     return {
       props: { blogs: JSON.stringify(blogs) || [] },

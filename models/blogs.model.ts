@@ -16,7 +16,24 @@ class Blogs {
 
 			return data
 		} catch (error) {
-			console.log("GET ALL ERROR", error);
+			console.log("GET ALL BLOGS ERROR", error);
+		}
+
+	}
+
+	async getNotDraftBlogs(order_by = "id", order: OrderByDirection = "asc") {
+		try {
+			const blogsQuery = query(this.blogsRef, where("draft", "==", false), orderBy(order_by, order))
+			const querySnapshot = await getDocs(blogsQuery)
+
+			console.log(querySnapshot);
+			
+
+			const data = querySnapshot.docs.map((doc) => postToJSON(doc))
+
+			return data
+		} catch (error) {
+			console.log("GET NOT DRAFT BLOGS ERROR", error);
 		}
 
 	}

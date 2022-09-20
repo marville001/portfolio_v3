@@ -7,7 +7,7 @@ function useDarkMode() {
   // Use our useLocalStorage hook to persist state through a page refresh.
   const [enabledState, setEnabledState] = useLocalStorage<boolean>(
     "dark-mode-enabled",
-    true
+    false
   );
 
   // See if user has set a browser or OS preference for dark mode.
