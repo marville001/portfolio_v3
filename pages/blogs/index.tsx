@@ -14,19 +14,6 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
     setBlogPosts(typeof blogs === "object" ? [] : JSON.parse(blogs));
   }, [blogs, total])
 
-  useEffect(() => {
-    const get = async () => {
-      let b = await blogsModel.getNotDraftBlogs();
-      console.log(b);
-      
-    }
-
-    get()
-  }, [])
-  
-
-
-
   return (
     <ContainerBlock
       title="Martin - My Blogs"

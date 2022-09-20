@@ -26,9 +26,6 @@ class Blogs {
 			const blogsQuery = query(this.blogsRef, where("draft", "==", false), orderBy(order_by, order))
 			const querySnapshot = await getDocs(blogsQuery)
 
-			console.log(querySnapshot);
-			
-
 			const data = querySnapshot.docs.map((doc) => postToJSON(doc))
 
 			return data
