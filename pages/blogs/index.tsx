@@ -59,7 +59,11 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                     />
 
                     <div className="p-5">
-                      <h3 className='text-xl font-bold'>
+                      <h3 className='uppercase text-accent mb-3 text-sm tracking-wider font-bold'>
+                        {blog.tag}
+                      </h3>
+
+                      <h3 className='text-lg font-bold'>
                         {blog.title}
                       </h3>
                     </div>
