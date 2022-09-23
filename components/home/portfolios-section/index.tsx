@@ -29,13 +29,13 @@ const Portfolios = () => {
       summary: "Lottery app made with NextJs and Web3 (solidity and thirdweb)",
       link: "https://lottery-xi.vercel.app/",
     },
-    {
-      id: 'clinicdashboard5452435623f32543',
-      image: "/assets/portfolio/clinic-dashboard.png",
-      title: "my-clinic-app-app.vercel.app",
-      summary: "Clinic management made easy in one place.",
-      link: "https://my-clinic-app-app.vercel.app/",
-    },
+    // {
+    //   id: 'clinicdashboard5452435623f32543',
+    //   image: "/assets/portfolio/clinic-dashboard.png",
+    //   title: "my-clinic-app-app.vercel.app",
+    //   summary: "Clinic management made easy in one place.",
+    //   link: "https://my-clinic-app-app.vercel.app/",
+    // },
     {
       id: 'mediumsanity56344bhr34sd667s3yg36',
       image: "/assets/portfolio/medium-2.0.png",
