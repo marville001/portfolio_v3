@@ -67,7 +67,7 @@ const BookNotes: NextPage = (props: any) => {
                 </div>
                 <div className="">
                   <h2 className="text-primary font-bold">
-                    {bookNote?.name} {bookNote?.author}
+                    {bookNote?.name} - {bookNote?.author}
                   </h2>
                   <h3 className="mt-2 text-sm font-bold">
                     {bookNote?.subtitle}
