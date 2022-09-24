@@ -37,7 +37,7 @@ const Projects: NextPage = (props: any) => {
               </span>
             </h2>
             <p className="mt-3 text-lg">
-              Our mind must be free in order to express our qualities.
+              I have not failed. I've just found 10,000 ways that won't work.
             </p>
           </div>
         </div>
