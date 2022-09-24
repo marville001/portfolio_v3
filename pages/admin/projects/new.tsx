@@ -73,6 +73,7 @@ const NewProject: NextPage = () => {
       intro: data.intro,
       website: data.website,
       github: data.github,
+      tag: data.tag,
       slug: id + "-" + data.name.split(' ').join('-').toLowerCase(),
       description: data.description.toString().replaceAll('<p><br></p>', ''),
       createdAt: serverTimestamp(),
@@ -95,7 +96,7 @@ const NewProject: NextPage = () => {
       setSaving(false)
       console.log(error);
 
-      toast.success("Project Saved Successfully!", { id: notification })
+      toast.success("An error occurred. Check console log", { id: notification })
     }
 
   }

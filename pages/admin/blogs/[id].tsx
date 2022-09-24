@@ -2,7 +2,6 @@ import { Menu, Transition } from '@headlessui/react'
 import { serverTimestamp } from 'firebase/firestore'
 import { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import React, { ChangeEvent, Fragment, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { FaChevronLeft, FaRegImage, FaSpinner, FaTimes } from 'react-icons/fa'
@@ -20,7 +19,7 @@ type Inputs = {
 	intro: string
 }
 
-const ReadBlogs: NextPage = ({ blog }: any) => {
+const UpdateBlogs: NextPage = ({ blog }: any) => {
 	const [loadedBlog, setLoadedBlog] = useState<Blog | null>(null)
 	const [uploading, setUploading] = useState(false)
 	const [cover, setCover] = useState('');
@@ -34,10 +33,8 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 		setValue,
 		setError,
 		clearErrors,
-		reset,
 	} = useForm<Inputs>()
 	const blogsContext = useBlogs()
-	const router = useRouter()
 
 	const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
 		const { files } = e.target
@@ -222,7 +219,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 									<input
 										type="text"
 										placeholder="Blog Intro"
-										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.title && 'ring-1 ring-red-400'
+										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.intro && 'ring-1 ring-red-400'
 											}`}
 										{...register('intro', {
 											required: {
@@ -310,4 +307,4 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 	}
 }
 
-export default ReadBlogs
+export default UpdateBlogs

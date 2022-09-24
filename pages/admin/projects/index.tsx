@@ -5,21 +5,16 @@ import { FaPlus } from 'react-icons/fa'
 
 import AdminWrapper from '../../../components/admin/AdminWrapper'
 import ContainerBlock from '../../../components/ContainerBlock'
-import { useBlogs } from '../../../contexts/blogs.context'
 import projectsModel from '../../../models/projects.model.ts'
 import { IProject } from '../../../types/project'
 
 const Projects: NextPage = (props: any) => {
-  const blogsContext = useBlogs()
 
   const [projects, setProjects] = useState<IProject[]>([]);
 
   useEffect(() => {
     setProjects(typeof props.projects === "object" ? [] : JSON.parse(props.projects));
   }, [props.projects])
-
-  console.log(projects);
-  
 
   return (
     <ContainerBlock
@@ -37,7 +32,7 @@ const Projects: NextPage = (props: any) => {
               Projects
               <span className="rounded-lg bg-primary px-2 pt-2 ml-2 text-base text-white">
                 <sup>
-                  {blogsContext.blogs.length}
+                  {projects.length}
                 </sup>
               </span>
             </h2>
@@ -76,7 +71,7 @@ const Projects: NextPage = (props: any) => {
                 </Link>
 
                 <div className="p-5">
-                  <Link href={`/blogs/${project.slug}`}>
+                  <Link href={`/projects/${project.slug}`}>
                     <a className="text-lg text-primary hover:underline">
                       <h3>
                         {project.name}
@@ -87,7 +82,7 @@ const Projects: NextPage = (props: any) => {
                   <div className="mt-5 flex items-center justify-between">
                     <p className='dark:text-white'>{new Date(project?.createdAt).toDateString().substring(3)}</p>
 
-                    <Link href={`/admin/project/${project.id}`}>
+                    <Link href={`/admin/projects/${project.id}`}>
                       <a className="rounded tracking-wider border border-accent px-3 py-1 text-accent transition-all duration-150 hover:bg-accent hover:text-white">
                         Edit
                       </a>

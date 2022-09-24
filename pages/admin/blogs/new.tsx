@@ -224,7 +224,7 @@ const Blogs: NextPage = () => {
                 </label>
                 <textarea
                   placeholder="Blog Intro"
-                  className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.title && 'ring-1 ring-red-400'
+                  className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.intro && 'ring-1 ring-red-400'
                     }`}
                   {...register('intro', {
                     required: {

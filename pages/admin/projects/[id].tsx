@@ -1,31 +1,35 @@
-import { Menu, Transition } from '@headlessui/react'
 import { serverTimestamp } from 'firebase/firestore'
 import { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { ChangeEvent, Fragment, useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { FaChevronLeft, FaRegImage, FaSpinner, FaTimes } from 'react-icons/fa'
+import { FaChevronLeft, FaSpinner, FaTimes } from 'react-icons/fa'
 import AdminWrapper from '../../../components/admin/AdminWrapper'
 import ContainerBlock from '../../../components/ContainerBlock'
 import ReactQuillEditor from '../../../components/ReactQuillEditor'
-import { useBlogs } from '../../../contexts/blogs.context'
 import fileUploader from '../../../lib/fileUploader'
-import { Blog } from '../../../types/blog'
-import blogsModel from "../../../models/blogs.model"
+import projectsModel from '../../../models/projects.model.ts'
+import toast from 'react-hot-toast'
+import { IProject } from '../../../types/project'
 
 type Inputs = {
-	title: string
-	blog: string
+	name: string
+	description: string
 	intro: string
+	tag: string
+	draft: boolean
+	featured: boolean
+	website: boolean
+	github: boolean
 }
 
-const ReadBlogs: NextPage = ({ blog }: any) => {
-	const [loadedBlog, setLoadedBlog] = useState<Blog | null>(null)
+
+const UpdateProject: NextPage = ({ project }: any) => {
+	const [loadedProject, setLoadedProject] = useState<IProject | null>(null)
 	const [uploading, setUploading] = useState(false)
-	const [cover, setCover] = useState('');
+	const [updating, setUpdating] = useState(false)
+	const [image, setImage] = useState('')
 	const [content, setContent] = useState("<p></p>")
-	const [isDraft, setIsDraft] = useState<boolean>(false)
 
 	const {
 		register,
@@ -34,10 +38,7 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 		setValue,
 		setError,
 		clearErrors,
-		reset,
 	} = useForm<Inputs>()
-	const blogsContext = useBlogs()
-	const router = useRouter()
 
 	const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
 		const { files } = e.target
@@ -46,75 +47,101 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 		try {
 			setUploading(true)
 			const data = await fileUploader(files![0])
-			setCover(data)
+			setImage(data)
 			setUploading(false)
 		} catch (error) {
 			setUploading(false)
 		}
 	}
 
-	const handleUpdateBlog: SubmitHandler<Inputs> = async (data: any) => {
+	const handleUpdateProject: SubmitHandler<Inputs> = async (data: any) => {
 		if (!content || content === '') {
-			setError('blog', { message: 'Blog content is required' })
+			setError('description', { message: 'Project description is required' })
 			return
 		}
 
-		const updatedBlog: Blog = {
-			title: data.title,
+		const updatedProject: IProject = {
+			name: data.name,
 			intro: data.intro,
-			draft: isDraft,
-			blog: content.toString().replaceAll('<p><br></p>', ''),
+			description: content.toString().replaceAll('<p><br></p>', ''),
 			updatedAt: serverTimestamp(),
+			draft: data.draft,
+			featured: data.featured,
+			website: data.website,
+			github: data.github,
+			tag: data.tag,
+			slug: loadedProject?.slug ?? "",
+			images: [image]
 		}
 
-		if (cover) updatedBlog.cover = cover
-
-		if (updatedBlog.blog === '') {
-			setError('blog', { message: 'Blog content is required' })
+		if (updatedProject.description === '') {
+			setError('description', { message: 'Project description is required' })
 			return
 		}
 
-		const response = await blogsContext.updateBlog(updatedBlog, (loadedBlog?.id || ""))
-		if (response.success) {
-			// router.push('/admin/blogs')
+		const notification = toast.loading("Saving Project!")
+		setUpdating(true)
+		try {
+
+			await projectsModel.updateProject(updatedProject, loadedProject?.id ?? "");
+			setUpdating(false)
+			toast.success("Project Updated Successfully!", { id: notification })
+			// router.push('/admin/projects')
+		} catch (error) {
+			setUpdating(false)
+			console.log(error);
+
+			toast.success("An error occurred. Check console log", { id: notification })
 		}
 	}
 
 	useEffect(() => {
-		const b = typeof blog === "string" ? JSON.parse(blog) : {}
+		const p = typeof project === "string" ? JSON.parse(project) : {}
 
-		if (b?.title) {
-			setLoadedBlog(b);
-			setValue("title", b.title)
-			setValue("intro", b.intro)
-			setCover(b.cover)
-			setContent(b.blog)
-			setIsDraft(b.draft)
+		console.log(p);
+
+
+		if (p?.name) {
+			setLoadedProject(p);
+			setValue("name", p.name)
+			setValue("intro", p.intro)
+			setValue("draft", p.draft)
+			setValue("featured", p.featured)
+			setValue("github", p.github)
+			setValue("website", p.website)
+			setValue("tag", p.tag)
+			setImage(p.images[0])
+			setContent(p.description)
+			// setValue('description', p.description)
 		}
-	}, [blog])
+	}, [project])
 
 	return (
 		<ContainerBlock>
 			<AdminWrapper>
 				{
-					loadedBlog?.title &&
+					loadedProject?.name &&
 					<div className="_shadow2 relative  mx-auto my-12 flex flex-col items-center rounded-2xl   bg-white dark:bg-dim-dark p-6">
-						<Link href="/admin/blogs">
+						<Link href="/admin/projects">
 							<a className="absolute dark:text-white top-2 left-2 cursor-pointer rounded-lg p-4 hover:bg-gray-100 dark:hover:text-dark">
 								<FaChevronLeft />
 							</a>
 						</Link>
 						<div className="self-start mt-8 w-full">
-							<h2 className="text-3xl font-bold text-center dark:text-white">Update Blog</h2>
+							<h2 className="text-3xl font-bold text-center dark:text-white">Update Project</h2>
 						</div>
 
-						<form onSubmit={handleSubmit(handleUpdateBlog)} className="flex flex-col md:flex-row my-16 w-full">
-							<div className="w-full md:w-[300px] bg-white dark:bg-dark  dark:text-white rounded-md shadow h-min p-5">
+						<form onSubmit={handleSubmit(handleUpdateProject)} className="flex flex-col md:flex-row my-16 w-full">
+							<div className="w-full md:w-[300px] dark:bg-dark dark:text-white rounded-md shadow h-min p-5">
 								<h2 className='font-bold mb-2'>Settings</h2>
 								<hr className='mb-3' />
-								<label htmlFor="isDraft" className='flex items-center space-x-3 mt-3'>
-									<input checked={isDraft} onChange={e => setIsDraft(e.target.checked)} type="checkbox" className='h-5 w-5' name="" id="isDraft" />
+								<label htmlFor="isDraft" className='flex items-center space-x-3 mt-4'>
+									<input {...register('draft')} type="checkbox" className='h-5 w-5' name="" id="isDraft" />
 									<span>Save as draft</span>
+								</label>
+								<label htmlFor="isFeatured" className='flex items-center space-x-3 mt-4'>
+									<input {...register('featured')} type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
+									<span>Featured Project</span>
 								</label>
 							</div>
 
@@ -122,94 +149,63 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 
 								className="my-6 w-full p-4"
 							>
-								{/* Blog Cover Image */}
-								{cover ? (
+								{/*  Project Image */}
+								{image ? (
 									<div className="relative dark:text-white">
 										<div
-											onClick={() => setCover('')}
+											onClick={() => setImage('')}
 											className="absolute right-2 top-2 cursor-pointer rounded-lg bg-white p-2"
 										>
 											<FaTimes className="text-xl" />
 										</div>
 										<img
-											src={cover}
-											alt="Cover Blog"
+											src={image}
+											alt="Project"
 											className="h-auto max-h-[400px] w-full rounded-lg object-cover"
 										/>
 									</div>
 								) : (
-									<div className="flex gap-2 dark:text-white">
-										<Menu
-											as="div"
-											className="relative z-[542] inline-block text-left ring-0 focus:ring-0"
-										>
-											<div>
-												<Menu.Button className="">
-													<div className="flex cursor-pointer items-center gap-2 rounded-full border py-1 px-4 hover:bg-gray-200">
-														<FaRegImage className="text-xl" />
-														<span className="font-semibold opacity-75">
-															Add Cover
-														</span>
-													</div>
-												</Menu.Button>
-											</div>
-											<Transition
-												as={Fragment}
-												enter="transition ease-out duration-100"
-												enterFrom="transform opacity-0 scale-95"
-												enterTo="transform opacity-100 scale-100"
-												leave="transition ease-in duration-75"
-												leaveFrom="transform opacity-100 scale-100"
-												leaveTo="transform opacity-0 scale-95"
-											>
-												<Menu.Items className="_shadow absolute left-0 mt-2 flex h-[150px] w-[300px] origin-top-right items-center justify-center divide-y divide-gray-100 rounded-md bg-white focus:outline-none">
-													<div className="mt-5 px-1 py-1">
-														<label
-															htmlFor="cover-uploader"
-															className={`cursor-pointer border bg-white ${uploading && 'cursor-not-allowed'
-																}  flex  items-center justify-start gap-2 rounded-full bg-primary px-8 py-3 text-white`}
-														>
-															{uploading && (
-																<FaSpinner className="animate-spin text-lg" />
-															)}
-															Choose An Image
-															<input
-																type="file"
-																name=""
-																disabled={uploading}
-																className="hidden"
-																id="cover-uploader"
-																accept="image/png, image/jpeg"
-																onChange={handleImageChange}
-															/>
-														</label>
-													</div>
-												</Menu.Items>
-											</Transition>
-										</Menu>
-									</div>
+									<label
+										htmlFor="cover-uploader"
+										className={`cursor-pointer ${uploading && 'cursor-not-allowed'
+											}  flex  items-center border h-48 justify-center gap-2 px-8 py-3 text-accent`}
+									>
+										{uploading && (
+											<FaSpinner className="animate-spin text-lg" />
+										)}{' '}
+										Choose Project Image
+										<input
+											type="file"
+											name=""
+											disabled={uploading}
+											className="hidden"
+											id="cover-uploader"
+											accept="image/png, image/jpeg"
+											onChange={handleImageChange}
+										/>
+									</label>
 								)}
 
-								{/* Title */}
+								{/* name */}
 								<div className="mt-6 flex flex-col gap-2">
-									<label htmlFor="title" className="dark:text-white">
-										Title
+									<label htmlFor="name" className="dark:text-white">
+										Name
 									</label>
 									<input
 										type="text"
-										placeholder="Blog Title"
-										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.title && 'ring-1 ring-red-400'
+										placeholder="Project Name"
+										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.name && 'ring-1 ring-red-400'
 											}`}
-										{...register('title', {
+										{...register('name', {
 											required: {
 												value: true,
-												message: 'Title is required',
+												message: 'Name is required',
 											}
 										})}
 									/>
-									{errors.title && (
+									{errors.name && (
 										<span className="text-sm text-red-600">
-											{errors.title.message}
+											{errors.name.message}
 										</span>
 									)}
 								</div>
@@ -221,8 +217,8 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 									</label>
 									<input
 										type="text"
-										placeholder="Blog Intro"
-										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.title && 'ring-1 ring-red-400'
+										placeholder="Project Intro"
+										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.intro && 'ring-1 ring-red-400'
 											}`}
 										{...register('intro', {
 											required: {
@@ -238,36 +234,62 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 									)}
 								</div>
 
+								{/* Tag */}
+								<div className="mt-6 flex flex-col gap-2">
+									<label htmlFor="intro" className="dark:text-white">
+										Tag
+									</label>
+									<input
+										type="text"
+										placeholder="Eg. Reactjs"
+										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0`}
+										{...register('tag')}
+									/>
+								</div>
+
+								{/* Demo Link */}
+								<div className="mt-6 flex flex-col gap-2">
+									<label htmlFor="intro" className="dark:text-white">
+										Demo Link
+									</label>
+									<input
+										type="text"
+										placeholder="www.example.com"
+										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0`}
+										{...register('website')}
+									/>
+								</div>
+
 								<div className="mt-6 flex flex-col gap-2">
 									<label htmlFor="" className="dark:text-white">
-										Content
+										Project Description
 									</label>
 									<ReactQuillEditor
 										hasErrors={
-											errors?.blog?.message
-												? errors?.blog?.message?.length > 0
+											errors?.description?.message
+												? errors?.description?.message?.length > 0
 												: false
 										}
 										value={content}
-										handleChange={text => { setContent(text); clearErrors('blog'); }}
+										handleChange={text => { setContent(text); clearErrors('description'); }}
 									/>
-									{errors.blog && (
+									{errors.description && (
 										<span className="text-sm text-red-600">
-											{errors.blog.message}
+											{errors.description.message}
 										</span>
 									)}
 								</div>
 
 								<button
-									disabled={blogsContext.updating}
+									disabled={updating}
 									className=" mt-4 flex w-full justify-center rounded-lg border border-primary bg-primary py-3
               px-6 text-lg text-white hover:opacity-75 disabled:cursor-not-allowed disabled:bg-opacity-75
               "
 								>
-									{blogsContext.updating ? (
+									{updating ? (
 										<FaSpinner className="animate-spin" />
 									) : (
-										'Update Blog'
+										'Update Project'
 									)}
 								</button>
 							</div>
@@ -280,10 +302,10 @@ const ReadBlogs: NextPage = ({ blog }: any) => {
 }
 
 export async function getStaticPaths() {
-	const blogs = await blogsModel.getAllBlogs() ?? []
+	const projects = await projectsModel.getAllProjects() ?? []
 
-	const paths = blogs.map(blog => ({
-		params: { id: blog.id }
+	const paths = projects.map(project => ({
+		params: { id: project.id }
 	}))
 	return {
 		paths,
@@ -295,19 +317,19 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async (context: any) => {
 	try {
 		const { id } = context.params;
-		const blog = await blogsModel.getBlogById(id);
+		const project = await projectsModel.getProjectById(id);
 
-		if (!blog) return { notFound: true };
+		if (!project) return { notFound: true };
 
 		return {
-			props: { blog: JSON.stringify(blog) },
+			props: { project: JSON.stringify(project) },
 			revalidate: 60, // after 60seconds.. it will revalidate the old cache
 		};
 	} catch (error) {
 		return {
-			props: { blogs: {} },
+			props: { project: {} },
 		};
 	}
 }
 
-export default ReadBlogs
+export default UpdateProject
