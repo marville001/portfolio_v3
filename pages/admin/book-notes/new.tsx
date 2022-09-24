@@ -266,7 +266,7 @@ const NewBookNote: NextPage = () => {
               {/* description */}
               <div className="mt-6 flex flex-col gap-2">
                 <label htmlFor="" className="">
-                  Description
+                  Book Description
                 </label>
                 <ReactQuillEditor
                   hasErrors={

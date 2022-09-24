@@ -57,7 +57,7 @@ const BookNotes: NextPage = (props: any) => {
         {bookNotes.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
             {bookNotes.map((bookNote) => (
-              <article key={bookNote?.id} className="flex gap-4 hover:bg-gray-50 dark:hover:bg-dim-dark p-1 rounded-md">
+              <article key={bookNote?.id} className="flex border pr-2 gap-4 hover:bg-gray-50 dark:hover:bg-dim-dark p-1 rounded-md">
                 <div className="min-w-[100px] sm:min-w-[150px]">
                   <img
                     src={bookNote?.image}
@@ -75,6 +75,16 @@ const BookNotes: NextPage = (props: any) => {
                   <p className="mt-4 text-sm">
                     {bookNote?.intro}
                   </p>
+
+                  <div className="mt-5 flex items-center justify-between">
+                    <p className='dark:text-white'>{new Date(bookNote?.createdAt).toDateString().substring(3)}</p>
+
+                    <Link href={`/admin/book-notes/${bookNote.id}`}>
+                      <a className="rounded tracking-wider border border-accent px-3 py-1 text-accent transition-all duration-150 hover:bg-accent hover:text-white">
+                        Edit
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
