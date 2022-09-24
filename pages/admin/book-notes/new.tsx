@@ -11,22 +11,19 @@ import AdminWrapper from '../../../components/admin/AdminWrapper'
 import ContainerBlock from '../../../components/ContainerBlock'
 import ReactQuillEditor from '../../../components/ReactQuillEditor'
 import fileUploader from '../../../lib/fileUploader'
-import projectsModel from '../../../models/projects.model.ts'
-import { IProject } from '../../../types/project'
+import bookNotesModel from '../../../models/book-notes.model.ts'
+import { IBookNote } from '../../../types/book-notes'
 
 type Inputs = {
   name: string
+  author: string
   description: string
   intro: string
-  tag: string
   draft: boolean
-  featured: boolean
-  archived: boolean
-  website: boolean
-  github: boolean
+  subtitle: boolean
 }
 
-const NewProject: NextPage = () => {
+const NewBookNote: NextPage = () => {
   const [uploading, setUploading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [image, setImage] = useState('')
@@ -62,38 +59,35 @@ const NewProject: NextPage = () => {
     reset()
   }
 
-  const handleSaveProject: SubmitHandler<Inputs> = async (data: any) => {
+  const handleSaveBookNote: SubmitHandler<Inputs> = async (data: any) => {
     if (!data.description || data.description === '') {
-      setError('description', { message: 'Project description is required' })
+      setError('description', { message: 'Book Note description is required' })
       return
     }
 
-    const id = Math.ceil(Math.random() * 100000000)
-    const newProject: IProject = {
+    const id = Math.ceil(Math.random() * 1000)
+    const newBookNote: IBookNote = {
       name: data.name,
+      author: data.author,
       intro: data.intro,
-      website: data.website,
-      github: data.github,
-      tag: data.tag,
+      subtitle: data.subtitle,
       slug: id + "-" + data.name.split(' ').join('-').toLowerCase(),
       description: data.description.toString().replaceAll('<p><br></p>', ''),
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
       draft: data.draft,
-      featured: data.featured,
-      archived: data.archived,
-      images: [image]
+      image
     }
 
-    const notification = toast.loading("Saving Project!")
+    const notification = toast.loading("Saving Book Note!")
     setSaving(true)
     try {
 
-      await projectsModel.createProject(newProject);
+      await bookNotesModel.createBookNote(newBookNote);
       setSaving(false)
-      toast.success("Project Saved Successfully!", { id: notification })
+      toast.success("Book Note Saved Successfully!", { id: notification })
       clearForm()
-      router.push('/admin/projects')
+      router.push('/admin/book-notes')
     } catch (error) {
       setSaving(false)
       console.log(error);
@@ -114,30 +108,22 @@ const NewProject: NextPage = () => {
     <ContainerBlock>
       <AdminWrapper>
         <div className="_shadow2 relative my-12 flex flex-col items-center rounded-2xl bg-white dark:bg-dim-dark  p-6">
-          <Link href="/admin/projects">
+          <Link href="/admin/book-notes">
             <a className="absolute top-2 left-2 cursor-pointer rounded-lg dark:hover:text-dark dark:text-white p-4 hover:bg-gray-100">
               <FaChevronLeft />
             </a>
           </Link>
           <div className="flex flex-1 justify-center dark:text-white">
-            <h2 className="text-3xl font-bold">New Project</h2>
+            <h2 className="text-3xl font-bold">New Book Note</h2>
           </div>
 
-          <form onSubmit={handleSubmit(handleSaveProject)} className="flex flex-col md:flex-row my-16 w-full">
+          <form onSubmit={handleSubmit(handleSaveBookNote)} className="flex flex-col md:flex-row my-16 w-full">
             <div className="w-full md:w-[300px] dark:bg-dark dark:text-white rounded-md shadow h-min p-5">
               <h2 className='font-bold mb-2'>Settings</h2>
               <hr className='mb-3' />
               <label htmlFor="isDraft" className='flex items-center space-x-3 mt-4'>
                 <input {...register('draft')} type="checkbox" className='h-5 w-5' name="" id="isDraft" />
                 <span>Save as draft</span>
-              </label>
-              <label htmlFor="isFeatured" className='flex items-center space-x-3 mt-4'>
-                <input {...register('featured')} type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
-                <span>Featured Project</span>
-              </label>
-              <label htmlFor="isArchived" className='flex items-center space-x-3 mt-4'>
-                <input {...register('archived')} type="checkbox" className='h-5 w-5' name="" id="isArchived" />
-                <span>Archived Project</span>
               </label>
             </div>
 
@@ -156,7 +142,7 @@ const NewProject: NextPage = () => {
                   </div>
                   <img
                     src={image}
-                    alt="Project"
+                    alt="Book Note"
                     className="h-auto max-h-[400px] w-full rounded-lg object-cover"
                   />
                 </div>
@@ -169,7 +155,7 @@ const NewProject: NextPage = () => {
                   {uploading && (
                     <FaSpinner className="animate-spin text-lg" />
                   )}{' '}
-                  Choose Project Image
+                  Choose Book Image
                   <input
                     type="file"
                     name=""
@@ -189,7 +175,7 @@ const NewProject: NextPage = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Project Name"
+                  placeholder="Book Name"
                   className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.name && 'ring-1 ring-red-400'
                     }`}
                   {...register('name', {
@@ -206,13 +192,61 @@ const NewProject: NextPage = () => {
                 )}
               </div>
 
+              {/* Author */}
+              <div className="mt-6 flex flex-col gap-2">
+                <label htmlFor="name" className="dark:text-white">
+                  Author
+                </label>
+                <input
+                  type="text"
+                  placeholder="Author Name"
+                  className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.author && 'ring-1 ring-red-400'
+                    }`}
+                  {...register('author', {
+                    required: {
+                      value: true,
+                      message: 'Author Name is required',
+                    },
+                  })}
+                />
+                {errors.author && (
+                  <span className="text-sm text-red-600">
+                    {errors.author.message}
+                  </span>
+                )}
+              </div>
+
+              {/* Sub Title */}
+              <div className="mt-6 flex flex-col gap-2">
+                <label htmlFor="intro" className="dark:text-white">
+                  Sub Title
+                </label>
+                <input
+                  type="text"
+                  placeholder="..."
+                  className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.subtitle && 'ring-1 ring-red-400'
+                    }`}
+                  {...register('subtitle', {
+                    required: {
+                      value: true,
+                      message: 'Subtitle is required',
+                    },
+                  })}
+                />
+                {errors.subtitle && (
+                  <span className="text-sm text-red-600">
+                    {errors.subtitle.message}
+                  </span>
+                )}
+              </div>
+
               {/* Intro */}
               <div className="mt-6 flex flex-col gap-2">
                 <label htmlFor="intro" className="dark:text-white">
                   Intro
                 </label>
                 <textarea
-                  placeholder="Blog Intro"
+                  placeholder="Book Note Intro"
                   className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.intro && 'ring-1 ring-red-400'
                     }`}
                   {...register('intro', {
@@ -227,45 +261,6 @@ const NewProject: NextPage = () => {
                     {errors.intro.message}
                   </span>
                 )}
-              </div>
-
-              {/* Tag */}
-              <div className="mt-6 flex flex-col gap-2">
-                <label htmlFor="intro" className="dark:text-white">
-                  Tag
-                </label>
-                <input
-                  type="text"
-                  placeholder="Eg. Reactjs"
-                  className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0`}
-                  {...register('tag')}
-                />
-              </div>
-
-              {/* Demo Link */}
-              <div className="mt-6 flex flex-col gap-2">
-                <label htmlFor="intro" className="dark:text-white">
-                  Demo Link
-                </label>
-                <input
-                  type="text"
-                  placeholder="www.example.com"
-                  className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0`}
-                  {...register('website')}
-                />
-              </div>
-
-              {/* Github Link */}
-              <div className="mt-6 flex flex-col gap-2">
-                <label htmlFor="intro" className="dark:text-white">
-                  Github Link
-                </label>
-                <input
-                  type="text"
-                  placeholder="https://github.com/repository"
-                  className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0`}
-                  {...register('github')}
-                />
               </div>
 
               {/* description */}
@@ -311,4 +306,4 @@ const NewProject: NextPage = () => {
   )
 }
 
-export default NewProject
+export default NewBookNote
