@@ -10,4 +10,5 @@ export interface IProject{
 	createdAt?: any,
 	updatedAt?: any,
 	draft?: boolean,
+	featured?: boolean,
 }

@@ -20,6 +20,7 @@ type Inputs = {
   intro: string
   tag: string
   draft: boolean
+  featured: boolean
   website: boolean
   github: boolean
 }
@@ -77,9 +78,9 @@ const NewProject: NextPage = () => {
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
       draft: data.draft,
+      featured: data.featured,
+      images: [image]
     }
-
-    if (image) newProject.images = [image]
 
     const notification = toast.loading("Saving Project!")
     setSaving(true)
@@ -123,9 +124,13 @@ const NewProject: NextPage = () => {
             <div className="w-full md:w-[300px] dark:bg-dark dark:text-white rounded-md shadow h-min p-5">
               <h2 className='font-bold mb-2'>Settings</h2>
               <hr className='mb-3' />
-              <label htmlFor="isDraft" className='flex items-center space-x-3 mt-3'>
+              <label htmlFor="isDraft" className='flex items-center space-x-3 mt-4'>
                 <input {...register('draft')} type="checkbox" className='h-5 w-5' name="" id="isDraft" />
                 <span>Save as draft</span>
+              </label>
+              <label htmlFor="isFeatured" className='flex items-center space-x-3 mt-4'>
+                <input {...register('featured')} type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
+                <span>Featured Project</span>
               </label>
             </div>
 
@@ -269,7 +274,7 @@ const NewProject: NextPage = () => {
                   }
                   handleChange={(description) => {
                     console.log(description);
-                    
+
                     setValue('description', description)
                     clearErrors('description')
                     // setError('blog', { message: '' })

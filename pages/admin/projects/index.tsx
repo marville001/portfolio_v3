@@ -1,14 +1,25 @@
 import { NextPage } from 'next'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 
 import AdminWrapper from '../../../components/admin/AdminWrapper'
 import ContainerBlock from '../../../components/ContainerBlock'
 import { useBlogs } from '../../../contexts/blogs.context'
+import projectsModel from '../../../models/projects.model.ts'
+import { IProject } from '../../../types/project'
 
-const Blogs: NextPage = () => {
+const Projects: NextPage = (props: any) => {
   const blogsContext = useBlogs()
+
+  const [projects, setProjects] = useState<IProject[]>([]);
+
+  useEffect(() => {
+    setProjects(typeof props.projects === "object" ? [] : JSON.parse(props.projects));
+  }, [props.projects])
+
+  console.log(projects);
+  
 
   return (
     <ContainerBlock
@@ -37,7 +48,7 @@ const Blogs: NextPage = () => {
         </div>
 
         <div className="flex justify-between">
-          <h2 className="text-lg dark:text-white">Posts By Martin</h2>
+          <h2 className="text-lg dark:text-white">My Projects</h2>
           <Link href="/admin/projects/new">
             <a className="flex cursor-pointer items-center gap-2 rounded-md px-4 py-1 dark:bg-primary dark:text-white hover:bg-primary hover:text-white">
               <div className="">
@@ -48,35 +59,35 @@ const Blogs: NextPage = () => {
           </Link>
         </div>
 
-        {blogsContext.blogs.length > 0 ? (
+        {projects.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
-            {blogsContext.blogs.map((blog) => (
-              <article key={blog?.id} className="overflow-hidden rounded border self-start">
-                <Link href={`/blogs/${blog.slug}`}>
+            {projects.map((project) => (
+              <article key={project?.id} className="overflow-hidden rounded border self-start">
+                <Link href={`/projects/${project.slug}`}>
                   <img
                     src={
-                      blog.cover
-                        ? blog.cover
+                      project?.images?.length > 0
+                        ? project.images[0]
                         : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'
                     }
-                    alt="My Blog"
+                    alt="My project"
                     className="cursor-pointer object-cover border-b h-48 w-full"
                   />
                 </Link>
 
                 <div className="p-5">
-                  <Link href={`/blogs/${blog.slug}`}>
+                  <Link href={`/blogs/${project.slug}`}>
                     <a className="text-lg text-primary hover:underline">
                       <h3>
-                        {blog.title}
+                        {project.name}
                       </h3>
                     </a>
                   </Link>
 
                   <div className="mt-5 flex items-center justify-between">
-                    <p className='dark:text-white'>{new Date(blog?.createdAt).toDateString().substring(3)}</p>
+                    <p className='dark:text-white'>{new Date(project?.createdAt).toDateString().substring(3)}</p>
 
-                    <Link href={`/admin/blogs/${blog.id}`}>
+                    <Link href={`/admin/project/${project.id}`}>
                       <a className="rounded tracking-wider border border-accent px-3 py-1 text-accent transition-all duration-150 hover:bg-accent hover:text-white">
                         Edit
                       </a>
@@ -89,7 +100,7 @@ const Blogs: NextPage = () => {
         ) : (
           <div className="flex min-h-[400px] items-center justify-center">
             <h4 className="text-4xl font-bold uppercase opacity-30">
-              No Post Yet
+              No Project Yet
             </h4>
           </div>
         )}
@@ -98,4 +109,21 @@ const Blogs: NextPage = () => {
   )
 }
 
-export default Blogs
+export async function getServerSideProps() {
+  try {
+    const projects = await projectsModel.getAllProjects('createdAt', "desc")
+
+    return {
+      props: { projects: JSON.stringify(projects) || [] },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: { projects: [], total: 0 },
+    };
+  }
+}
+
+
+
+export default Projects
