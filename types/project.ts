@@ -1,12 +1,13 @@
-export interface Project{
-	_id: string;
-	images: string[];
+export interface IProject{
+	id?: string;
+	images?: string[];
 	name: string;
+	intro: string;
 	description: string;
-	slug: { _type: string, current: string };
-	tags: string[];
-	url: string;
+	slug: string;
+	website: string;
 	github: string;
-	_createdAt: Date;
-	_updatedAt: Date;
+	createdAt?: any,
+	updatedAt?: any,
+	draft?: boolean,
 }
