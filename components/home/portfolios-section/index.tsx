@@ -2,9 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 
-import { Project } from '../../../types/project'
-import PortfolioCard from './PortfolioCard'
-
 interface IProject {
   id: string
   image: string
