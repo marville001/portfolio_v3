@@ -19,6 +19,7 @@ type Inputs = {
 	tag: string
 	draft: boolean
 	featured: boolean
+	archived: boolean
 	website: boolean
 	github: boolean
 }
@@ -67,11 +68,12 @@ const UpdateProject: NextPage = ({ project }: any) => {
 			updatedAt: serverTimestamp(),
 			draft: data.draft,
 			featured: data.featured,
+			archived: data.archived,
 			website: data.website,
 			github: data.github,
 			tag: data.tag,
 			slug: loadedProject?.slug ?? "",
-			images: [image]
+			images: [image],
 		}
 
 		if (updatedProject.description === '') {
@@ -107,6 +109,7 @@ const UpdateProject: NextPage = ({ project }: any) => {
 			setValue("intro", p.intro)
 			setValue("draft", p.draft)
 			setValue("featured", p.featured)
+			setValue("archived", p.archived)
 			setValue("github", p.github)
 			setValue("website", p.website)
 			setValue("tag", p.tag)
@@ -142,6 +145,10 @@ const UpdateProject: NextPage = ({ project }: any) => {
 								<label htmlFor="isFeatured" className='flex items-center space-x-3 mt-4'>
 									<input {...register('featured')} type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
 									<span>Featured Project</span>
+								</label>
+								<label htmlFor="isArchived" className='flex items-center space-x-3 mt-4'>
+									<input {...register('archived')} type="checkbox" className='h-5 w-5' name="" id="isArchived" />
+									<span>Archived Project</span>
 								</label>
 							</div>
 

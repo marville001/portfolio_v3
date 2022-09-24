@@ -21,6 +21,7 @@ type Inputs = {
   tag: string
   draft: boolean
   featured: boolean
+  archived: boolean
   website: boolean
   github: boolean
 }
@@ -80,6 +81,7 @@ const NewProject: NextPage = () => {
       updatedAt: serverTimestamp(),
       draft: data.draft,
       featured: data.featured,
+      archived: data.archived,
       images: [image]
     }
 
@@ -132,6 +134,10 @@ const NewProject: NextPage = () => {
               <label htmlFor="isFeatured" className='flex items-center space-x-3 mt-4'>
                 <input {...register('featured')} type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
                 <span>Featured Project</span>
+              </label>
+              <label htmlFor="isArchived" className='flex items-center space-x-3 mt-4'>
+                <input {...register('archived')} type="checkbox" className='h-5 w-5' name="" id="isArchived" />
+                <span>Archived Project</span>
               </label>
             </div>
 
