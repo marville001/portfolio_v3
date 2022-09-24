@@ -1,20 +1,22 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ContainerBlock from '../../components/ContainerBlock'
 
-import { FaChevronLeft, FaChevronRight, FaTimesCircle } from 'react-icons/fa'
-
-import PortfolioCard from '../../components/home/portfolios-section/PortfolioCard'
-import { Project } from '../../types/project'
+import { IProject } from '../../types/project'
 import ContactCallAction from '../../components/ContactCallAction'
+import projectsModel from '../../models/projects.model.ts'
+import { HiOutlineExternalLink } from 'react-icons/hi'
 
 interface Props {
-  projects: Project[]
+  projects: IProject[]
 }
 
 const Portfolio = (props: Props) => {
-  const [filters, setFilters] = useState<number[]>([])
-  const [page, setPage] = useState(1)
+  const [projects, setProjects] = useState<IProject[]>([]);
+
+  useEffect(() => {
+    setProjects(typeof props.projects === "object" ? [] : JSON.parse(props.projects));
+  }, [props.projects])
 
   return (
     <ContainerBlock
@@ -49,13 +51,25 @@ const Portfolio = (props: Props) => {
         <div className="container  py-12">
 
           {/* Portfolios */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {props?.projects?.map((project) => (
-              <PortfolioCard project={project} key={project._id} />
+          <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
+            {projects?.map(({ id, name, images, website, intro }: IProject) => (
+              <div
+                key={id}
+                className="relative min-h-[225px] group bg-opacity-40 hover:bg-opacity-100 justify-center 
+                      rounded-xl duration-150 ease-linear  p-4 flex flex-col items-center">
+                <img className='rounded-lg border h-auto md:h-52 w-full'
+                  src={images[0]} alt={name} />
+                <h4 className='self-start mt-4'>{intro}</h4>
+                <a href={website} target="_blank" rel="noopener noreferrer"
+                  className='bg-primary text-sm flex items-center gap-1.5 bg-opacity-20 px-2 underline py-1 mt-2 text-accent self-start rounded-lg'>
+                  <HiOutlineExternalLink className='text-base' />
+                  <span className='font-light'>{website?.toString().replace("https://", "")}</span>
+                </a>
+              </div>
             ))}
           </div>
 
-         
+
 
           {/*  */}
         </div>
@@ -68,10 +82,17 @@ const Portfolio = (props: Props) => {
 }
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "project"] | order(_createdAt desc)'
+  try {
+    const projects = await projectsModel.getAllProjects('createdAt', "desc")
 
-  return {
-    props: { projects: [] },
+    return {
+      props: { projects: JSON.stringify(projects) || [] },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: { projects: [], total: 0 },
+    };
   }
 }
 
