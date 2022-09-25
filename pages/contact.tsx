@@ -56,8 +56,8 @@ const contact: NextPage = () => {
           <p className='text-center max-w-xl text-lg lg:text-xl'>
             Feel free to contact me with questions about
             any of my project or services. I'll get back to you within 24 hours!{" "}
-            <a href='tel:+254700207054' className="text-accent">+254700207054</a> {" "}
-            <a href='mailto' className="text-accent">mwangimartin1904@gmail.com</a>
+            <a href='tel:+254700207054' className="text-accent hover:underline">+254700207054</a> {" "}
+            <a href='mailto:mwangimartin1904@gmail.com' className="text-accent hover:underline">mwangimartin1904@gmail.com</a>
           </p>
         </div>
 
