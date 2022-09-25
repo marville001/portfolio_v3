@@ -10,7 +10,7 @@ export default async function handler(
   if (req.method === 'POST') {
     const { name, email, subject, message } = JSON.parse(req.body);
 
-    const date = new Date().toISOString();
+    const date = new Date().toISOString();   
 
     try {
       

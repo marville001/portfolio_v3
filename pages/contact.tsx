@@ -151,7 +151,7 @@ const contact: NextPage = () => {
           </div>
 
           {message ? (
-            <div className="my-4 bg-green-200 py-6 text-center text-green-700">
+            <div className="my-4 bg-green-200 py-6 text-center rounded-md text-green-700">
               <p>{message}</p>
 
               <button
