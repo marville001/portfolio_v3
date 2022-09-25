@@ -37,7 +37,7 @@ const AboutMe = () => {
         <div className="mx-auto max-w-2xl py-12">
           <div className="">
             <h2 className="mb-6 text-center text-2xl font-bold">Hey Friends 👋, I'm Martin. Nice to Meet You</h2>
-            <p className="max-w-[600px] text-center text-lg">
+            <p className="max-w-[600px] mx-auto text-center text-lg">
               I'm{' '}
               <strong className="text-base text-primary">Martin Mwangi</strong>.
               I graduated with a bachelor's degree in Computer Science from {" "}
@@ -48,11 +48,11 @@ const AboutMe = () => {
               Angular, NodeJs, GraphQl, Postgres, MongoDB and TypeScript.
             </p>
 
-            <p className="max-w-[600px] text-center py-4 text-lg ">
+            <p className="max-w-[600px] mx-auto text-center py-4 text-lg ">
               I'm also learning some DevOps tools on AWS and Azure.
             </p>
 
-            <p className="max-w-[600px] text-lg text-center">
+            <p className="max-w-[600px] mx-auto text-lg text-center">
               The main purpose of starting my own portfolio is to showcase my
               projects, document my learning journey through blogs and also to
               document the books am reading by writing book notes.{' '}
