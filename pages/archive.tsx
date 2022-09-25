@@ -5,7 +5,7 @@ import ContainerBlock from '../components/ContainerBlock'
 const Archive: NextPage = () => {
   return (
     <ContainerBlock
-      title="Martin - Contact Me"
+      title="Martin - Archive"
       description="Get in touch with me to know more"
     >
       <div className="md:px-6 dark:text-white mx-auto min-h-[60vh] max-w-[900px] py-10 md:py-24 px-2 sm:px-4">
