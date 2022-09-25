@@ -1,43 +1,8 @@
 import { NextPage } from 'next'
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { FaSpinner } from 'react-icons/fa'
+import React from 'react'
 import ContainerBlock from '../components/ContainerBlock'
 
-const contact: NextPage = () => {
-  const [error, setError] = useState('')
-  const [message, setMessage] = useState('')
-  const [loading, setLoading] = useState(false)
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm()
-
-  const handleSendMessage = async (data: any) => {
-
-    setLoading(true)
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        body: JSON.stringify(data),
-      })
-
-      const { message, success } = await res.json()
-      setMessage(message)
-      setLoading(false)
-      reset()
-    } catch (error) {
-      setLoading(false)
-      setError('Failed to send message. Please try again later!')
-      setTimeout(() => {
-        setError('')
-      }, 4000)
-    }
-  }
-
+const Archive: NextPage = () => {
   return (
     <ContainerBlock
       title="Martin - Contact Me"
@@ -50,8 +15,6 @@ const contact: NextPage = () => {
           </h1>
         </div>
 
-
-
         <div className="mt-5 flex justify-center flex-wrap">
           <h1 className='text-center max-w-xl text-3xl mt-24 uppercase font-bold opacity-50'>
             COMING SOON
@@ -62,4 +25,4 @@ const contact: NextPage = () => {
   )
 }
 
-export default contact
+export default Archive
