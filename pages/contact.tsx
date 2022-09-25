@@ -55,8 +55,8 @@ const contact: NextPage = () => {
         <div className="mt-5 flex justify-center flex-wrap">
           <p className='text-center max-w-xl text-lg lg:text-xl'>
             Feel free to contact me with questions about
-            any of my project or services. I'll get back to you within 24 hours!
-            <span className="text-accent">+254700207054</span>
+            any of my project or services. I'll get back to you within 24 hours!{" "}
+            <span className="text-accent">+254700207054</span> {" "}
             <span className="text-accent">mwangimartin1904@gmail.com</span>
           </p>
         </div>
