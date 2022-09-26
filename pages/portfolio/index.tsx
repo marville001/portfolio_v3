@@ -37,7 +37,7 @@ const Portfolio = (props: Props) => {
           </div>
           <div className="flex justify-center">
             <Link href="/archive">
-              <a className="rounded-md bg-dark hover:bg-accent py-1.5 px-6 text-white">
+              <a className="rounded-md bg-dark dark:bg-accent hover:bg-accent py-1.5 px-6 text-white">
                 View Archive
               </a>
             </Link>
