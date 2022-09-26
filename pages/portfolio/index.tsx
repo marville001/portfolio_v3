@@ -59,7 +59,7 @@ const Portfolio = (props: Props) => {
                       rounded-xl duration-150 ease-linear  p-4 flex flex-col items-center">
                 <img className='rounded-lg border h-auto md:h-52 w-full'
                   src={images[0]} alt={name} />
-                <h4 className='self-start mt-4'>{intro}</h4>
+                <h4 className='self-start mt-4 dark:text-white'>{intro}</h4>
                 <a href={website} target="_blank" rel="noopener noreferrer"
                   className='bg-primary text-sm flex items-center gap-1.5 bg-opacity-20 px-2 underline py-1 mt-2 text-accent self-start rounded-lg'>
                   <HiOutlineExternalLink className='text-base' />
