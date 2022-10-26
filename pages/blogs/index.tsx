@@ -47,7 +47,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
             {blogPosts.map((blog) => (
               <Link key={blog.id} href={`/blogs/${blog.slug}`}>
-                <a className="shadow-hover rounded-md hover:border  cursor-pointer transition-all duration-150 ease-linear group dark:bg-dim-dark dark:text-white">
+                <a className="shadow-hover rounded-md hover:border hover:border-slate-400/20  cursor-pointer  group dark:bg-dim-dark dark:text-white">
                   <article className="overflow-hidden rounded cursor-pointer">
                     <img
                       src={
