@@ -2,12 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 * {
-  /* font-family: 'M PLUS Rounded 1c', sans-serif; */
-  font-family: 'Inter', sans-serif;
+  font-family: 'Manrope', sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -65,7 +62,7 @@ body {
 
 .shadow-hover:hover{
   /* box-shadow: 20px 30px 90px rgb(0 0 0 / 14%); */
-  box-shadow: rgb(0 0 0 / 10%) 0px 1rem 2rem 0px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 2px 8px 0px;
 }
 
 .blurry {
@@ -92,6 +89,9 @@ body {
 @layer components {
   .container {
     @apply mx-auto w-[95%] max-w-[1080px];
+  }
+  .container-lg {
+    @apply mx-auto w-[95%] max-w-[1280px];
   }
 
   .section {

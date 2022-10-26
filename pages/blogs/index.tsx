@@ -3,12 +3,16 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import ContainerBlock from '../../components/ContainerBlock'
 import ContactCallAction from '../../components/ContactCallAction'
+import { format, parseISO } from "date-fns";
 
 import blogsModel from '../../models/blogs.model'
 
 const Blogs: NextPage = ({ blogs, total }: any) => {
 
   const [blogPosts, setBlogPosts] = useState<any[]>([]);
+
+  console.log(blogPosts);
+
 
   useEffect(() => {
     setBlogPosts(typeof blogs === "object" ? [] : JSON.parse(blogs));
@@ -42,11 +46,11 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
       </div>
 
       <div className="bg-white dark:bg-dark">
-        <div className="container">
+        <div className="container-lg">
           <div className="grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3">
             {blogPosts.map((blog) => (
               <Link key={blog.id} href={`/blogs/${blog.slug}`}>
-                <a className="shadow-hover border cursor-pointer transition-all duration-150 ease-linear group dark:bg-dim-dark dark:text-white">
+                <a className="shadow-hover rounded-md hover:border  cursor-pointer transition-all duration-150 ease-linear group dark:bg-dim-dark dark:text-white">
                   <article className="overflow-hidden rounded cursor-pointer">
                     <img
                       src={
@@ -63,9 +67,14 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
                         {blog.tag}
                       </h3>
 
-                      <h3 className='text-lg font-bold'>
+                      <h3 className='text-xl font-[700]'>
                         {blog.title}
                       </h3>
+
+
+                      <p className="mt-5 text-lg opacity-80">
+                        {format(parseISO(blog?.createdAt), "MMMM dd, yyyy")}
+                      </p>
                     </div>
                   </article>
                 </a>
