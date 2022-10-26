@@ -57,7 +57,13 @@ const BookNotes: NextPage = (props: any) => {
         {bookNotes.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
             {bookNotes.map((bookNote) => (
-              <article key={bookNote?.id} className="flex border pr-2 gap-4 hover:bg-gray-50 dark:hover:bg-dim-dark p-1 rounded-md">
+              <article key={bookNote?.id} className="flex border relative pr-2 gap-4 hover:bg-gray-50 dark:hover:bg-dim-dark p-1 rounded-md">
+                <div className="absolute z-[454] flex top-2 left-2 space-x-2 flex-wrap">
+
+                  {bookNote?.draft &&
+                    <span className=" bg-primary text-white text-sm p-2 py-1 rounded-md">Draft</span>
+                  }
+                </div>
                 <div className="min-w-[100px] sm:min-w-[150px]">
                   <img
                     src={bookNote?.image}

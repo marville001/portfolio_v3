@@ -29,6 +29,10 @@ const UpdateBookNote: NextPage = ({ bookNote }: any) => {
 	const [image, setImage] = useState('')
 	const [description, setDescription] = useState("<p></p>")
 
+	const [state, setState] = useState({
+		draft: false
+	})
+
 	const {
 		register,
 		handleSubmit,
@@ -63,11 +67,11 @@ const UpdateBookNote: NextPage = ({ bookNote }: any) => {
 			intro: data.intro,
 			description: description.toString().replaceAll('<p><br></p>', ''),
 			updatedAt: serverTimestamp(),
-			draft: data.draft,
 			author: data.author,
 			subtitle: data.subtitle,
 			slug: loadedBookNote?.slug ?? "",
 			image: image,
+			...state
 		}
 
 		if (updatedBookNote.description === '') {
@@ -97,11 +101,13 @@ const UpdateBookNote: NextPage = ({ bookNote }: any) => {
 			setLoadedBookNote(bn);
 			setValue("name", bn.name)
 			setValue("intro", bn.intro)
-			setValue("draft", bn.draft)
 			setValue("author", bn.author)
 			setValue("subtitle", bn.subtitle)
 			setImage(bn.image)
 			setDescription(bn.description)
+			setState({
+				draft: bn.draft ?? false,
+			})
 		}
 	}, [bookNote])
 
@@ -125,7 +131,9 @@ const UpdateBookNote: NextPage = ({ bookNote }: any) => {
 								<h2 className='font-bold mb-2'>Settings</h2>
 								<hr className='mb-3' />
 								<label htmlFor="isDraft" className='flex items-center space-x-3 mt-4'>
-									<input {...register('draft')} type="checkbox" className='h-5 w-5' name="" id="isDraft" />
+										<input
+											checked={state.draft} onChange={e =>setState(prev=>({...prev, draft: e.target.checked}))}
+											type="checkbox" className='h-5 w-5' name="" id="isDraft" />
 									<span>Save as draft</span>
 								</label>
 							</div>

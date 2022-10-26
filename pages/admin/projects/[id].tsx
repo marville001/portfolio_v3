@@ -30,7 +30,13 @@ const UpdateProject: NextPage = ({ project }: any) => {
 	const [uploading, setUploading] = useState(false)
 	const [updating, setUpdating] = useState(false)
 	const [image, setImage] = useState('')
-	const [content, setContent] = useState("<p></p>")
+	const [content, setContent] = useState("<p></p>");
+
+	const [state, setState] = useState({
+		draft: false,
+		featured: false,
+		archived: false
+	})
 
 	const {
 		register,
@@ -66,21 +72,22 @@ const UpdateProject: NextPage = ({ project }: any) => {
 			intro: data.intro,
 			description: content.toString().replaceAll('<p><br></p>', ''),
 			updatedAt: serverTimestamp(),
-			draft: data.draft,
-			featured: data.featured,
-			archived: data.archived,
+			// draft: data.draft,
+			// featured: data.featured,
+			// archived: data.archived,
 			website: data.website,
 			github: data.github,
 			tag: data.tag,
 			slug: loadedProject?.slug ?? "",
 			images: [image],
+			...state
 		}
 
 		if (updatedProject.description === '') {
 			setError('description', { message: 'Project description is required' })
 			return
 		}
-
+		
 		const notification = toast.loading("Updating Project!")
 		setUpdating(true)
 		try {
@@ -112,6 +119,12 @@ const UpdateProject: NextPage = ({ project }: any) => {
 			setValue("tag", p.tag)
 			setImage(p.images[0])
 			setContent(p.description)
+
+			setState({
+				draft: p.draft ?? false,
+				featured: p.featured ?? false,
+				archived: p.archived ?? false
+			})
 		}
 	}, [project])
 
@@ -135,15 +148,20 @@ const UpdateProject: NextPage = ({ project }: any) => {
 								<h2 className='font-bold mb-2'>Settings</h2>
 								<hr className='mb-3' />
 								<label htmlFor="isDraft" className='flex items-center space-x-3 mt-4'>
-									<input {...register('draft')} type="checkbox" className='h-5 w-5' name="" id="isDraft" />
+										<input
+											checked={state.draft} onChange={e =>setState(prev=>({...prev, draft: e.target.checked}))}
+											type="checkbox" className='h-5 w-5' name="" id="isDraft" />
 									<span>Save as draft</span>
 								</label>
 								<label htmlFor="isFeatured" className='flex items-center space-x-3 mt-4'>
-									<input {...register('featured')} type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
+									<input checked={state.featured} onChange={e =>setState(prev=>({...prev, featured: e.target.checked}))}
+									 type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
 									<span>Featured Project</span>
 								</label>
 								<label htmlFor="isArchived" className='flex items-center space-x-3 mt-4'>
-									<input {...register('archived')} type="checkbox" className='h-5 w-5' name="" id="isArchived" />
+										<input
+											checked={state.archived} onChange={e =>setState(prev=>({...prev, archived: e.target.checked}))}
+											type="checkbox" className='h-5 w-5' name="" id="isArchived" />
 									<span>Archived Project</span>
 								</label>
 							</div>

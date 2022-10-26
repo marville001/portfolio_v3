@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
@@ -57,9 +58,23 @@ const Projects: NextPage = (props: any) => {
         {projects.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
             {projects.map((project) => (
-              <article key={project?.id} className="overflow-hidden rounded border self-start">
+              <article key={project?.id} className="overflow-hidden relative rounded border self-start">
+                <div className="absolute z-[454] flex top-2 left-2 space-x-2 flex-wrap">
+                  {project?.featured &&
+                    <span className=" bg-accent text-white text-sm p-2 py-1 rounded-md">Featured</span>
+                  }
+                  {project?.draft &&
+                    <span className=" bg-primary text-white text-sm p-2 py-1 rounded-md">Draft</span>
+                  }
+                  {project?.archived &&
+                    <span className=" bg-dark text-white text-sm p-2 py-1 rounded-md">Archived</span>
+                  }
+                </div>
                 <Link href={`/projects/${project.slug}`}>
-                  <img
+                  <a className='cursor-pointer'>
+
+
+                    {/* <img
                     src={
                       project?.images?.length > 0
                         ? project.images[0]
@@ -67,7 +82,18 @@ const Projects: NextPage = (props: any) => {
                     }
                     alt="My project"
                     className="cursor-pointer object-cover border-b h-48 w-full"
-                  />
+                  /> */}
+
+                    <Image
+                      width="1000%"
+                      height={550}
+                      objectFit='fill'
+                      className='border h-auto md:h-52 w-full'
+                      src={project?.images?.length > 0
+                        ? project.images[0]
+                        : 'https://www.mountaingoatsoftware.com/images/made/uploads/blog/2022-06-21-living-with-uncertainty_600_314.png'}
+                      alt={project.name} />
+                  </a>
                 </Link>
 
                 <div className="p-5">
