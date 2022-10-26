@@ -65,12 +65,14 @@ const ContainerBlock = ({
 
         <link rel="icon" href="/assets/my-logo.ico" type="image/icon type" />
         <link rel="canonical" href={meta.url} />
-        <script
+        
+      </Head>
+
+      <script
           src="https://www.google.com/recaptcha/api.js?&render=explicit"
           async
           defer
         ></script>
-      </Head>
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
         <Progress isAnimating={isAnimating} />

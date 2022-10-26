@@ -30,6 +30,11 @@ const NewProject: NextPage = () => {
   const [uploading, setUploading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [image, setImage] = useState('')
+  const [state, setState] = useState({
+    draft: false,
+    featured: false,
+    archived: false
+  })
 
   const {
     register,
@@ -79,10 +84,8 @@ const NewProject: NextPage = () => {
       description: data.description.toString().replaceAll('<p><br></p>', ''),
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
-      draft: data.draft,
-      featured: data.featured,
-      archived: data.archived,
-      images: [image]
+      images: [image],
+      ...state
     }
 
     const notification = toast.loading("Saving Project!")
@@ -128,15 +131,20 @@ const NewProject: NextPage = () => {
               <h2 className='font-bold mb-2'>Settings</h2>
               <hr className='mb-3' />
               <label htmlFor="isDraft" className='flex items-center space-x-3 mt-4'>
-                <input {...register('draft')} type="checkbox" className='h-5 w-5' name="" id="isDraft" />
+                <input
+                  checked={state.draft} onChange={e => setState(prev => ({ ...prev, draft: e.target.checked }))}
+                  type="checkbox" className='h-5 w-5' name="" id="isDraft" />
                 <span>Save as draft</span>
               </label>
               <label htmlFor="isFeatured" className='flex items-center space-x-3 mt-4'>
-                <input {...register('featured')} type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
+                <input checked={state.featured} onChange={e => setState(prev => ({ ...prev, featured: e.target.checked }))}
+                  type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
                 <span>Featured Project</span>
               </label>
               <label htmlFor="isArchived" className='flex items-center space-x-3 mt-4'>
-                <input {...register('archived')} type="checkbox" className='h-5 w-5' name="" id="isArchived" />
+                <input
+                  checked={state.archived} onChange={e => setState(prev => ({ ...prev, archived: e.target.checked }))}
+                  type="checkbox" className='h-5 w-5' name="" id="isArchived" />
                 <span>Archived Project</span>
               </label>
             </div>

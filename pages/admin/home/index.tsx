@@ -28,13 +28,13 @@ const Blogs: NextPage = () => {
 
         <div className="mb-6 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
           {/* Blogs */}
-          <CountCard count={12} title="Blog" to="/admin/blogs/new" />
+          <CountCard count={12} title="Blog" to="/admin/blogs/new" toDash="/admin/blogs/" />
 
           {/* Book Notes */}
-          <CountCard count={2} title="Book Note" to="/admin/book-notes/new" />
+          <CountCard count={2} title="Book Note" to="/admin/book-notes/new" toDash="/admin/book-notes/" />
 
           {/* Projects */}
-          <CountCard count={5} title="Project" to="/admin/projects/new" />
+          <CountCard count={6} title="Project" to="/admin/projects/new" toDash="/admin/projects/" />
 
           {/* END */}
         </div>
@@ -46,14 +46,18 @@ const Blogs: NextPage = () => {
 interface CountCardProps {
   title: string
   to: string
+  toDash?: string
   count: number
 }
-const CountCard = ({ title, count, to }: CountCardProps) => (
+const CountCard = ({ title, count, to, toDash="/admin" }: CountCardProps) => (
   <div className="rounded-md bg-dark dark:bg-dim-dark p-5 text-white">
-    <div className="flex items-center gap-3">
+    <Link href={toDash}>
+
+    <a className="flex items-center gap-3 transition-all duration-150 ease-linear hover:text-accent hover:px-3">
       <h2 className="text-5xl font-bold">{count}</h2>
       <p className="text-xl">{title}s</p>
-    </div>
+    </a>
+    </Link>
     <Link href={to}>
       <a className="mt-3 w-auto flex cursor-pointer items-center justify-start gap-2 rounded-md p-1 
       transition-all duration-150 ease-linear hover:text-accent hover:px-3">
