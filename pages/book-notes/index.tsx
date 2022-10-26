@@ -71,7 +71,7 @@ const BookNotes = (props: Props) => {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
     const bookNotes = await bookNotesModel.getAllBookNotes('createdAt', "desc")
 
@@ -79,7 +79,6 @@ export const getServerSideProps = async () => {
       props: { bookNotes: JSON.stringify(bookNotes) || [] },
     };
   } catch (error) {
-    console.log(error);
     return {
       props: { bookNotes: [], total: 0 },
     };

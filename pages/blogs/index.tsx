@@ -98,7 +98,7 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const blogs = await blogsModel.getNotDraftBlogs('createdAt', "desc")
 

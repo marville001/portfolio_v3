@@ -6,6 +6,7 @@ import { IProject } from '../../types/project'
 import ContactCallAction from '../../components/ContactCallAction'
 import projectsModel from '../../models/projects.model.ts'
 import { HiOutlineExternalLink } from 'react-icons/hi'
+import Image from "next/image"
 
 interface Props {
   projects: IProject[]
@@ -51,14 +52,19 @@ const Portfolio = (props: Props) => {
         <div className="container  py-12">
 
           {/* Portfolios */}
-          <div className="grid grid-cols-1 gap-6 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
+          <div className="grid grid-cols-1 gap-6 gap-y-8 py-12  sm:grid-cols-2 lg:grid-cols-3 ">
             {projects?.map(({ id, name, images, website, intro }: IProject) => (
               <div
                 key={id}
-                className="relative min-h-[225px] group bg-opacity-40 hover:bg-opacity-100 justify-center 
-                      rounded-xl duration-150 ease-linear  p-4 flex flex-col items-center">
-                <img className='rounded-lg border h-auto md:h-52 w-full'
-                  src={images[0]} alt={name} />
+                className="min-h-[225pxs] group bg-opacity-40 hover:bg-opacity-100 justify-center 
+                      rounded-xl duration-150 ease-linearflex flex-col items-center">
+                <Image
+                  width="1000%"
+                  height={750}
+                  objectFit='fill'
+                  className='rounded-lg border h-auto md:h-52 w-full'
+                  src={images[0]}
+                  alt={name} />
                 <h4 className='self-start mt-4 dark:text-white'>{intro}</h4>
                 <a href={website} target="_blank" rel="noopener noreferrer"
                   className='bg-primary text-sm flex items-center gap-1.5 bg-opacity-20 px-2 underline py-1 mt-2 text-accent self-start rounded-lg'>
