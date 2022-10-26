@@ -11,9 +11,6 @@ const Blogs: NextPage = ({ blogs, total }: any) => {
 
   const [blogPosts, setBlogPosts] = useState<any[]>([]);
 
-  console.log(blogPosts);
-
-
   useEffect(() => {
     setBlogPosts(typeof blogs === "object" ? [] : JSON.parse(blogs));
   }, [blogs, total])
