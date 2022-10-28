@@ -4,7 +4,7 @@ import React from 'react'
 const ContactCallAction = () => {
 	return (
 		<div className='section py-16'>
-			<hr className='mb-8 opacity-30 h-[2px] bg-gray-600/10' />
+			<hr className='mb-8 opacity-30 h-[2px] dark:hidden bg-gray-600/10' />
 			<div className="container">
 
 				<div className="bg-accent min-h-44 p-5 py-16 rounded-lg max-w-2xl mx-auto flex items-center justify-center flex-col">
