@@ -39,7 +39,7 @@ const BookNotes = (props: Props) => {
       <div className="bg-white dark:bg-dark dark:text-white">
         <div className="mx-auto max-w-[900px] px-2 py-12">
           <div className="grid gap-12 sm:grid-cols-2">
-            {[...bookNotes, ...bookNotes,...bookNotes,...bookNotes]?.map((bookNote) => (
+            {bookNotes?.map((bookNote) => (
               <Link key={bookNote?.id} href="">
                 <a className="flex gap-4 dark:bg-dim-dark bg-gray-50 hover:bg-gray-100 dark:hover:bg-dim-dark p-2 rounded-md">
                   <div className="min-w-[100px] sm:min-w-[150px]">
