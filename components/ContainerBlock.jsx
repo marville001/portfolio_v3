@@ -1,28 +1,22 @@
 import React from 'react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import Navbar from './Navbar'
 import { Footer } from './Footer'
 import { Progress } from './progress'
 import { useProgressStore } from '../store'
 
-const ContainerBlock = ({
-  children,
-  showInterest = true,
-  ...customMeta
-}) => {
-  const router = useRouter()
-   const isAnimating = useProgressStore((state) => state.isAnimating)
+const ContainerBlock = ({ children, showInterest = true, ...customMeta }) => {
+  const isAnimating = useProgressStore((state) => state.isAnimating)
 
   const meta = {
     title: 'Martin - Software Developer - REACT,NEXT,NODE...',
     description: `I've been developing websites for more than 2 years straight. Get in touch with me to know more.`,
     image: '/avatar.png',
     type: 'website',
-    tags:[],
-    url: "https://my-portfolio-dev.vercel.app/",
-    timeToRead:"8 min read",
-    writtenBy:"Martin Mwangi",
+    tags: [],
+    url: 'https://thereactivedeveloper.com/',
+    timeToRead: '8 min read',
+    writtenBy: 'Martin Mwangi',
     ...customMeta,
   }
 
@@ -32,47 +26,77 @@ const ContainerBlock = ({
         <title>{meta.title}</title>
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta content={meta.description} name="description" />
-        <meta name="target" content="all"/>
-        <meta name="audience" content="all"/>
+        <meta name="target" content="all" />
+        <meta name="audience" content="all" />
         <meta data-rh="true" name="author" content="Martin Mwangi" />
         <meta data-rh="true" property="og:url" content={meta.url} />
         <meta data-rh="true" property="og:type" content={meta.type} />
-        <meta data-rh="true" property="og:site_name" content="Martin Mwangi Portfolio" />
-        <meta data-rh="true" property="og:description" content={meta.description} />
+        <meta
+          data-rh="true"
+          property="og:site_name"
+          content="Martin Mwangi Portfolio"
+        />
+        <meta
+          data-rh="true"
+          property="og:description"
+          content={meta.description}
+        />
         <meta data-rh="true" property="og:title" content={meta.title} />
         <meta data-rh="true" property="og:image" content={meta.image} />
-        <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+        <meta
+          data-rh="true"
+          name="twitter:card"
+          content="summary_large_image"
+        />
         <meta data-rh="true" name="twitter:site" content="@marville001" />
         <meta data-rh="true" name="twitter:creator" content="@marville001" />
         <meta data-rh="true" name="twitter:title" content={meta.title} />
-        <meta data-rh="true" name="twitter:description" content={meta.description} />
+        <meta
+          data-rh="true"
+          name="twitter:description"
+          content={meta.description}
+        />
         <meta data-rh="true" name="twitter:image" content={meta.image} />
-        {meta.date && (<meta property="article:published_time" content={meta.date} />)}
-        {
-          meta.tags.map((tag, i) => ( <meta key={i} data-rh="true" property="article:tag" content={tag} />  ))
-        }
-        {
-          meta.type === "article" &&
+        {meta.date && (
+          <meta property="article:published_time" content={meta.date} />
+        )}
+        {meta.tags.map((tag, i) => (
+          <meta key={i} data-rh="true" property="article:tag" content={tag} />
+        ))}
+        {meta.type === 'article' && (
           <>
             <meta data-rh="true" name="twitter:label1" content="Written by" />
-            <meta data-rh="true" name="twitter:data1" content={meta.writtenBy} />
+            <meta
+              data-rh="true"
+              name="twitter:data1"
+              content={meta.writtenBy}
+            />
             <meta data-rh="true" name="twitter:label1" content="Time to read" />
-            <meta data-rh="true" name="twitter:data1" content={meta.timeToRead} />
-            <meta property="article:author" content="https://www.linkedin.com/in/marville001/" />
-            <meta property="article:publisher" content="https://www.linkedin.com/in/marville001"></meta>
+            <meta
+              data-rh="true"
+              name="twitter:data1"
+              content={meta.timeToRead}
+            />
+            <meta
+              property="article:author"
+              content="https://www.linkedin.com/in/marville001/"
+            />
+            <meta
+              property="article:publisher"
+              content="https://www.linkedin.com/in/marville001"
+            ></meta>
           </>
-        }
+        )}
 
         <link rel="icon" href="/assets/my-logo.ico" type="image/icon type" />
         <link rel="canonical" href={meta.url} />
-        
       </Head>
 
       <script
-          src="https://www.google.com/recaptcha/api.js?&render=explicit"
-          async
-          defer
-        ></script>
+        src="https://www.google.com/recaptcha/api.js?&render=explicit"
+        async
+        defer
+      ></script>
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
         <Progress isAnimating={isAnimating} />
