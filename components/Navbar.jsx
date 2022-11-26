@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`_shadow3  border-b border-b-white/10 sticky top-0 left-0 right-0 z-[999] flex h-[100px] items-center bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3`}
+      className={`_shadow3  sticky top-0 left-0 right-0 z-[999] flex h-[100px] items-center border-b border-b-white/10 bg-white px-2 py-3 dark:bg-dark sm:px-6 lg:px-3`}
     >
       <div className="container flex items-center justify-between space-x-8">
         <Link href="/">
@@ -32,42 +32,44 @@ const Navbar = () => {
           </a>
         </Link>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex items-center gap-4">
           <div
             className={`absolute ${
               menuOpen
                 ? 'h-min opacity-100'
                 : 'h-0 overflow-hidden opacity-0 lg:h-min lg:opacity-100'
-            } inset-x-0 top-[90px] flex flex-col items-center gap-y-4 bg-white py-10 transition-all duration-150 ease-linear dark:bg-dark lg:static lg:top-0 lg:flex-row lg:gap-y-0 lg:space-x-2 lg:bg-transparent lg:dark:bg-transparent lg:transition-none`}
+            } inset-x-0 top-[90px] flex flex-col items-center gap-y-4 bg-white py-10 transition-all duration-150 ease-linear dark:bg-dark lg:static lg:top-0 lg:flex-row lg:gap-y-0 lg:space-x-2 lg:bg-transparent lg:transition-none lg:dark:bg-transparent`}
           >
             <Link href="/services">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
                 <span>Services</span>
               </a>
             </Link>
             <Link href="/about-me">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
                 <span>About</span>
               </a>
             </Link>
             <Link href="/portfolio">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
                 Portfolio
               </a>
             </Link>
 
-            <Link href="/blogs">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
-                Blog
-              </a>
-            </Link>
+            <a
+              target="_blank"
+              href="https://blog.thereactivedeveloper.com"
+              className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]"
+            >
+              Blog
+            </a>
             <Link href="/book-notes">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
                 Book Notes
               </a>
             </Link>
             <Link href="/contact">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:hover:text-accent dark:text-white lg:text-[15px]">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
                 Contact
               </a>
             </Link>
