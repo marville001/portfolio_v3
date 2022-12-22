@@ -77,6 +77,7 @@ export const getStaticProps = async () => {
 
     return {
       props: { bookNotes: JSON.stringify(bookNotes) || [] },
+      revalidate: 60
     };
   } catch (error) {
     return {

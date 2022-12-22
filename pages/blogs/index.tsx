@@ -101,6 +101,7 @@ export async function getStaticProps() {
 
     return {
       props: { blogs: JSON.stringify(blogs) || [] },
+      revalidate: 60
     };
   } catch (error) {
     console.log(error);
