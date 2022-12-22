@@ -32,11 +32,4 @@ const Home: NextPage = (props: any) => {
   )
 }
 
-export const getServerSideProps = async () => {
-
-  return {
-    props: { projects: [] },
-  }
-}
-
 export default Home

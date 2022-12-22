@@ -95,12 +95,13 @@ const Portfolio = (props: Props) => {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
     const projects = await projectsModel.getAllProjects('createdAt', "desc")
 
     return {
       props: { projects: JSON.stringify(projects) || [] },
+      revalidate: 60
     };
   } catch (error) {
     console.log(error);
