@@ -52,7 +52,7 @@ const ServicesSection = () => {
                 <p className='mt-2'>{service.description}</p>
 
               </div>
-              <Link href="#">
+              <Link href="/services">
                 <a className="bg-primary text-white group-hover:bg-white group-hover:text-primary text-center cursor-pointer py-2 rounded-lg text-lg">
                   Learn More
                 </a>
