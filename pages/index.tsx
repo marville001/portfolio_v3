@@ -14,7 +14,7 @@ const Home: NextPage = (props: any) => {
   return (
     <ContainerBlock
       title="Martin - Software Developer - REACT,NEXT,NODE..."
-      description="I've been developing websites for more than 2 years straight. Get in touch with me to know more."
+      description="I've been developing websites for more than 3 years straight using Reactjs and it's framework and Nodejs. Get in touch with me to know more."
     >
       <HeroSection />
       <div className="bg-gray-400 my-0 h-[1px] hidden dark:block container bg-opacity-20"></div>
