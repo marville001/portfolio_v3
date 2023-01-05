@@ -12,7 +12,7 @@ const HeroSection = () => {
           <span>Nyeri, Kenya</span>
         </h2>
 
-        <h1 className="mt-10 text-accent text-3xl font-bold sm:text-4xl">Martin Mwangi - W</h1>
+        <h1 className="mt-10 text-accent text-3xl font-bold sm:text-4xl">Not Samuel</h1>
         <h1 className="mb-6 text-dark dark:text-white mt-5 text-xl font-bold sm:text-2xl opacity-75">
           Junior Software Developer
         </h1>
