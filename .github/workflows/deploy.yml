@@ -21,5 +21,4 @@ jobs:
             git pull origin main
             npm install
             npm run build
-            npm install pm2
             pm2 restart portfolio
