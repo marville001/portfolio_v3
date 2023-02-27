@@ -1,41 +1,38 @@
 import { NextPage } from 'next'
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { FaSpinner } from 'react-icons/fa'
 import ContainerBlock from '../components/ContainerBlock'
+import useFormSpree from '../hooks/useFormSpree'
+
+type FormValues = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
 
 const contact: NextPage = () => {
-  const [error, setError] = useState('')
-  const [message, setMessage] = useState('')
-  const [loading, setLoading] = useState(false)
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm()
+  } = useForm<FormValues>()
 
-  const handleSendMessage = async (data: any) => {
+  const { state, handleSubmit: handleFormSpreeSubmit, resetSpreeState } = useFormSpree('xjvzvdrd');
 
-    setLoading(true)
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        body: JSON.stringify(data),
-      })
+  const handleSendMessage = async (data: FormValues) => {
+    const formData = new FormData();
 
-      const { message, success } = await res.json()
-      setMessage(message)
-      setLoading(false)
-      reset()
-    } catch (error) {
-      setLoading(false)
-      setError('Failed to send message. Please try again later!')
-      setTimeout(() => {
-        setError('')
-      }, 4000)
-    }
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("subject", data.subject);
+    formData.append("message", data.message);
+
+    const succcess = await handleFormSpreeSubmit(formData);
+    if (succcess) reset();
   }
 
   return (
@@ -50,8 +47,6 @@ const contact: NextPage = () => {
           </h1>
         </div>
 
-
-
         <div className="mt-5 flex justify-center flex-wrap">
           <p className='text-center max-w-xl text-lg lg:text-xl'>
             Feel free to contact me with questions about
@@ -62,13 +57,13 @@ const contact: NextPage = () => {
         </div>
 
         <form
-          onSubmit={handleSubmit((data) => handleSendMessage(data))}
+          onSubmit={handleSubmit(handleSendMessage)}
           autoComplete="off"
           className='lg:my-16'
         >
-          {error && (
+          {state?.message && state.errored && (
             <div className="my-4 bg-red-300 py-2 text-center text-red-700">
-              <p>{error}</p>
+              <p>{state?.message}</p>
             </div>
           )}
 
@@ -150,12 +145,13 @@ const contact: NextPage = () => {
             ></textarea>
           </div>
 
-          {message ? (
+          {(state.message && state.succeeded) ? (
             <div className="my-4 bg-green-200 py-6 text-center rounded-md text-green-700">
-              <p>{message}</p>
+              <p>{state.message}</p>
 
               <button
-                onClick={() => setMessage('')}
+                onClick={resetSpreeState}
+                type='submit'
                 className="mt-3 rounded-lg bg-accent px-4 py-2 text-sm text-white"
               >
                 Send Another Message
@@ -165,10 +161,10 @@ const contact: NextPage = () => {
             <div className="my-5 flex justify-center">
               <button
                 type="submit"
-                disabled={loading}
+                disabled={state.submitting}
                 className="cursor-pointer border-0 bg-accent px-10 py-2 rounded-full text-white outline-none ring-1 ring-accent focus:border-0 focus:outline-none disabled:cursor-not-allowed disabled:bg-opacity-75"
               >
-                {loading ? (
+                {state.submitting ? (
                   <FaSpinner className="animate-spin" />
                 ) : (
                   'Send Message'

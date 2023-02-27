@@ -2,139 +2,139 @@
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://localhost:3000/404</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/about-me</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/archive</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/contact</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/programming-journey</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/services</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/index</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/blogs/index</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/blogs/[slug]</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/portfolio/index</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/book-notes/index</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/portfolio/index</loc>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/blogs/index</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/blogs/new</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/blogs/[id]</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>http://localhost:3000/admin/home/index</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/book-notes/index</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/book-notes/new</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/book-notes/[id]</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:3000/admin/home/index</loc>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/projects/index</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/projects/new</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/projects/[id]</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:3000/admin/tags/index</loc>
-    <lastmod>2023-01-05T19:14:09.349Z</lastmod>
+    <lastmod>2023-02-27T08:36:15.198Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
