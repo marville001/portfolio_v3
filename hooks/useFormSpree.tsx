@@ -33,7 +33,7 @@ const useFormSpree = (formSpreeId: string) => {
 			} else {
 				let message = "";
 				const data = await res.json()
-				if (Object.hasOwn(data, 'errors')) {
+				if (data.hasOwnProperty('errors')) {
 					message = data["errors"].map((error: any) => error["message"]).join(", ")
 				} else {
 					message = "Oops! There was a problem submitting the form"

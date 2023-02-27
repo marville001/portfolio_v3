@@ -40,7 +40,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+/public/sitemap.xml
+
 # typescript
 *.tsbuildinfo
 
 .vscode
+public/sitemap.xml
