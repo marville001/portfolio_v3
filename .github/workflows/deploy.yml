@@ -22,3 +22,6 @@ jobs:
             npm install
             npm run build
             pm2 restart portfolio
+
+            git add .
+            git commit -m ":wrench: from-server => Update some config"
