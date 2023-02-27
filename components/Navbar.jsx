@@ -40,19 +40,14 @@ const Navbar = () => {
                 : 'h-0 overflow-hidden opacity-0 lg:h-min lg:opacity-100'
             } inset-x-0 top-[90px] flex flex-col items-center gap-y-4 bg-white py-10 transition-all duration-150 ease-linear dark:bg-dark lg:static lg:top-0 lg:flex-row lg:gap-y-0 lg:space-x-2 lg:bg-transparent lg:transition-none lg:dark:bg-transparent`}
           >
-            <Link href="/services">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
-                <span>Services</span>
-              </a>
-            </Link>
-            <Link href="/about-me">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
-                <span>About</span>
-              </a>
-            </Link>
             <Link href="/portfolio">
               <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
                 Portfolio
+              </a>
+            </Link>
+            <Link href="/services">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
+                <span>Services</span>
               </a>
             </Link>
 
@@ -66,6 +61,11 @@ const Navbar = () => {
             <Link href="/book-notes">
               <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
                 Book Notes
+              </a>
+            </Link>
+            <Link href="/about-me">
+              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
+                <span>About</span>
               </a>
             </Link>
             <Link href="/contact">
