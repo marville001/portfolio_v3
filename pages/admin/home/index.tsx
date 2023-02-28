@@ -35,6 +35,7 @@ const Blogs: NextPage = () => {
 
           {/* Projects */}
           <CountCard count={6} title="Project" to="/admin/projects/new" toDash="/admin/projects/" />
+          <CountCard count={6} title="Tags" to="/admin/projects/new" toDash="/admin/projects/" />
 
           {/* END */}
         </div>

@@ -58,6 +58,12 @@ const AboutMe = () => {
               document the books am reading by writing book notes.{' '}
               <i>I hope you get to check them out!</i>
             </p>
+
+            <Link href="/my-story">
+              <a className="mt-5 block underline text-center rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
+                <span>Read My Story</span>
+              </a>
+            </Link>
           </div>
         </div>
       </div>
