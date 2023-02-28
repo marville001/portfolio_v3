@@ -8,6 +8,8 @@ import { useProgressStore } from '../store'
 import AuthProvider from '../contexts/auth.context'
 import BlogsProvider from '../contexts/blogs.context'
 
+import { DefaultSeo } from 'next-seo'
+
 function MyApp({ Component, pageProps }) {
   const setIsAnimating = useProgressStore((state) => state.setIsAnimating)
   const router = useRouter()
@@ -36,6 +38,21 @@ function MyApp({ Component, pageProps }) {
       <Toaster position="bottom-center" reverseOrder={false} />
       <AuthProvider>
         <BlogsProvider>
+          <DefaultSeo
+            title="Martin Mwangi - The Reactive Developer"
+            description="Martin Mwangi - A Full stack developer @ TheJitu Ltd. I love coding"
+            openGraph={{
+              type: 'website',
+              locale: 'en_IE',
+              url: 'https://thereactivedeveloper.com/',
+              siteName: 'Martin Mwangi - The Reactive Developer',
+            }}
+            twitter={{
+              handle: '@handle',
+              site: '@site',
+              cardType: 'summary_large_image',
+            }}
+          />
           <Component {...pageProps} />
         </BlogsProvider>
       </AuthProvider>
