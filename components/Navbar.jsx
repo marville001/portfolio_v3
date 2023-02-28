@@ -45,11 +45,6 @@ const Navbar = () => {
                 Portfolio
               </a>
             </Link>
-            <Link href="/services">
-              <a className="text-lg_ rounded-lg px-4 font-semibold text-dark hover:text-accent dark:text-white dark:hover:text-accent lg:text-[15px]">
-                <span>Services</span>
-              </a>
-            </Link>
 
             <a
               target="_blank"
@@ -94,11 +89,11 @@ const Navbar = () => {
               >
                 {darkTheme ? (
                   <div className="flex items-center justify-center rounded-full bg-[#f2f2f2] p-1.5">
-                    <HiSun className="text-xl font-medium text-dark" />
+                    <HiSun className="text-md font-medium text-dark" />
                   </div>
                 ) : (
                   <div className="flex items-center justify-center rounded-full bg-[#f2f2f2] p-1.5">
-                    <HiMoon className="text-xl font-medium text-dark dark:text-white" />
+                    <HiMoon className="text-md font-medium text-dark dark:text-white" />
                   </div>
                 )}
               </div>
