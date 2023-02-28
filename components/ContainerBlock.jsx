@@ -1,28 +1,30 @@
 import React from 'react'
-import Head from 'next/head'
 import Navbar from './Navbar'
 import { Footer } from './Footer'
 import { Progress } from './progress'
 import { useProgressStore } from '../store'
+import { ArticleJsonLd, NextSeo } from 'next-seo'
 
 const ContainerBlock = ({ children, showInterest = true, ...customMeta }) => {
   const isAnimating = useProgressStore((state) => state.isAnimating)
 
   const meta = {
-    title: 'Martin - Software Developer - REACT,NEXT,NODE...',
-    description: `I've been developing websites for more than 2 years straight. Get in touch with me to know more.`,
-    image: '/avatar.png',
-    type: 'website',
-    tags: [],
+    title: 'Martin Mwangi - The Reactive Developer',
+    description:
+      'Martin Mwangi - A Full stack developer @ TheJitu Ltd. I love coding',
+    image: 'https://avatars.githubusercontent.com/u/51154760?v=4',
+    type: 'article',
+    tags: ['The Reactive Developer', 'Next.Js', 'React.Js', 'Martin Mwangi', 'Martin Mwangi Wanjiku'],
     url: 'https://thereactivedeveloper.com/',
     timeToRead: '8 min read',
     writtenBy: 'Martin Mwangi',
+    authors: ['https://thereactivedeveloper.com/'],
     ...customMeta,
   }
 
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta content={meta.description} name="description" />
@@ -90,13 +92,48 @@ const ContainerBlock = ({ children, showInterest = true, ...customMeta }) => {
 
         <link rel="icon" href="/assets/my-logo.ico" type="image/icon type" />
         <link rel="canonical" href={meta.url} />
-      </Head>
+      </Head> */}
 
-      <script
+      <NextSeo
+        title={meta?.title}
+        description={meta?.description}
+        canonical={meta?.url}
+        openGraph={{
+          type: meta?.type,
+          article: {
+            publishedTime: meta?.date,
+            modifiedTime: meta?.date,
+            authors: meta?.authors,
+            tags: meta?.tags,
+          },
+          url: meta?.url,
+          images: {
+            url: meta?.image,
+            width: 850,
+            height: 650,
+            alt: 'Martin Mwangi - The Reactive Developer',
+          },
+          site_name: meta?.title,
+        }}
+      />
+
+      <ArticleJsonLd
+            url={meta?.url}
+            title={meta?.title}
+            images={[
+                meta?.image,
+            ]}
+            datePublished={meta?.date}
+            dateModified={meta?.date}
+            authorName={meta?.authors}
+            description={meta?.description}
+        />
+
+      {/* <script
         src="https://www.google.com/recaptcha/api.js?&render=explicit"
         async
         defer
-      ></script>
+      ></script> */}
       <main className="min-h-screen bg-white dark:bg-dark">
         <Navbar />
         <Progress isAnimating={isAnimating} />
