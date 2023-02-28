@@ -33,7 +33,7 @@ const NotFound = () => {
             </p>
 
             <Link href="/">
-              <a className="rounded-md bg-dark dark:bg-dim-dark px-6 py-2 text-sm font-semibold text-white">
+              <a className="rounded-md bg-dark dark:bg-dim-dark px-6 py-2 text-sm font-semibold text-white hover:scale-105 active:scale-95">
                 Go home
               </a>
             </Link>
