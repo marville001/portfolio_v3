@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import { Footer } from './Footer'
 import { Progress } from './progress'
 import { useProgressStore } from '../store'
-import { NextSeo } from 'next-seo'
+import { ArticleJsonLd, NextSeo } from 'next-seo'
 
 const ContainerBlock = ({ children, showInterest = true, ...customMeta }) => {
   const isAnimating = useProgressStore((state) => state.isAnimating)
@@ -116,6 +116,18 @@ const ContainerBlock = ({ children, showInterest = true, ...customMeta }) => {
           site_name: meta?.title,
         }}
       />
+
+      <ArticleJsonLd
+            url={meta?.url}
+            title={meta?.title}
+            images={[
+                meta?.image,
+            ]}
+            datePublished={meta?.date}
+            dateModified={meta?.date}
+            authorName={meta?.authors}
+            description={meta?.description}
+        />
 
       {/* <script
         src="https://www.google.com/recaptcha/api.js?&render=explicit"
