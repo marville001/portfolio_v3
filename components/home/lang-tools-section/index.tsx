@@ -6,7 +6,7 @@ const langs = [
   { id: 1, name: 'Node JS', icon: '/icons/nodejs.jpeg' },
   { id: 2, name: 'Tailwind CSS', icon: '/icons/tailwindcss.jpeg' },
   { id: 3, name: 'Typescript', icon: '/icons/typescript.png' },
-  { id: 3, name: 'GraphQl', icon: '/icons/graphql.png' },
+  { id: 18, name: 'GraphQl', icon: '/icons/graphql.png' },
   { id: 4, name: 'Bootstrap', icon: '/icons/bootstrap.jpeg' },
   { id: 5, name: 'HTML 5', icon: '/icons/html5.png' },
   { id: 6, name: 'CSS 3', icon: '/icons/css3.png' },

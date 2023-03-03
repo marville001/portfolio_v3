@@ -14,6 +14,23 @@ function MyApp({ Component, pageProps }) {
   const setIsAnimating = useProgressStore((state) => state.setIsAnimating)
   const router = useRouter()
 
+  // close if the ctr+shift+> key is pressed
+  useEffect(() => {
+    const keyHandler = ({ keyCode, shiftKey, ctrlKey }) => {
+      if (
+        !shiftKey ||
+        !ctrlKey ||
+        keyCode !== 190 ||
+        router.pathname.startsWith('/admin')
+      )
+        return
+
+      router.push('/admin')
+    }
+    document.addEventListener('keydown', keyHandler)
+    return () => document.removeEventListener('keydown', keyHandler)
+  })
+
   useEffect(() => {
     const handleStart = () => {
       setIsAnimating(true)
