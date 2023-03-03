@@ -2,11 +2,16 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import React from 'react'
 import { FaPlus } from 'react-icons/fa'
-
 import AdminWrapper from '../../../components/admin/AdminWrapper'
 import ContainerBlock from '../../../components/ContainerBlock'
+import useFirestoreCollection from '../../../hooks/useFirestoreCollection'
 
 const Blogs: NextPage = () => {
+
+  const { value:blogsSnap } = useFirestoreCollection("blogs")
+  const { value:projectsSnap } = useFirestoreCollection("projects")
+  const { value:bookNotesSnap } = useFirestoreCollection("book-notes")
+
   return (
     <ContainerBlock
       title="Martin - Software Developer - REACT,NEXT,NODE..."
@@ -28,14 +33,13 @@ const Blogs: NextPage = () => {
 
         <div className="mb-6 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
           {/* Blogs */}
-          <CountCard count={12} title="Blog" to="/admin/blogs/new" toDash="/admin/blogs/" />
+          <CountCard count={blogsSnap?.size ?? 0} title="Blog" to="/admin/blogs/new" toDash="/admin/blogs/" />
 
           {/* Book Notes */}
-          <CountCard count={2} title="Book Note" to="/admin/book-notes/new" toDash="/admin/book-notes/" />
+          <CountCard count={bookNotesSnap?.size ?? 0} title="Book Note" to="/admin/book-notes/new" toDash="/admin/book-notes/" />
 
           {/* Projects */}
-          <CountCard count={6} title="Project" to="/admin/projects/new" toDash="/admin/projects/" />
-          <CountCard count={6} title="Tags" to="/admin/projects/new" toDash="/admin/projects/" />
+          <CountCard count={projectsSnap?.size ?? 0} title="Project" to="/admin/projects/new" toDash="/admin/projects/" />
 
           {/* END */}
         </div>
@@ -50,14 +54,14 @@ interface CountCardProps {
   toDash?: string
   count: number
 }
-const CountCard = ({ title, count, to, toDash="/admin" }: CountCardProps) => (
+const CountCard = ({ title, count, to, toDash = "/admin" }: CountCardProps) => (
   <div className="rounded-md bg-dark dark:bg-dim-dark p-5 text-white">
     <Link href={toDash}>
 
-    <a className="flex items-center gap-3 transition-all duration-150 ease-linear hover:text-accent hover:px-3">
-      <h2 className="text-5xl font-bold">{count}</h2>
-      <p className="text-xl">{title}s</p>
-    </a>
+      <a className="flex items-center gap-3 transition-all duration-150 ease-linear hover:text-accent hover:px-3">
+        <h2 className="text-5xl font-bold">{count}</h2>
+        <p className="text-xl">{title}s</p>
+      </a>
     </Link>
     <Link href={to}>
       <a className="mt-3 w-auto flex cursor-pointer items-center justify-start gap-2 rounded-md p-1 
