@@ -17,11 +17,10 @@ import { IClient } from '../../../types/client'
 type Inputs = {
   name: string
   description: string
-  tag: string
+  website: string
   draft: boolean
   featured: boolean
   archived: boolean
-  website: boolean
 }
 
 const NewClient: NextPage = () => {

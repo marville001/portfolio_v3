@@ -8,25 +8,22 @@ import AdminWrapper from '../../../components/admin/AdminWrapper'
 import ContainerBlock from '../../../components/ContainerBlock'
 import ReactQuillEditor from '../../../components/ReactQuillEditor'
 import fileUploader from '../../../lib/fileUploader'
-import projectsModel from '../../../models/projects.model.ts'
+import clientsModel from '../../../models/clients.model.ts'
 import toast from 'react-hot-toast'
-import { IProject } from '../../../types/project'
+import { IClient } from '../../../types/client'
 
 type Inputs = {
 	name: string
 	description: string
-	intro: string
-	tag: string
+	website: string
 	draft: boolean
 	featured: boolean
 	archived: boolean
-	website: boolean
-	github: boolean
 }
 
 
-const UpdateProject: NextPage = ({ project }: any) => {
-	const [loadedProject, setLoadedProject] = useState<IProject | null>(null)
+const UpdateClient: NextPage = ({ client }: any) => {
+	const [loadedClient, setLoadedClient] = useState<IClient | null>(null)
 	const [uploading, setUploading] = useState(false)
 	const [updating, setUpdating] = useState(false)
 	const [image, setImage] = useState('')
@@ -61,41 +58,34 @@ const UpdateProject: NextPage = ({ project }: any) => {
 		}
 	}
 
-	const handleUpdateProject: SubmitHandler<Inputs> = async (data: any) => {
+	const handleUpdateClient: SubmitHandler<Inputs> = async (data: any) => {
 		if (!content || content === '') {
-			setError('description', { message: 'Project description is required' })
+			setError('description', { message: 'Client description is required' })
 			return
 		}
 
-		const updatedProject: IProject = {
+		const updatedClient: IClient = {
 			name: data.name,
-			intro: data.intro,
 			description: content.toString().replaceAll('<p><br></p>', ''),
 			updatedAt: serverTimestamp(),
-			// draft: data.draft,
-			// featured: data.featured,
-			// archived: data.archived,
 			website: data.website,
-			github: data.github,
-			tag: data.tag,
-			slug: loadedProject?.slug ?? "",
-			images: [image],
+			slug: loadedClient?.slug ?? "",
+			image,
 			...state
 		}
 
-		if (updatedProject.description === '') {
-			setError('description', { message: 'Project description is required' })
+		if (updatedClient.description === '') {
+			setError('description', { message: 'Client description is required' })
 			return
 		}
-		
-		const notification = toast.loading("Updating Project!")
+
+		const notification = toast.loading("Updating Client!")
 		setUpdating(true)
 		try {
 
-			await projectsModel.updateProject(updatedProject, loadedProject?.id ?? "");
+			await clientsModel.updateClient(updatedClient, loadedClient?.id ?? "");
 			setUpdating(false)
-			toast.success("Project Updated Successfully!", { id: notification })
-			// router.push('/admin/projects')
+			toast.success("Client Updated Successfully!", { id: notification })
 		} catch (error) {
 			setUpdating(false)
 			console.log(error);
@@ -105,19 +95,16 @@ const UpdateProject: NextPage = ({ project }: any) => {
 	}
 
 	useEffect(() => {
-		const p = typeof project === "string" ? JSON.parse(project) : {}
+		const p = typeof client === "string" ? JSON.parse(client) : {}
 
 		if (p?.name) {
-			setLoadedProject(p);
+			setLoadedClient(p);
 			setValue("name", p.name)
-			setValue("intro", p.intro)
 			setValue("draft", p.draft)
 			setValue("featured", p.featured)
 			setValue("archived", p.archived)
-			setValue("github", p.github)
 			setValue("website", p.website)
-			setValue("tag", p.tag)
-			setImage(p.images[0])
+			setImage(p.image)
 			setContent(p.description)
 
 			setState({
@@ -126,43 +113,46 @@ const UpdateProject: NextPage = ({ project }: any) => {
 				archived: p.archived ?? false
 			})
 		}
-	}, [project])
+	}, [client])
+
+	console.log(client);
+	
 
 	return (
 		<ContainerBlock>
 			<AdminWrapper>
 				{
-					loadedProject?.name &&
+					loadedClient?.name &&
 					<div className="_shadow2 relative  mx-auto my-12 flex flex-col items-center rounded-2xl   bg-white dark:bg-dim-dark p-6">
-						<Link href="/admin/projects">
+						<Link href="/admin/clients">
 							<a className="absolute dark:text-white top-2 left-2 cursor-pointer rounded-lg p-4 hover:bg-gray-100 dark:hover:text-dark">
 								<FaChevronLeft />
 							</a>
 						</Link>
 						<div className="self-start mt-8 w-full">
-							<h2 className="text-3xl font-bold text-center dark:text-white">Update Project</h2>
+							<h2 className="text-3xl font-bold text-center dark:text-white">Update Client</h2>
 						</div>
 
-						<form onSubmit={handleSubmit(handleUpdateProject)} className="flex flex-col md:flex-row my-16 w-full">
+						<form onSubmit={handleSubmit(handleUpdateClient)} className="flex flex-col md:flex-row my-16 w-full">
 							<div className="w-full md:w-[300px] dark:bg-dark dark:text-white rounded-md shadow h-min p-5">
 								<h2 className='font-bold mb-2'>Settings</h2>
 								<hr className='mb-3' />
 								<label htmlFor="isDraft" className='flex items-center space-x-3 mt-4'>
-										<input
-											checked={state.draft} onChange={e =>setState(prev=>({...prev, draft: e.target.checked}))}
-											type="checkbox" className='h-5 w-5' name="" id="isDraft" />
+									<input
+										checked={state.draft} onChange={e => setState(prev => ({ ...prev, draft: e.target.checked }))}
+										type="checkbox" className='h-5 w-5' name="" id="isDraft" />
 									<span>Save as draft</span>
 								</label>
 								<label htmlFor="isFeatured" className='flex items-center space-x-3 mt-4'>
-									<input checked={state.featured} onChange={e =>setState(prev=>({...prev, featured: e.target.checked}))}
-									 type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
-									<span>Featured Project</span>
+									<input checked={state.featured} onChange={e => setState(prev => ({ ...prev, featured: e.target.checked }))}
+										type="checkbox" className='h-5 w-5' name="" id="isFeatured" />
+									<span>Featured Client</span>
 								</label>
 								<label htmlFor="isArchived" className='flex items-center space-x-3 mt-4'>
-										<input
-											checked={state.archived} onChange={e =>setState(prev=>({...prev, archived: e.target.checked}))}
-											type="checkbox" className='h-5 w-5' name="" id="isArchived" />
-									<span>Archived Project</span>
+									<input
+										checked={state.archived} onChange={e => setState(prev => ({ ...prev, archived: e.target.checked }))}
+										type="checkbox" className='h-5 w-5' name="" id="isArchived" />
+									<span>Archived Client</span>
 								</label>
 							</div>
 
@@ -170,7 +160,7 @@ const UpdateProject: NextPage = ({ project }: any) => {
 
 								className="my-6 w-full p-4"
 							>
-								{/*  Project Image */}
+								{/*  Client Image */}
 								{image ? (
 									<div className="relative dark:text-white">
 										<div
@@ -181,7 +171,7 @@ const UpdateProject: NextPage = ({ project }: any) => {
 										</div>
 										<img
 											src={image}
-											alt="Project"
+											alt="Client"
 											className="h-auto max-h-[400px] w-full rounded-lg object-cover"
 										/>
 									</div>
@@ -194,7 +184,7 @@ const UpdateProject: NextPage = ({ project }: any) => {
 										{uploading && (
 											<FaSpinner className="animate-spin text-lg" />
 										)}{' '}
-										Choose Project Image
+										Choose Client Image
 										<input
 											type="file"
 											name=""
@@ -214,7 +204,7 @@ const UpdateProject: NextPage = ({ project }: any) => {
 									</label>
 									<input
 										type="text"
-										placeholder="Project Name"
+										placeholder="Client Name"
 										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.name && 'ring-1 ring-red-400'
 											}`}
 										{...register('name', {
@@ -231,47 +221,10 @@ const UpdateProject: NextPage = ({ project }: any) => {
 									)}
 								</div>
 
-								{/* Title */}
+								{/* Client Website */}
 								<div className="mt-6 flex flex-col gap-2">
 									<label htmlFor="intro" className="dark:text-white">
-										Intro
-									</label>
-									<input
-										type="text"
-										placeholder="Project Intro"
-										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0 ${errors.intro && 'ring-1 ring-red-400'
-											}`}
-										{...register('intro', {
-											required: {
-												value: true,
-												message: 'Intro is required',
-											},
-										})}
-									/>
-									{errors.intro && (
-										<span className="text-sm text-red-600">
-											{errors.intro.message}
-										</span>
-									)}
-								</div>
-
-								{/* Tag */}
-								<div className="mt-6 flex flex-col gap-2">
-									<label htmlFor="intro" className="dark:text-white">
-										Tag
-									</label>
-									<input
-										type="text"
-										placeholder="Eg. Reactjs"
-										className={`block w-full rounded-lg bg-grayish p-3 focus:outline-none focus:ring-0`}
-										{...register('tag')}
-									/>
-								</div>
-
-								{/* Demo Link */}
-								<div className="mt-6 flex flex-col gap-2">
-									<label htmlFor="intro" className="dark:text-white">
-										Demo Link
+										Client Website
 									</label>
 									<input
 										type="text"
@@ -283,7 +236,7 @@ const UpdateProject: NextPage = ({ project }: any) => {
 
 								<div className="mt-6 flex flex-col gap-2">
 									<label htmlFor="" className="dark:text-white">
-										Project Description
+										Client Description
 									</label>
 									<ReactQuillEditor
 										hasErrors={
@@ -310,7 +263,7 @@ const UpdateProject: NextPage = ({ project }: any) => {
 									{updating ? (
 										<FaSpinner className="animate-spin" />
 									) : (
-										'Update Project'
+										'Update Client'
 									)}
 								</button>
 							</div>
@@ -323,10 +276,10 @@ const UpdateProject: NextPage = ({ project }: any) => {
 }
 
 export async function getStaticPaths() {
-	const projects = await projectsModel.getAllProjects() ?? []
+	const clients = await clientsModel.getAllClients() ?? []
 
-	const paths = projects.map(project => ({
-		params: { id: project.id }
+	const paths = clients.map(client => ({
+		params: { id: client.id }
 	}))
 	return {
 		paths,
@@ -338,19 +291,19 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async (context: any) => {
 	try {
 		const { id } = context.params;
-		const project = await projectsModel.getProjectById(id);
+		const client = await clientsModel.getClientById(id);
 
-		if (!project) return { notFound: true };
+		if (!client) return { notFound: true };
 
 		return {
-			props: { project: JSON.stringify(project) },
+			props: { client: JSON.stringify(client) },
 			revalidate: 60, // after 60seconds.. it will revalidate the old cache
 		};
 	} catch (error) {
 		return {
-			props: { project: {} },
+			props: { client: {} },
 		};
 	}
 }
 
-export default UpdateProject
+export default UpdateClient
