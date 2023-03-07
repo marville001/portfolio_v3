@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['res.cloudinary.com', 'thereactivedeveloper.com'],
+    domains: ['res.cloudinary.com', 'thereactivedeveloper.com', 'www.mountaingoatsoftware.com'],
   },
   webpack: (config, { isServer }) => {
     if (isServer) {

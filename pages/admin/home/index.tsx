@@ -8,9 +8,12 @@ import useFirestoreCollection from '../../../hooks/useFirestoreCollection'
 
 const Blogs: NextPage = () => {
 
-  const { value:blogsSnap } = useFirestoreCollection("blogs")
-  const { value:projectsSnap } = useFirestoreCollection("projects")
-  const { value:bookNotesSnap } = useFirestoreCollection("book-notes")
+  const { value: blogsSnap } = useFirestoreCollection("blogs")
+  const { value: projectsSnap } = useFirestoreCollection("projects")
+  const { value: bookNotesSnap } = useFirestoreCollection("book-notes")
+  const { value: clientsSnap } = useFirestoreCollection("clients")
+  const { value: clientProjectsSnap } = useFirestoreCollection("client-projects")
+  const { value: tasksSnap } = useFirestoreCollection("tasks")
 
   return (
     <ContainerBlock
@@ -40,6 +43,24 @@ const Blogs: NextPage = () => {
 
           {/* Projects */}
           <CountCard count={projectsSnap?.size ?? 0} title="Project" to="/admin/projects/new" toDash="/admin/projects/" />
+
+          {/* END */}
+        </div>
+
+        <div className="my-20">
+          <h4 className='text-3xl font-bold dark:text-white'>Freelancing Analytics</h4>
+          <hr className='mt-4' />
+        </div>
+
+        <div className="mb-6 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
+          {/* Clients */}
+          <CountCard count={clientsSnap?.size ?? 0} title="Client" to="/admin/clients/new" toDash="/admin/clients/" />
+
+          {/* Book Notes */}
+          <CountCard count={clientProjectsSnap?.size ?? 0} title="Client Project" to="/admin/client-projects/new" toDash="/admin/client-projects/" />
+
+          {/* Projects */}
+          <CountCard count={tasksSnap?.size ?? 0} title="Task" to="/admin/tasks/new" toDash="/admin/tasks/" />
 
           {/* END */}
         </div>
