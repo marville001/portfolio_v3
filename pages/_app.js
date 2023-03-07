@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
       if (
         !shiftKey ||
         !ctrlKey ||
-        keyCode !== 190 ||
+        keyCode !== 39 ||
         router.pathname.startsWith('/admin')
       )
         return
