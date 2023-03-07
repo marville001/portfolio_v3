@@ -115,9 +115,6 @@ const UpdateClient: NextPage = ({ client }: any) => {
 		}
 	}, [client])
 
-	console.log(client);
-	
-
 	return (
 		<ContainerBlock>
 			<AdminWrapper>
