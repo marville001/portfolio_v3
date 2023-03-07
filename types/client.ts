@@ -5,7 +5,7 @@ export interface IClient {
 	website: string;
 	image: string;
 	slug: string;
-	files: string[];
+	files?: string[];
 	createdAt?: any,
 	updatedAt?: any,
 	draft?: boolean,
