@@ -14,7 +14,7 @@ const HeroSection = () => {
 
         <h1 className="mt-10 text-accent text-3xl font-bold sm:text-4xl">Martin Mwangi</h1>
         <h1 className="mb-6 text-dark dark:text-white mt-5 text-xl font-bold sm:text-2xl opacity-75">
-          Software Developer
+          Junior Software Developer
         </h1>
         <p className="mt-5 max-w-[700px] text-dark dark:text-white">
           With some years of experience in software development, I am dedicated
