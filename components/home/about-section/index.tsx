@@ -42,7 +42,7 @@ const AboutMe = () => {
             </p>
 
             <div className="my-10 flex flex-col gap-5 sm:flex-row justify-center">
-              <Link href="mailto:mwangimartin1904@gmail.com">
+              <Link href="mailto:me@thereactivedeveloper.pro">
                 <a
                   target="_blank"
                   className="inline-block rounded-full bg-accent py-3 px-8 text-center  text-[16px] font-semibold text-white hover:bg-opacity-80"

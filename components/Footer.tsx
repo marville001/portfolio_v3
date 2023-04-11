@@ -81,7 +81,7 @@ export const Footer = ({ showInterest = true }) => {
               {new Date().getFullYear()}
             </p>
           </div>
-          <Link href="mailto:mwangimartin1904@gmail.com">
+          <Link href="mailto:me@thereactivedeveloper.pro">
             <a
               target="_blank"
               className="inline-block rounded-full bg-primary py-2 px-8  text-center text-white hover:bg-opacity-80"

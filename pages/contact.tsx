@@ -52,7 +52,7 @@ const contact: NextPage = () => {
             Feel free to contact me with questions about
             any of my project or services. I'll get back to you within 24 hours!{" "}
             <a href='tel:+254700207054' className="text-accent hover:underline">+254700207054</a> {" "}
-            <a href='mailto:mwangimartin1904@gmail.com' className="text-accent hover:underline">mwangimartin1904@gmail.com</a>
+            <a href='mailto:me@thereactivedeveloper.pro' className="text-accent hover:underline">me@thereactivedeveloper.pro</a>
           </p>
         </div>
 
