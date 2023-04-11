@@ -44,7 +44,7 @@ const useFormSpree = (formSpreeId: string) => {
 			}
 			return success
 		} catch (error: any) {
-			console.log("============ Contact Me On mwangimartin1904@gmail.com ================");
+			console.log("============ Contact Me On me@thereactivedeveloper.pro ================");
 			console.log(error?.message);
 			console.log("=======================================================================");
 
