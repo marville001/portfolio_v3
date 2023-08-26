@@ -1,13 +1,12 @@
-import Link from 'next/link'
-import React from 'react'
-import { FaWhatsapp } from 'react-icons/fa'
-import { HiOutlineExternalLink } from 'react-icons/hi'
+import Link from 'next/link';
+import { FaWhatsapp } from 'react-icons/fa';
+import { HiOutlineExternalLink } from 'react-icons/hi';
 
 const ExperienceSection = () => {
   return (
-    <div className="section bg-gray-100 dark:bg-dark dark:text-white">
+    <div className="bg-gray-100 section dark:bg-dark dark:text-white">
       <div className="container grid grid-cols-1 md:py-20 md:grid-cols-2">
-        <div className="py-10 px-2 sm:px-10 z-20">
+        <div className="z-20 px-2 py-10 sm:px-10">
           <h2 className="mb-6 text-3xl z-[2] capitalize font-bold text-dark dark:text-white">
             Experience and knowledge to highlight
           </h2>
@@ -41,7 +40,7 @@ const ExperienceSection = () => {
                 PostgresDB
               </p>
               <Link href="/now">
-                <a className='bg-primary text-white text-sm px-4 py-1 mt-2 inline-block rounded-md'>View Current</a>
+                <a className='inline-block px-4 py-1 mt-2 text-sm text-white rounded-md bg-primary'>View Current</a>
               </Link>
             </div>
           </div>
@@ -66,22 +65,22 @@ const ExperienceSection = () => {
               communications about any task you have.
             </p>
 
-            <div className="_shadow mt-16 w-full rounded-lg p-6 dark:bg-dark">
+            <div className="w-full p-6 mt-16 rounded-lg _shadow dark:bg-dark">
               <h2 className="mb-2 text-lg font-bold">Schedule a meeting</h2>
               <p className="text-sm font-medium opacity-70">
                 Choose the ideal moment and meet with the team to put your ideas
                 into action.
               </p>
 
-              <button className="lg:text-md mt-6 w-full btn hover:bg-primary bg-opacity-80 hover:bg-opacity-100 border-0 rounded-full bg-primary py-2 text-center text-sm text-white">
+              <a target="_blank" href="https://cal.com/marville001/30min" className="w-full py-2 mt-6 text-sm text-center text-white border-0 rounded-full lg:text-md btn hover:bg-primary bg-opacity-80 hover:bg-opacity-100 bg-primary">
                 Click to coordinate meeting
-              </button>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ExperienceSection
+export default ExperienceSection;
